@@ -52,12 +52,48 @@ const profile = {
   ],
   experiences: [
     {
+      company: 'Yoona',
+      logoCompany: 'https://via.placeholder.com/12/e51837?text=+',
+      promotion: [
+        {
+          title: 'Engineering Lead',
+          year: 'Jan 2023 - Present',
+          summary: [
+            'Connecting people across globe through technical assesment for potential project and collaboration',
+            'Oversee & Manage APAC (Indonesia Office) Technology Team to ensure working experience, growing factor, and successful deliveries.',
+            'Work with R/GA teams across multiple offices, collaborating with multiple disciplines',
+            'Evaluate and recommend technology solutions that best fit project requirements',
+            'Collaborate with experience and visual design, strategy to build and deliver successful digital experiences with technical solutions',
+            'Assist teams on technical feasibility, risk and effort estimation',
+            'Help with technical assessment and prototyping to de-risk and prove out concepts',
+            'Write clean, readable, modern, secure, robust and well performing code according to world-class standards',
+            'Lead by example and mentoring junior members on best-practices on daily basis',
+            'Manage tasks and workloads responsibly to ensure successful development and project deliverables',
+          ],
+        },
+        {
+          title: 'Lead Developer',
+          year: 'Feb 2022 - Dec 2022',
+          summary: [
+            'Work with R/GA teams across multiple offices, collaborating with multiple disciplines',
+            'Evaluate and recommend technology solutions that best fit project requirements',
+            'Collaborate with experience and visual design, strategy to build and deliver successful digital experiences with technical solutions',
+            'Assist teams on technical feasibility, risk and effort estimation',
+            'Help with technical assessment and prototyping to de-risk and prove out concepts',
+            'Write clean, readable, modern, secure, robust and well performing code according to world-class standards',
+            'Lead by example and mentor junior members on best-practices on daily basis',
+            'Manage tasks and workloads responsibly to ensure successful development and project deliverables',
+          ],
+        },
+      ],
+    },
+    {
       company: 'R/GA',
       logoCompany: 'https://via.placeholder.com/12/e51837?text=+',
       promotion: [
         {
           title: 'Technology Lead',
-          year: 'May 2022 - Present',
+          year: 'May 2022 - Dec 2022',
           summary: [
             'Connecting people across globe through technical assesment for potential project and collaboration',
             'Oversee & Manage APAC (Indonesia Office) Technology Team to ensure working experience, growing factor, and successful deliveries.',
@@ -159,10 +195,9 @@ const profile = {
     'TypeScript',
     // 'Python',
     // 'Microsoft Azure',
-    'Contentful',
+    'Headless CMS',
     'Storybook',
-    'Uniform',
-    'GraphCMS',
+    'Strapi',
   ],
   allSkills: [
     'React.js',
@@ -292,6 +327,130 @@ const profile = {
         url: 'https://linkedin.com/in/ervandra',
         text: 'LinkedIn',
       },
+    },
+  ],
+  projects: [
+    {
+      id: 'mtf',
+      name: 'MTF One Access',
+      client: 'MTF',
+      job: {
+        company: 'External',
+        position: 'Project Manager',
+      },
+      shortDescription: 'Building MVP Website using Contentful and Next.js, deployed on Vercel',
+      cover: '/images/projects/mtf.jpg',
+    },
+    {
+      id: 'Yoona',
+      name: 'Yoona.id',
+      client: 'Yoona',
+      job: {
+        company: 'External',
+        position: 'Technology Lead',
+      },
+      shortDescription: 'Building MVP Website using Contentful and Next.js, deployed on Vercel',
+      cover: '/images/projects/yoona.jpg',
+    },
+    {
+      id: 'JTZ',
+      name: 'Journey To Zero',
+      client: 'Runhood',
+      job: {
+        company: 'External',
+        position: 'Technology Lead',
+      },
+      shortDescription: 'Building MVP Website using Contentful and Next.js, deployed on Vercel',
+      cover: '/images/projects/jtz.jpg',
+    },
+    {
+      id: 'MoCA',
+      name: 'MOCA',
+      client: 'Museum of Chinese at Australia Ltd',
+      job: {
+        company: 'R/GA',
+        position: 'Technology Lead',
+      },
+      shortDescription: 'Building MVP Website using Contentful and Next.js, deployed on Vercel',
+      cover: '/images/projects/moca.jpg',
+    },
+    {
+      id: 'AACo',
+      name: 'Westholme',
+      client: 'Australia Agriculture Company Ltd',
+      job: {
+        company: 'R/GA',
+        position: 'Senior Frontend Engineer',
+      },
+      shortDescription:
+        'Building MVP Website using Contentful and Next.js, deployed on Azure by CI/CD',
+      cover: '/images/projects/westholme.jpg',
+    },
+    {
+      id: 'mixi',
+      name: 'Google Play - eSports',
+      client: 'Google TYO',
+      job: {
+        company: 'R/GA',
+        position: 'Senior Software Engineer',
+      },
+      shortDescription: 'Building UI Kit Library using Storybook, Vue3',
+      cover: '/images/projects/mixi.jpg',
+    },
+    {
+      id: 'Reejig',
+      name: 'Reejig',
+      client: 'Reejig Pte Ltd',
+      job: {
+        company: 'R/GA',
+        position: 'Senior Frontend Engineer',
+      },
+      shortDescription: 'Building UI Kit Library using Storybook, Vue3',
+      cover: '/images/projects/reejig2.jpg',
+    },
+    {
+      id: 'pixelchips',
+      name: 'Google Pixel Chips',
+      client: 'Google TYO',
+      job: {
+        company: 'R/GA',
+        position: 'Senior Software Engineer',
+      },
+      shortDescription: 'Building UI Kit Library using Storybook, Vue3',
+      cover: '/images/projects/pixel.jpg',
+    },
+    {
+      id: 'blush',
+      name: 'My Blush Wardrobe',
+      client: 'Blush Fashion',
+      job: {
+        company: 'External',
+        position: 'Technology Lead',
+      },
+      shortDescription: 'Building MVP Website using Contentful and Next.js, deployed on Vercel',
+      cover: '/images/projects/blush.jpg',
+    },
+    {
+      id: 'lfa',
+      name: 'LoveForAll',
+      client: 'Unilever Pte Ltd',
+      job: {
+        company: 'R/GA',
+        position: 'Technology Lead',
+      },
+      shortDescription: 'Building UI Kit Library using Storybook, Vue3',
+      cover: '/images/projects/lfa.jpg',
+    },
+    {
+      id: 'saathi',
+      name: 'Woman Will',
+      client: 'Google TYO',
+      job: {
+        company: 'R/GA',
+        position: 'Senior Software Engineer',
+      },
+      shortDescription: 'Building UI Kit Library using Storybook, Vue3',
+      cover: '/images/projects/saathi.jpg',
     },
   ],
 };

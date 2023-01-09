@@ -6,14 +6,32 @@ import Modal from 'react-modal';
 import { useSetState } from '@ervandra/use-setstate';
 import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
-import Pulse from 'react-reveal/Pulse';
 import Flash from 'react-reveal/Flash';
 import Bounce from 'react-reveal/Bounce';
 import Accordion from '../components/molecules/Accordion/Accordion';
+import axios from 'axios';
+import { getProjects } from '../utils/api';
+import { getStrapiMedia } from '../strapi/media';
 
 import { subscribeForm } from '../libs/apis';
 
-export default function Home() {
+export async function getStaticProps() {
+  let projects = [];
+
+  // await getProjects().then(resp => {
+  //   if (resp.data) {
+  //     projects = resp.data;
+  //   }
+  // });
+
+  return {
+    props: {
+      projects,
+    }, // will be passed to the page component as props
+  };
+}
+
+export default function Home({ projects }) {
   const initialState = {
     isOpen: false,
     name: '',
@@ -24,10 +42,13 @@ export default function Home() {
     workTab: 0,
     isMenuOpen: false,
     isReady: false,
+    posts: [],
+    isLoadingPost: false,
+    isErrorPost: false,
   };
 
   const { state, setState } = useSetState(initialState);
-  const { isOpen, name, email, isLoading, isMenuOpen, success, workTab, isReady } = state;
+  const { isOpen, name, email, isLoading, isMenuOpen, success, workTab, isReady, posts } = state;
   const handleSubmit = async e => {
     e.preventDefault();
     setState({ isLoading: true, isError: false, success: false });
@@ -50,8 +71,22 @@ export default function Home() {
       .finally(() => setState({ isLoading: false }));
   };
   useEffect(() => {
+    // const getPosts = async () => {
+    //   setState({ isLoadingPost: true, isErrorPost: false });
+    //   await axios
+    //     .get(
+    //       `${process.env.NEXT_PUBLIC_CORS_WORKER}/?https://v1.ervandra.com/wp-json/wp/v2/posts?_embed&per_page=100`,
+    //     )
+    //     .then(resp => {
+    //       if (resp.data) {
+    //         setState({ posts: resp.data });
+    //       }
+    //     })
+    //     .finally(() => setState({ isLoadingPost: false }));
+    // };
     setTimeout(() => {
       setState({ isReady: true });
+      // getPosts();
     }, 100);
   }, []);
   return (
@@ -179,7 +214,7 @@ export default function Home() {
                     Software Engineer | Technology Expert
                   </h1> */}
                     <h1 className="text-3xl xl:text-6xl font-extrabold mb-4">
-                      Software Engineer & Technology Specialist
+                      Technology Enthusiast
                     </h1>
                   </Fade>
                   <Fade delay={100} duration={100}>
@@ -368,23 +403,20 @@ export default function Home() {
                         </Zoom>
                         <Fade delay={300}>
                           <p className="mb-4 lg:text-lg">
-                            As software engineer & technology specialist who enjoy crafting things
-                            that live on the heart of many people, i always love to bring technology
-                            solution that is intersecting with creativity.
+                            As software engineer & technology specialist who enjoy crafting
+                            technology things that live on the heart of many people, i always love
+                            to bring technology solution that is intersecting with creativity.
                           </p>
 
                           <p className="mb-4 lg:text-lg">
                             I'm now dedicated myself as{' '}
-                            <span className="underline font-bold">Technology Lead</span> at{' '}
+                            <span className=" font-bold">Engineering Lead</span> at{' '}
                             <a
-                              href="https://www.rga.com"
+                              href="https://www.yoona.id"
                               target="_blank"
                               className="font-bold inline-flex items-center hover:underline"
                               rel="noopener noreferrer">
-                              <span
-                                className="inline-flex w-4 h-4 mr-1"
-                                style={{ background: 'red' }}></span>
-                              R/GA
+                              Yoona
                             </a>
                           </p>
 
@@ -509,6 +541,139 @@ export default function Home() {
                       </div>
                     </Fade>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {posts.length && (
+            <div id="posts" className="py-5 md:py-20 -mt-20">
+              <div className="container">
+                <div className="row justify-center">
+                  <Fade delay={300}>
+                    <Zoom top duration={300}>
+                      <h2 className="text-2xl md:text-4xl mb-8 text-center font-bold text-warning">
+                        <span
+                          className="mr-2 inline-block text-2xl animate-bounce relative"
+                          role="emoji">
+                          💻
+                        </span>{' '}
+                        Recent Posts
+                      </h2>
+                    </Zoom>
+                  </Fade>
+                  <div className="recent-works grid gap-10 grid-cols-1 md:grid-cols-3">
+                    {posts.map((post, index) => {
+                      return (
+                        <div key={index} className="bg-gray-100 border-2">
+                          {post._embedded['wp:featuredmedia']?.length && (
+                            <div className="">
+                              <img src={post._embedded['wp:featuredmedia'][0].source_url} />
+                            </div>
+                          )}
+                          <div className="p-4">
+                            <h5 className="text-2xl font-bold flex items-center flex-wrap">
+                              {post.title?.rendered}
+                            </h5>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div id="projects1" className="hidden py-5 md:py-20 -mt-20">
+            <div className="container">
+              <div className="row justify-center">
+                <Fade delay={300}>
+                  <Zoom top duration={300}>
+                    <h2 className="text-2xl md:text-4xl mb-8 text-center font-bold text-warning">
+                      <span
+                        className="mr-2 inline-block text-2xl animate-bounce relative"
+                        role="emoji">
+                        💻
+                      </span>{' '}
+                      Recent Works Strapi
+                    </h2>
+                  </Zoom>
+                </Fade>
+                <div className="recent-works grid gap-10 grid-cols-1 md:grid-cols-3">
+                  {projects.map((project, index) => {
+                    const { attributes } = project;
+                    const { title, client, role, image } = attributes;
+                    return (
+                      <div key={index} className="bg-gray-100 border-2">
+                        <div className="">
+                          <Image
+                            src={getStrapiMedia(image)}
+                            alt={title}
+                            width="1200"
+                            height="630"
+                            layout="responsive"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <h5 className="text-2xl font-bold flex items-center flex-wrap">
+                            {title}
+                            <span className="mx-1">-</span>
+                            <span className="font-normal text-base">{client}</span>
+                          </h5>
+                          <p className="text-md">{role}</p>
+                          <p className="text-sm"></p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="projects" className="py-5 md:py-20 -mt-20">
+            <div className="container">
+              <div className="row justify-center">
+                <Fade delay={300}>
+                  <Zoom top duration={300}>
+                    <h2 className="text-2xl md:text-4xl mb-8 text-center font-bold text-warning">
+                      <span
+                        className="mr-2 inline-block text-2xl animate-bounce relative"
+                        role="emoji">
+                        💻
+                      </span>{' '}
+                      Recent Works
+                    </h2>
+                  </Zoom>
+                </Fade>
+                <div className="recent-works grid gap-10 grid-cols-1 md:grid-cols-3">
+                  {profile.projects.map((project, index) => {
+                    return (
+                      <div key={index} className="bg-gray-100 border-2">
+                        <div className="">
+                          <Image
+                            src={project.cover}
+                            alt={project.name}
+                            width="1200"
+                            height="630"
+                            layout="responsive"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <h5 className="text-2xl font-bold flex items-center flex-wrap">
+                            {project.name}
+                            <span className="mx-1">-</span>
+                            <span className="font-normal text-base">{project.client}</span>
+                          </h5>
+                          <p className="text-md">
+                            {project.job.company} | {project.job.position}
+                          </p>
+                          <p className="text-sm"></p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
