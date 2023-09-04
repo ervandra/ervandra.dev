@@ -52,13 +52,27 @@ const profile = {
   ],
   experiences: [
     {
+      company: 'Komunal',
+      logoCompany: 'https://via.placeholder.com/12/e51837?text=+',
+      promotion: [
+        {
+          title: 'Tech Manager',
+          year: 'Sep 2023 - Present',
+          summary: [
+            'Manage and nurturing awesome fullstack engineer team',
+          ],
+        },
+      ],
+    },
+    {
       company: 'Yoona',
       logoCompany: 'https://via.placeholder.com/12/e51837?text=+',
       promotion: [
         {
           title: 'Engineering Lead',
-          year: 'Jan 2023 - Present',
+          year: 'Jan 2023 - Aug 2023',
           summary: [
+            'Acting as Engineering Manager and building tech solutions for Yoona',
             'Connecting people across globe through technical assesment for potential project and collaboration',
             'Oversee & Manage APAC (Indonesia Office) Technology Team to ensure working experience, growing factor, and successful deliveries.',
             'Work with R/GA teams across multiple offices, collaborating with multiple disciplines',
@@ -331,6 +345,50 @@ const profile = {
   ],
   projects: [
     {
+      id: 'ppe23',
+      name: 'Piala Presiden Esports 2023',
+      client: 'Kincir.com',
+      job: {
+        company: 'External',
+        position: 'PM & Go Engineeer',
+      },
+      shortDescription: 'Building MVP Website using Contentful and Next.js, deployed on Vercel',
+      cover: '/images/projects/mtf.jpg',
+    },
+    {
+      id: 'ppe23',
+      name: 'Piala Presiden Esports 2023',
+      client: 'Kincir.com',
+      job: {
+        company: 'External',
+        position: 'PM & Go Engineeer',
+      },
+      shortDescription: 'Building MVP Website using Contentful and Next.js, deployed on Vercel',
+      cover: '/images/projects/mtf.jpg',
+    },
+    {
+      id: 'athletica',
+      name: 'Athletica Company',
+      client: 'Athletica Company',
+      job: {
+        company: 'External',
+        position: 'Project Manager',
+      },
+      shortDescription: 'Building MVP Website using Contentful and Next.js, deployed on Vercel',
+      cover: '/images/projects/mtf.jpg',
+    },
+    {
+      id: 'mtf',
+      name: 'MTF Mobile',
+      client: 'MTF',
+      job: {
+        company: 'External',
+        position: 'Project Manager',
+      },
+      shortDescription: 'Building MVP Website using Contentful and Next.js, deployed on Vercel',
+      cover: '/images/projects/mtf.jpg',
+    },
+    {
       id: 'mtf',
       name: 'MTF One Access',
       client: 'MTF',
@@ -341,12 +399,13 @@ const profile = {
       shortDescription: 'Building MVP Website using Contentful and Next.js, deployed on Vercel',
       cover: '/images/projects/mtf.jpg',
     },
+
     {
       id: 'Yoona',
       name: 'Yoona.id',
       client: 'Yoona',
       job: {
-        company: 'External',
+        company: 'Yoona',
         position: 'Technology Lead',
       },
       shortDescription: 'Building MVP Website using Contentful and Next.js, deployed on Vercel',

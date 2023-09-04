@@ -197,7 +197,7 @@ export default function Home({ projects }) {
             id="hero"
             className="py-4 md:py-10 bg-opacity-10 relative wide:min-h-screen min-h-[50vw] flex flex-col justify-center">
             <div className="container mx-auto">
-              <div className="py-5 md:py-20 lg:w-1/2">
+              <div className="py-5 md:py-20 lg:w-1/2 px-5 md:px-10">
                 <div className="">
                   <Fade duration={100}>
                     <h2 className="text-base text-gray-900 mb-4">
@@ -207,31 +207,25 @@ export default function Home({ projects }) {
                         👋🏻
                       </span>{' '}
                       Hi, i am Ervandra Halim.
+                      <span className="text-xs inline-flex p-1 ml-2  bg-green-500 bg-opacity-20 rounded-lg">
+                        Open to CTO or VP Roles
+                      </span>
                     </h2>
                   </Fade>
                   <Fade duration={500}>
                     {/* <h1 className="text-5xl xl:text-7xl font-extrabold mb-8">
                     Software Engineer | Technology Expert
                   </h1> */}
-                    <h1 className="text-3xl xl:text-6xl font-extrabold mb-4">
-                      Technology Enthusiast
+                    <h1 className="text-2xl xl:text-6xl font-extrabold mb-4">
+                      Experience Technology Leader
                     </h1>
                   </Fade>
-                  <Fade delay={100} duration={100}>
-                    {/* <h2 className="mb-3 mb-md-5 fs-4 fw-bold">{profile.mission}.</h2> */}
-                    <h2 className="mb-4 font-bold text-lg md:text-2xl text-gray-900 md:mb-8">
-                      {/* Are you looking for a technopreneur that can help you and your business to
-                      thrive in the modern digital world? Let me help you. */}
-                      Bring successful technology advancement closer to you.
-                    </h2>
-                    {/* <h2 className="mb-3 mb-md-5 fs-4 fw-bold">
-                          Technology Enthusiast & Consultant
-                        </h2> */}
-                  </Fade>
+
                   <Fade delay={100} duration={100}>
                     <p className="mb-8 text-base md:text-xl text-gray-900">
-                      I'd love to discuss about ideas, and my hard-earned experiences + insights
-                      will help you in many ways. Let's get in touch!
+                      Unlocking tech excellence as a seasoned leader. I'm your software engineer,
+                      tech specialist, and innovation enthusiast. Let's connect and create the
+                      future of tech together.
                     </p>
                     {/* <p className="mb-3 fs-5">
                              I help people, startup/company to achieve their business goal faster
@@ -410,13 +404,13 @@ export default function Home({ projects }) {
 
                           <p className="mb-4 lg:text-lg">
                             I'm now dedicated myself as{' '}
-                            <span className=" font-bold">Engineering Lead</span> at{' '}
+                            <span className=" font-bold">Tech Manager</span> at{' '}
                             <a
-                              href="https://www.yoona.id"
+                              href="https://www.komunalp2p.co.id/"
                               target="_blank"
                               className="font-bold inline-flex items-center hover:underline"
                               rel="noopener noreferrer">
-                              Yoona
+                              Komunal
                             </a>
                           </p>
 
@@ -546,7 +540,7 @@ export default function Home({ projects }) {
             </div>
           </div>
 
-          {posts.length && (
+          {posts.length > 0 && (
             <div id="posts" className="py-5 md:py-20 -mt-20">
               <div className="container">
                 <div className="row justify-center">
