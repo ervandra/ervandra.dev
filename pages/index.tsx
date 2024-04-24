@@ -179,7 +179,8 @@ export default function Home() {
                     Software Engineer | Technology Expert
                   </h1> */}
                     <h1 className="text-3xl xl:text-6xl font-extrabold mb-4">
-                      Software Engineer & Technology Specialist
+                      {/* Software Engineer & Technology Specialist */}
+                      Software Engineer | Technology Specialist
                     </h1>
                   </Fade>
                   <Fade delay={100} duration={100}>
@@ -195,8 +196,12 @@ export default function Home() {
                   </Fade>
                   <Fade delay={100} duration={100}>
                     <p className="mb-8 text-base md:text-xl text-gray-900">
-                      I'd love to discuss about ideas, and my hard-earned experiences + insights
-                      will help you in many ways. Let's get in touch!
+                      {/* I'd love to discuss about ideas, and my hard-earned experiences + insights
+                      will help you in many ways. Let's get in touch! */}
+
+                      Through-out my entire career, i realize that i love the most to help people,
+                      startup/company to achieve their business goal faster through tailored technology-based
+                      solution. I want to add value for you and your business, let's get in touch!
                     </p>
                     {/* <p className="mb-3 fs-5">
                              I help people, startup/company to achieve their business goal faster
@@ -368,21 +373,18 @@ export default function Home() {
                         </Zoom>
                         <Fade delay={300}>
                           <p className="mb-4 lg:text-lg">
-                            As software engineer & technology specialist who enjoy crafting things
-                            that live on the heart of many people, i always love to bring technology
-                            solution that is intersecting with creativity.
+                            As an engineer in heart and technology specialist who enjoy delivering technology solution for clients and working with people from around the world, I'm passionate about creating technology that can help people and business to thrive in the digital world.
                           </p>
 
                           <p className="mb-4 lg:text-lg">
-                            I'm now dedicated myself as{' '}
-                            <span className=" font-bold">Tech Manager</span> at{' '}
+                            I'm now managing {` `}
                             <a
-                              href="https://www.komunal.co.id"
+                              href="https://syntax.id"
                               target="_blank"
                               className="font-bold inline-flex items-center hover:underline"
                               rel="noopener noreferrer">
-                              Komunal
-                            </a>
+                              Syntax Solution
+                            </a> as head of product & engineering
                           </p>
 
                           <p className="mb-2 lg:text-lg">
@@ -407,16 +409,6 @@ export default function Home() {
                               </div>
                             ))}
                           </div>
-                          {/* <p className="mb-2">And my other experiences:</p>
-                          <div className="mb-4 text-gray-500 flex flex-wrap">
-                            {profile.allSkills.map((skill, index) => (
-                              <p
-                                key={skill + index}
-                                className="text-base px-1 rounded bg-gray-100 mr-1 mb-1 border border-gray-300">
-                                {skill}
-                              </p>
-                            ))}
-                          </div> */}
                         </Fade>
                       </div>
                     </div>

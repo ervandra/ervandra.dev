@@ -52,12 +52,55 @@ const profile = {
   ],
   experiences: [
     {
+      company: 'Syntax',
+      logoCompany: 'https://via.placeholder.com/12/e51837?text=+',
+      promotion: [
+        {
+          title: 'Head of Product & Engineering',
+          year: 'Jan 2024 - Present',
+          summary: [
+            'Strategic Planning and Business Development: Setting company goals, identifying growth opportunities, and developing business strategies.',
+            'Financial Management: Overseeing budgeting, financial performance, and resource allocation.',
+            'Team Leadership and Management: Recruiting, mentoring, and managing team members to ensure efficient project execution.',
+            'Project Management: Monitoring project progress, ensuring adherence to timelines and budgets, and facilitating communication with clients and stakeholders.',
+            'Client Relations and Communication: Building and maintaining strong client relationships, addressing client needs, and identifying opportunities for business growth.',
+            'Company Culture and Leadership: Fostering a positive work culture, promoting innovation, and advocating for diversity and inclusion.',
+            ,
+            'Business Strategy and Innovation: Staying informed about industry trends, driving innovation, and exploring opportunities for product development or service expansion.',
+          ],
+        },
+        {
+          title: 'Lead Product & Engineering',
+          year: 'May 2020 - Dec 2023 (Contract)',
+          summary: [
+            'Project Management: Coordinate client projects, manage timelines and budgets.',
+            'Team Management: Lead team, delegate tasks, provide support.',
+            'Technical Decision-Making: Make informed decisions, guide team on tech choices.',
+            'Client Relations: Build strong relationships, address client needs.',
+            'Risk Management: Identify and mitigate risks.',
+            'Quality Assurance: Ensure high-quality deliverables.',
+            'Continuous Improvement: Foster innovation and growth within the team.',
+          ],
+        },
+        {
+          title: 'Lead Project Manager',
+          year: 'April 2017 - April 2020',
+          summary: [
+            'Project Management: Coordinate client projects, manage timelines and budgets.',
+            'Team Management: Lead team, delegate tasks, provide support.',
+            'Client Relations: Build strong relationships, address client needs.',
+            'Risk Management: Identify and mitigate risks.',
+          ],
+        },
+      ],
+    },
+    {
       company: 'Komunal',
       logoCompany: 'https://via.placeholder.com/12/e51837?text=+',
       promotion: [
         {
           title: 'Tech Manager',
-          year: 'Sep 2023 - Present',
+          year: 'Sep 2023 - Feb 2024 (Contract)',
           summary: [
             'Lead and inspire a small team of 4-5 individuals, guiding them towards becoming proficient full-stack developers.',
             'Set the standard for code quality by consistently writing clean and highly readable code.',
@@ -68,9 +111,9 @@ const profile = {
             'Assess, prioritize, and streamline tasks effectively to ensure our team meets critical project milestones and deadlines.',
             'Collaborate closely with cross-functional teams to gather requirements, plan project execution, and deliver high-quality software solutions.',
             'Apply agile methodologies rigorously to drive project success or, at a minimum, maintain a strong belief in and appreciation for agile principles.',
-            'Communicate early, clearly, and succinctly with team members and stakeholders, fostering alignment and transparency.'
+            'Communicate early, clearly, and succinctly with team members and stakeholders, fostering alignment and transparency.',
           ],
-        }
+        },
       ],
     },
     {
@@ -96,7 +139,7 @@ const profile = {
         },
         {
           title: 'Lead Engineer',
-          year: 'Feb 2022 - Dec 2022',
+          year: 'Feb 2022 - Dec 2022 (Contract)',
           summary: [
             'Acting as a technology consultant for the company (directly to CTO and stakeholders)',
             'Creating and implementing high-quality technology solutions',
@@ -116,7 +159,7 @@ const profile = {
       promotion: [
         {
           title: 'Technology Lead',
-          year: 'May 2022 - Dec 2022',
+          year: 'May 2022 - Dec 2022 (Contract)',
           summary: [
             'Connecting people across globe through technical assesment for potential project and collaboration',
             'Oversee & Manage APAC (Indonesia Office) Technology Team to ensure working experience, growing factor, and successful deliveries.',
@@ -132,7 +175,7 @@ const profile = {
         },
         {
           title: 'Senior Software Engineer, Web Platforms',
-          year: 'May 2021 - April 2022',
+          year: 'May 2021 - April 2022 (Contract)',
           summary: [
             'Work with R/GA teams across multiple offices, collaborating with multiple disciplines',
             'Evaluate and recommend technology solutions that best fit project requirements',
