@@ -258,10 +258,10 @@ const profile = {
   color: 'ae2b26',
   cover: 'https://i.imgur.com/i4NZURh.jpg',
   recentSkills: [
-    'Business Inteligence & Analytics',
-    'Embedded System',
-    'Custom Integrations',
+    'Solution Architecture',
     'Dashboard & Reporting',
+    'Business Inteligence & Analytics',
+    'Custom Integrations',
     'Cloud & Automation',
     'Security & Compliance',
   ],
