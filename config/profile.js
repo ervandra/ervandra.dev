@@ -258,11 +258,12 @@ const profile = {
   color: 'ae2b26',
   cover: 'https://i.imgur.com/i4NZURh.jpg',
   recentSkills: [
-    'Next.js + TailwindCSS',
-    'BI & Analytics',
-    'TypeScript',
-    'API & Custom Integration',
+    'Business Inteligence & Analytics',
+    'Embedded System',
+    'Custom Integrations',
     'Dashboard & Reporting',
+    'Cloud & Automation',
+    'Security & Compliance',
   ],
   allSkills: [
     'React.js',
