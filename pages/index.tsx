@@ -650,7 +650,7 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                 <div className="text-center copyright">
                   <Fade>
                     <p className="mb-0 small flex items-center justify-center">
-                      <span>&copy;2012-{new Date().getFullYear()}</span>
+                      <span>&copy;2011-{new Date().getFullYear()}</span>
                       <strong className="flex items-center justify-center mx-2">
                         Ervandra Halim{' '}
                         <Flash delay={1000}>
@@ -688,9 +688,9 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
         <div className="side-elements right">
           <Bounce right delay={300} duration={300}>
             <div className="email-link side-element-item">
-              <a href="mailto:hi@ervandra.com" target="_blank" rel="noopener noreferrer">
+              <a href="mailto:ervandra.halim@gmail.com" target="_blank" rel="noopener noreferrer">
                 <Zoom top cascade delay={300} duration={300}>
-                  hi@ervandra.com
+                  ervandra.halim@gmail.com
                 </Zoom>
               </a>
             </div>
