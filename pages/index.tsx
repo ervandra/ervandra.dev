@@ -178,9 +178,9 @@ export default function Home() {
                     {/* <h1 className="text-5xl xl:text-7xl font-extrabold mb-8">
                     Software Engineer | Technology Expert
                   </h1> */}
-                    <h1 className="text-3xl xl:text-6xl font-extrabold mb-4">
+                    <h1 className="text-2xl xl:text-4xl font-extrabold mb-4">
                       {/* Software Engineer & Technology Specialist */}
-                      Software Engineer | Technology Specialist
+                      Digital Transformation Expert
                     </h1>
                   </Fade>
                   <Fade delay={100} duration={100}>
@@ -188,7 +188,7 @@ export default function Home() {
                     <h2 className="mb-4 font-bold text-lg md:text-2xl text-gray-900 md:mb-8">
                       {/* Are you looking for a technopreneur that can help you and your business to
                       thrive in the modern digital world? Let me help you. */}
-                      Bring successful technology advancement closer to you.
+                      Customized Tech Solutions to Revolutionize Your Business Processes
                     </h2>
                     {/* <h2 className="mb-3 mb-md-5 fs-4 fw-bold">
                           Technology Enthusiast & Consultant
@@ -199,9 +199,7 @@ export default function Home() {
                       {/* I'd love to discuss about ideas, and my hard-earned experiences + insights
                       will help you in many ways. Let's get in touch! */}
 
-                      Through-out my entire career, i realize that i love the most to help people,
-                      startup/company to achieve their business goal faster through tailored technology-based
-                      solution. I want to add value for you and your business, let's get in touch!
+Harness technology with a Digital Transformation Expert. Specializing in custom software, strategic analysis, and system architecture, I lead a team dedicated to optimizing your business operations. Explore tailored tech solutions that drive efficiency and growth.
                     </p>
                     {/* <p className="mb-3 fs-5">
                              I help people, startup/company to achieve their business goal faster
@@ -384,7 +382,7 @@ export default function Home() {
                               className="font-bold inline-flex items-center hover:underline"
                               rel="noopener noreferrer">
                               Syntax Solution
-                            </a> as head of product & engineering
+                            </a> as VP of engineering & product
                           </p>
 
                           <p className="mb-2 lg:text-lg">

@@ -56,7 +56,7 @@ const profile = {
       logoCompany: 'https://via.placeholder.com/12/e51837?text=+',
       promotion: [
         {
-          title: 'Head of Product & Engineering',
+          title: 'VP of Engineering & Product',
           year: 'Jan 2024 - Present',
           summary: [
             'Strategic Planning and Business Development: Setting company goals, identifying growth opportunities, and developing business strategies.',
@@ -70,7 +70,7 @@ const profile = {
           ],
         },
         {
-          title: 'Lead Product & Engineering',
+          title: 'Head of Engineering & Product',
           year: 'May 2020 - Dec 2023 (Contract)',
           summary: [
             'Project Management: Coordinate client projects, manage timelines and budgets.',
@@ -84,7 +84,7 @@ const profile = {
         },
         {
           title: 'Lead Project Manager',
-          year: 'April 2017 - April 2020',
+          year: 'April 2017 - April 2020 (Contract)',
           summary: [
             'Project Management: Coordinate client projects, manage timelines and budgets.',
             'Team Management: Lead team, delegate tasks, provide support.',
