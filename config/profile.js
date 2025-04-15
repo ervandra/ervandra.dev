@@ -59,7 +59,7 @@ const profile = {
           title: 'VP of Engineering & Product',
           year: 'Jan 2024 - Present',
           summary: [
-            'Leading Syntax Solution to bring our strategic initiatives in tailored software development and digital transformation.',
+            'Co-founded and leading Syntax Solution to bring our strategic initiatives in tailored software development and digital transformation.',
             'Strategic Planning and Business Development: Setting company goals, identifying growth opportunities, and developing business strategies.',
             'Financial Management: Overseeing budgeting, financial performance, and resource allocation.',
             'Team Leadership and Management: Recruiting, mentoring, and managing team members to ensure efficient project execution.',

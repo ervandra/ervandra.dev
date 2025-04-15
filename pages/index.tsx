@@ -375,7 +375,7 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                           </p>
 
                           <p className="mb-4 lg:text-lg">
-                            I'm now managing {` `}
+                            Currently i am co-founding and managing {` `}
                             <a
                               href="https://syntax.id"
                               target="_blank"
