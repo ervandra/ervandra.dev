@@ -28,7 +28,7 @@ export default function Home() {
 
   const { state, setState } = useSetState(initialState);
   const { isOpen, name, email, isLoading, isMenuOpen, success, workTab, isReady } = state;
-  const handleSubmit = async e => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setState({ isLoading: true, isError: false, success: false });
     const payload = {
@@ -368,7 +368,7 @@ export default function Home() {
                             Here are a few technologies I've been worked on recently:
                           </p>
                           <div className="flex flex-wrap mb-4">
-                            {profile.recentSkills.map((skill, index) => (
+                            {profile.skills.slice(0, 6).map((skill, index) => (
                               <div key={skill + index} className="text-warning w-full md:w-1/2">
                                 <Fade delay={index * 100 + 300}>
                                   <div>
@@ -424,7 +424,7 @@ export default function Home() {
                             className="nav flex-md-column nav-pills me-0 md:mb-8 mb-3 experience-menu md:flex-col flex w-full"
                             role="tablist"
                             aria-orientation="vertical">
-                            {profile.experiences.map((exp, index) => {
+                            {profile.works.map((exp, index) => {
                               const active = index === workTab;
                               if (active)
                                 return (
@@ -463,7 +463,7 @@ export default function Home() {
                         </div>
                         <div className="col-12 col-md-9 col-lg-10 w-full md:w-3/4 lg:w-5/6">
                           <div className="tab-content">
-                            {profile.experiences.map((exp, index) => {
+                            {profile.works.map((exp, index) => {
                               const active = index === workTab;
                               return (
                                 <div
@@ -472,7 +472,7 @@ export default function Home() {
                                   }`}
                                   role="tabpanel"
                                   key={exp.company + index}>
-                                  <Accordion data={exp.promotion} company={exp.company} />
+                                  {exp.promotion && <Accordion data={exp.promotion} company={exp.company} />}
                                 </div>
                               );
                             })}
@@ -690,7 +690,7 @@ export default function Home() {
                       <li className="block px-3" key={social.icon + index}>
                         <Fade delay={index * 200} duration={500}>
                           <a
-                            href={`${social.link}`}
+                            href={`${social.url}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             title={social.id}>

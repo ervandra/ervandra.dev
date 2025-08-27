@@ -1,10 +1,21 @@
 import { useState } from 'react';
 import Fade from 'react-reveal';
 
-export default function Accordion({ data, company }) {
+interface WorkExperience {
+  year: string;
+  title: string;
+  summary: string[];
+}
+
+interface AccordionProps {
+  data: WorkExperience[];
+  company: string;
+}
+
+export default function Accordion({ data, company }: AccordionProps) {
   const initialState = { activeAccordion: 0 };
   const [state, setMyState] = useState(initialState);
-  const setState = newState => {
+  const setState = (newState: Partial<typeof initialState>) => {
     setMyState(prevState => ({ ...prevState, ...newState }));
   };
   const { activeAccordion } = state;
