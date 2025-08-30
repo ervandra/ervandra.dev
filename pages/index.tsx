@@ -99,7 +99,7 @@ export default function Home() {
                     </Zoom>
                     <nav id="mainmenu">
                       <div className="hidden md:flex justify-end items-center">
-                        <ul className="m-0 mr-4 flex">
+                        <ul className="m-0 mr-4 flex text-sm md:text-base text-slate-900">
                           <li className="block ml-4 md:ml-10">
                             <Fade left duration={100}>
                               <a className="text-decoration-none" href="#about">
@@ -446,7 +446,7 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                                     duration={300}>
                                     <button
                                       key={exp.company + index}
-                                      className="nav-link text-center md:text-left p-2 px-4 text-nowrap whitespace-nowrap lg:text-lg active border-l-2 w-full border-l-black bg-black bg-opacity-10"
+                                      className="nav-link text-center md:text-left p-2 px-4 text-nowrap whitespace-nowrap lg:text-lg active border-l-2 w-full border-l-black/70 bg-black/5"
                                       type="button"
                                       role="tab">
                                       {exp.company}
@@ -461,7 +461,7 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                                   duration={300}>
                                   <button
                                     key={exp.company + index}
-                                    className="nav-link text-center md:text-left p-2 px-4 border-l-2 w-full whitespace-nowrap lg:text-lg border-l-black hover:bg-black hover:bg-opacity-5"
+                                    className="nav-link text-center md:text-left p-2 px-4 border-l-2 w-full whitespace-nowrap lg:text-lg border-l-black/30 hover:bg-black/5"
                                     type="button"
                                     onClick={() => setState({ workTab: index })}
                                     role="tab">
@@ -626,7 +626,7 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
             </div>
           </div>
         </section>
-        <footer id="footer" className="py-3 bg-dark">
+        <footer id="footer" className="py-6 border-t border-black/10 bg-white/60 backdrop-blur">
           <div className="container">
             <div className="row">
               <div className="col">

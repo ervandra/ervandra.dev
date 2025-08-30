@@ -116,18 +116,24 @@ img {
     li {
       a {
         position: relative;
+        display: inline-block;
+        padding: 0.25rem 0;
+        color: #0f172a; /* slate-900 */
+        letter-spacing: 0.02em;
         &:after {
           content: '';
           display: block;
           width: 0;
           height: 1px;
-          opacity: 0.5;
-          background: transparent;
+          opacity: 0.7;
+          background: rgba(0, 0, 0, 0.7);
           position: absolute;
           bottom: -0.125em;
           left: 0;
-          transition: all ease 0.6s;
-          transition-delay: 1s;
+          transition: width 220ms ease;
+        }
+        &:hover:after {
+          width: 100%;
         }
       }
     }
@@ -189,9 +195,8 @@ img {
         li {
           a {
             &:after {
-              background: var(--bs-primary);
+              background: rgba(0, 0, 0, 0.7);
               height: 1px;
-              width: 12px;
             }
           }
         }
