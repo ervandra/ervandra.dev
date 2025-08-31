@@ -376,7 +376,7 @@ export default function Home() {
                               className="font-bold inline-flex items-center hover:underline"
                               rel="noopener noreferrer">
                               Syntax Solution
-                            </a> as VP of engineering & product
+                            </a> as CPTO (Chief Product & Technology Officer)
                           </p>
 
                           <p className="mb-2 lg:text-lg">
@@ -409,6 +409,55 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <section id="services" className="px-5 md:px-0 py-16 md:py-24">
+            <div className="container">
+              <div className="row justify-center">
+                <div className="col-12 md:max-w-6xl mx-auto">
+                  <div className="text-center mb-12">
+                    <Zoom top duration={300}>
+                      <h2 className="text-2xl md:text-4xl font-bold">Services</h2>
+                    </Zoom>
+                    <p className="mt-3 text-gray-700 md:text-lg">Engagements available directly or via Syntax Solution</p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="card">
+                      <div className="card-body p-6">
+                        <h3 className="font-bold text-lg mb-2">Digital Transformation</h3>
+                        <p className="text-gray-700 mb-3">Assess, architect, and deliver systems that reduce operational friction and increase velocity.</p>
+                        <ul className="text-sm text-gray-700 list-disc pl-5 space-y-1">
+                          <li>Process mapping & prioritization</li>
+                          <li>Architecture & roadmap</li>
+                          <li>Change management & enablement</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="card">
+                      <div className="card-body p-6">
+                        <h3 className="font-bold text-lg mb-2">AI Automation</h3>
+                        <p className="text-gray-700 mb-3">Automate repetitive workflows with AI agents and integrations—speed and accuracy by design.</p>
+                        <ul className="text-sm text-gray-700 list-disc pl-5 space-y-1">
+                          <li>Agent workflows & approvals</li>
+                          <li>RPA + API integrations</li>
+                          <li>Human-in-the-loop safety</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="card">
+                      <div className="card-body p-6">
+                        <h3 className="font-bold text-lg mb-2">AI Implementation</h3>
+                        <p className="text-gray-700 mb-3">Embed AI safely into products and processes with a focus on security, reliability, and ROI.</p>
+                        <ul className="text-sm text-gray-700 list-disc pl-5 space-y-1">
+                          <li>Use-case discovery & pilots</li>
+                          <li>Model selection & evaluation</li>
+                          <li>Security, governance, and cost</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
           <div id="experience" className="py-5 md:py-20 -mt-20 md:mt-0">
             <div className="container">
               <div className="row justify-center md:max-w-7xl mx-auto pt-20 md:pt-0">
@@ -613,40 +662,6 @@ export default function Home() {
                           <span className="animate-pulse ml-2">⚡️</span>
                         </button>
                       </Zoom>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section id="services" className="px-5 md:px-0 py-16 md:py-24">
-          <div className="container">
-            <div className="row justify-center">
-              <div className="col-12 md:max-w-6xl mx-auto">
-                <div className="text-center mb-10">
-                  <Zoom top duration={300}>
-                    <h2 className="text-2xl md:text-4xl font-bold">Services</h2>
-                  </Zoom>
-                  <p className="mt-3 text-gray-700 md:text-lg">Engagements available directly or via Syntax Solution</p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="card">
-                    <div className="card-body p-6">
-                      <h3 className="font-bold text-lg mb-2">Digital Transformation</h3>
-                      <p className="text-gray-700">Assess, architect, and deliver systems that reduce operational friction and increase velocity.</p>
-                    </div>
-                  </div>
-                  <div className="card">
-                    <div className="card-body p-6">
-                      <h3 className="font-bold text-lg mb-2">AI Automation</h3>
-                      <p className="text-gray-700">Automate repetitive workflows with AI agents and integrations—speed and accuracy by design.</p>
-                    </div>
-                  </div>
-                  <div className="card">
-                    <div className="card-body p-6">
-                      <h3 className="font-bold text-lg mb-2">AI Implementation</h3>
-                      <p className="text-gray-700">Embed AI safely into products and processes with a focus on security, reliability, and ROI.</p>
                     </div>
                   </div>
                 </div>
