@@ -1,7 +1,7 @@
 const profile = {
   name: 'Ervandra Halim',
   title: 'Technology Lead',
-  mission: 'Software Engineer & Technology Specialist',
+  mission: 'Tech Expert • 15+ Years • Co-founder & CPTO at Syntax',
   email: 'hi@ervandra.com',
   phone: '+6287708770800',
   photo: 'https://www.ervandra.com/wp-content/uploads/2020/12/ervan-round.png',

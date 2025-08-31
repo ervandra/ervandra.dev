@@ -179,14 +179,13 @@ export default function Home() {
                     Software Engineer | Technology Expert
                   </h1> */}
                     <h1 className="text-4xl md:text-6xl xl:text-7xl font-extrabold mb-4 leading-tight">
-                      {/* Software Engineer & Technology Specialist */}
-                      Digital Transformation Expert
+                      Tech Expert & Builder — 15+ Years
                     </h1>
                   </Fade>
                   <Fade delay={100} duration={100}>
                     {/* <h2 className="mb-3 mb-md-5 fs-4 fw-bold">{profile.mission}.</h2> */}
                     <h2 className="mb-6 font-medium text-lg md:text-2xl text-gray-700 md:mb-10">
-                      Strategy, architecture, and delivery to streamline your operations
+                      Co-founder & CPTO at Syntax • Solo founder building microSaaS
                     </h2>
                     {/* <h2 className="mb-3 mb-md-5 fs-4 fw-bold">
                           Technology Enthusiast & Consultant
@@ -194,7 +193,7 @@ export default function Home() {
                   </Fade>
                   <Fade delay={100} duration={100}>
                     <p className="mb-10 text-base md:text-xl text-gray-700">
-                      I help teams ship reliable software and measurable outcomes. From pragmatic architecture to bespoke systems and integrations, I focus on simplicity, performance, and business value.
+                      I lead digital transformation, AI automation, and custom implementations—personally or through Syntax Solution—to remove operational burden and streamline processes with speed, accuracy, and visible results. Innovation, technology, and security are always first principles.
                     </p>
                     {/* <p className="mb-3 fs-5">
                              I help people, startup/company to achieve their business goal faster
@@ -614,6 +613,40 @@ export default function Home() {
                           <span className="animate-pulse ml-2">⚡️</span>
                         </button>
                       </Zoom>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="services" className="px-5 md:px-0 py-16 md:py-24">
+          <div className="container">
+            <div className="row justify-center">
+              <div className="col-12 md:max-w-6xl mx-auto">
+                <div className="text-center mb-10">
+                  <Zoom top duration={300}>
+                    <h2 className="text-2xl md:text-4xl font-bold">Services</h2>
+                  </Zoom>
+                  <p className="mt-3 text-gray-700 md:text-lg">Engagements available directly or via Syntax Solution</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="card">
+                    <div className="card-body p-6">
+                      <h3 className="font-bold text-lg mb-2">Digital Transformation</h3>
+                      <p className="text-gray-700">Assess, architect, and deliver systems that reduce operational friction and increase velocity.</p>
+                    </div>
+                  </div>
+                  <div className="card">
+                    <div className="card-body p-6">
+                      <h3 className="font-bold text-lg mb-2">AI Automation</h3>
+                      <p className="text-gray-700">Automate repetitive workflows with AI agents and integrations—speed and accuracy by design.</p>
+                    </div>
+                  </div>
+                  <div className="card">
+                    <div className="card-body p-6">
+                      <h3 className="font-bold text-lg mb-2">AI Implementation</h3>
+                      <p className="text-gray-700">Embed AI safely into products and processes with a focus on security, reliability, and ROI.</p>
                     </div>
                   </div>
                 </div>
