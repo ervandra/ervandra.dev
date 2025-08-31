@@ -10,7 +10,7 @@ const profile = {
   offerIntro:
     'Get my thoughts twice a week in a bite size tech news called the Overcodes, where i cover about latest technologies, programming tips and modern business.',
   intro:
-    "I'm a technology lead based in Jakarta, Indonesia specializing in crafting (and occasionally designing) exceptional, highly-effective websites and applications.",
+    "Technology lead focused on pragmatic architecture, integrations, and shipping reliable software that drives measurable outcomes.",
   professionalSkills: [
     'Front-End Development',
     'HTML & CSS (SASS)',

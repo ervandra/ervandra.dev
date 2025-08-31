@@ -171,7 +171,7 @@ export default function Home() {
                         role="emoji">
                         👋🏻
                       </span>{' '}
-                      Hi, i am Ervandra Halim.
+                      Hi, I'm Ervandra Halim.
                     </h2>
                   </Fade>
                   <Fade duration={500}>
@@ -186,9 +186,7 @@ export default function Home() {
                   <Fade delay={100} duration={100}>
                     {/* <h2 className="mb-3 mb-md-5 fs-4 fw-bold">{profile.mission}.</h2> */}
                     <h2 className="mb-6 font-medium text-lg md:text-2xl text-gray-700 md:mb-10">
-                      {/* Are you looking for a technopreneur that can help you and your business to
-                      thrive in the modern digital world? Let me help you. */}
-                      Customized Tech Solutions to Revolutionize Your Business Processes
+                      Strategy, architecture, and delivery to streamline your operations
                     </h2>
                     {/* <h2 className="mb-3 mb-md-5 fs-4 fw-bold">
                           Technology Enthusiast & Consultant
@@ -196,10 +194,7 @@ export default function Home() {
                   </Fade>
                   <Fade delay={100} duration={100}>
                     <p className="mb-10 text-base md:text-xl text-gray-700">
-                      {/* I'd love to discuss about ideas, and my hard-earned experiences + insights
-                      will help you in many ways. Let's get in touch! */}
-
-Harness technology with a Digital Transformation Expert. Specializing in custom software, strategic analysis, and system architecture, I lead a team dedicated to optimizing your business operations. Explore tailored tech solutions that drive efficiency and growth.
+                      I help teams ship reliable software and measurable outcomes. From pragmatic architecture to bespoke systems and integrations, I focus on simplicity, performance, and business value.
                     </p>
                     {/* <p className="mb-3 fs-5">
                              I help people, startup/company to achieve their business goal faster
@@ -371,11 +366,11 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                         </Zoom>
                         <Fade delay={300}>
                           <p className="mb-4 lg:text-lg">
-                            As an engineer in heart and technology specialist who enjoy delivering technology solution for clients and working with people from around the world, I'm passionate about creating technology that can help people and business to thrive in the digital world.
+                            Engineer at heart and product-minded. I help teams deliver clear technical direction, robust architecture, and thoughtful execution that moves the business forward.
                           </p>
 
                           <p className="mb-4 lg:text-lg">
-                            Currently i am co-founding and managing {` `}
+                            Currently I co-found and manage {` `}
                             <a
                               href="https://syntax.id"
                               target="_blank"
@@ -386,7 +381,7 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                           </p>
 
                           <p className="mb-2 lg:text-lg">
-                            Here are a few technologies I've been worked on recently:
+                            Recently focused on:
                           </p>
                           <div className="flex flex-wrap mb-4">
                             {profile.recentSkills.map((skill, index) => (
