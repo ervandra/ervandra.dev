@@ -79,8 +79,8 @@ export default function Home() {
         <Bounce top duration={100}>
           <header
             id="header"
-            className={`${isMenuOpen ? '' : 'sticky top-0'} shadow py-2`}
-            style={{ backdropFilter: 'blur(5px)' }}>
+            className={`${isMenuOpen ? '' : 'sticky top-0'} py-2`}
+            style={{}}>
             <div className="container-fluid container mx-auto">
               <div className="row">
                 <div className="col-12">
@@ -99,7 +99,7 @@ export default function Home() {
                     </Zoom>
                     <nav id="mainmenu">
                       <div className="hidden md:flex justify-end items-center">
-                        <ul className="m-0 mr-4 flex">
+                        <ul className="m-0 mr-4 flex text-sm md:text-base text-slate-900">
                           <li className="block ml-4 md:ml-10">
                             <Fade left duration={100}>
                               <a className="text-decoration-none" href="#about">
@@ -132,7 +132,7 @@ export default function Home() {
                         </ul>
                         <Zoom delay={300} duration={100}>
                           <button
-                            className="ml-4 p-2 px-4 rounded bg-black text-white"
+                            className="ml-4 p-2 px-4 rounded border border-black/10 bg-black text-white hover:bg-black/90"
                             onClick={() => setState({ isOpen: true })}>
                             Get In Touch
                             <span className="animate-pulse ml-2">⚡️</span>
@@ -160,46 +160,40 @@ export default function Home() {
         <section id="content" className="px-5 md:px-0 relative overflow-hidden md:-mt-18">
           <div
             id="hero"
-            className="py-4 md:py-10 bg-opacity-10 relative wide:min-h-screen min-h-[50vw] flex flex-col justify-center">
+            className="py-10 md:py-24 relative wide:min-h-screen min-h-[50vw] flex flex-col justify-center">
             <div className="container mx-auto">
-              <div className="py-5 md:py-20 lg:w-1/2">
+              <div className="py-5 md:py-16 lg:w-2/3 xl:w-1/2">
                 <div className="">
                   <Fade duration={100}>
-                    <h2 className="text-base text-gray-900 mb-4">
+                    <h2 className="text-sm tracking-wide uppercase text-gray-600 mb-4">
                       <span
                         className="mr-2 inline-block text-2xl animate-bounce relative"
                         role="emoji">
                         👋🏻
                       </span>{' '}
-                      Hi, i am Ervandra Halim.
+                      Hi, I'm Ervandra Halim.
                     </h2>
                   </Fade>
                   <Fade duration={500}>
                     {/* <h1 className="text-5xl xl:text-7xl font-extrabold mb-8">
                     Software Engineer | Technology Expert
                   </h1> */}
-                    <h1 className="text-2xl xl:text-4xl font-extrabold mb-4">
-                      {/* Software Engineer & Technology Specialist */}
-                      Digital Transformation Expert
+                    <h1 className="text-4xl md:text-6xl xl:text-7xl font-extrabold mb-4 leading-tight">
+                      Tech Expert & Builder — 15+ Years
                     </h1>
                   </Fade>
                   <Fade delay={100} duration={100}>
                     {/* <h2 className="mb-3 mb-md-5 fs-4 fw-bold">{profile.mission}.</h2> */}
-                    <h2 className="mb-4 font-bold text-lg md:text-2xl text-gray-900 md:mb-8">
-                      {/* Are you looking for a technopreneur that can help you and your business to
-                      thrive in the modern digital world? Let me help you. */}
-                      Customized Tech Solutions to Revolutionize Your Business Processes
+                    <h2 className="mb-6 font-medium text-lg md:text-2xl text-gray-700 md:mb-10">
+                      Co-founder & CPTO at Syntax • Solo founder building microSaaS
                     </h2>
                     {/* <h2 className="mb-3 mb-md-5 fs-4 fw-bold">
                           Technology Enthusiast & Consultant
                         </h2> */}
                   </Fade>
                   <Fade delay={100} duration={100}>
-                    <p className="mb-8 text-base md:text-xl text-gray-900">
-                      {/* I'd love to discuss about ideas, and my hard-earned experiences + insights
-                      will help you in many ways. Let's get in touch! */}
-
-Harness technology with a Digital Transformation Expert. Specializing in custom software, strategic analysis, and system architecture, I lead a team dedicated to optimizing your business operations. Explore tailored tech solutions that drive efficiency and growth.
+                    <p className="mb-10 text-base md:text-xl text-gray-700">
+                      I lead digital transformation, AI automation, and custom implementations—personally or through Syntax Solution—to remove operational burden and streamline processes with speed, accuracy, and visible results. Innovation, technology, and security are always first principles.
                     </p>
                     {/* <p className="mb-3 fs-5">
                              I help people, startup/company to achieve their business goal faster
@@ -225,7 +219,7 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                           placeholder="Enter your email"
                         /> */}
                         <button
-                          className="btn btn-outline-success p-3 px-4 md:p-4 md:px-8 font-bold text-base md:text-lg bg-black text-white rounded uppercase w-full md:w-auto"
+                          className="p-3 px-5 md:p-4 md:px-8 font-bold text-base md:text-lg bg-black text-white rounded-md uppercase w-full md:w-auto hover:bg-black/90"
                           onClick={() => setState({ isOpen: true })}>
                           Get In Touch
                           <span className="animate-pulse ml-2">⚡️</span>
@@ -371,22 +365,22 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                         </Zoom>
                         <Fade delay={300}>
                           <p className="mb-4 lg:text-lg">
-                            As an engineer in heart and technology specialist who enjoy delivering technology solution for clients and working with people from around the world, I'm passionate about creating technology that can help people and business to thrive in the digital world.
+                            Engineer at heart and product-minded. I help teams deliver clear technical direction, robust architecture, and thoughtful execution that moves the business forward.
                           </p>
 
                           <p className="mb-4 lg:text-lg">
-                            Currently i am co-founding and managing {` `}
+                            Currently I co-found and manage {` `}
                             <a
                               href="https://syntax.id"
                               target="_blank"
                               className="font-bold inline-flex items-center hover:underline"
                               rel="noopener noreferrer">
                               Syntax Solution
-                            </a> as VP of engineering & product
+                            </a> as CPTO (Chief Product & Technology Officer)
                           </p>
 
                           <p className="mb-2 lg:text-lg">
-                            Here are a few technologies I've been worked on recently:
+                            Recently focused on:
                           </p>
                           <div className="flex flex-wrap mb-4">
                             {profile.recentSkills.map((skill, index) => (
@@ -415,6 +409,55 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
               </div>
             </div>
           </div>
+          <section id="services" className="px-5 md:px-0 py-16 md:py-24">
+            <div className="container">
+              <div className="row justify-center">
+                <div className="col-12 md:max-w-6xl mx-auto">
+                  <div className="text-center mb-12">
+                    <Zoom top duration={300}>
+                      <h2 className="text-2xl md:text-4xl font-bold">Services</h2>
+                    </Zoom>
+                    <p className="mt-3 text-gray-700 md:text-lg">Engagements available directly or via Syntax Solution</p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="card">
+                      <div className="card-body p-6">
+                        <h3 className="font-bold text-lg mb-2">Digital Transformation</h3>
+                        <p className="text-gray-700 mb-3">Assess, architect, and deliver systems that reduce operational friction and increase velocity.</p>
+                        <ul className="text-sm text-gray-700 list-disc pl-5 space-y-1">
+                          <li>Process mapping & prioritization</li>
+                          <li>Architecture & roadmap</li>
+                          <li>Change management & enablement</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="card">
+                      <div className="card-body p-6">
+                        <h3 className="font-bold text-lg mb-2">AI Automation</h3>
+                        <p className="text-gray-700 mb-3">Automate repetitive workflows with AI agents and integrations—speed and accuracy by design.</p>
+                        <ul className="text-sm text-gray-700 list-disc pl-5 space-y-1">
+                          <li>Agent workflows & approvals</li>
+                          <li>RPA + API integrations</li>
+                          <li>Human-in-the-loop safety</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="card">
+                      <div className="card-body p-6">
+                        <h3 className="font-bold text-lg mb-2">AI Implementation</h3>
+                        <p className="text-gray-700 mb-3">Embed AI safely into products and processes with a focus on security, reliability, and ROI.</p>
+                        <ul className="text-sm text-gray-700 list-disc pl-5 space-y-1">
+                          <li>Use-case discovery & pilots</li>
+                          <li>Model selection & evaluation</li>
+                          <li>Security, governance, and cost</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
           <div id="experience" className="py-5 md:py-20 -mt-20 md:mt-0">
             <div className="container">
               <div className="row justify-center md:max-w-7xl mx-auto pt-20 md:pt-0">
@@ -446,7 +489,7 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                                     duration={300}>
                                     <button
                                       key={exp.company + index}
-                                      className="nav-link text-center md:text-left p-2 px-4 text-nowrap whitespace-nowrap lg:text-lg active border-l-2 w-full border-l-black bg-black bg-opacity-10"
+                                      className="nav-link text-center md:text-left p-2 px-4 text-nowrap whitespace-nowrap lg:text-lg active border-l-2 w-full border-l-black/70 bg-black/5"
                                       type="button"
                                       role="tab">
                                       {exp.company}
@@ -461,7 +504,7 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                                   duration={300}>
                                   <button
                                     key={exp.company + index}
-                                    className="nav-link text-center md:text-left p-2 px-4 border-l-2 w-full whitespace-nowrap lg:text-lg border-l-black hover:bg-black hover:bg-opacity-5"
+                                    className="nav-link text-center md:text-left p-2 px-4 border-l-2 w-full whitespace-nowrap lg:text-lg border-l-black/30 hover:bg-black/5"
                                     type="button"
                                     onClick={() => setState({ workTab: index })}
                                     role="tab">
@@ -538,8 +581,8 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                       <div className="min-w-[70vw] md:min-w-[33vw]" key={index}>
                         <Fade duration={300}>
                           <div className="testimony-item mb-3">
-                            <div className="card rounded bg-white bg-opacity-50 filter backdrop-blur-lg shadow-lg border">
-                              <div className="card-body p-5">
+                            <div className="card">
+                              <div className="card-body">
                                 <div className="flex items-end">
                                   <div
                                     className=" shadow rounded-full mr-4"
@@ -554,14 +597,14 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                                     />
                                   </div>
                                   <div className="flex-auto">
-                                    <h3 className="mb-0 fw-bold text-lg">{testimony.name}</h3>
+                                    <h3 className="mb-0 font-bold text-lg">{testimony.name}</h3>
                                     <h4 className="mb-0 font-normal text-sm text-gray-700">
                                       {testimony.role}
                                     </h4>
                                   </div>
                                 </div>
 
-                                <p className="font-light whitespace-pre-line italic text-base text-gray-900 mb-0 mt-4">
+                                <p className="font-light whitespace-pre-line italic text-base text-gray-800 mb-0 mt-4">
                                   {testimony.text}
                                 </p>
                                 <p className="text-sm text-gray-500 mt-2">
@@ -626,7 +669,7 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
             </div>
           </div>
         </section>
-        <footer id="footer" className="py-3 bg-dark">
+        <footer id="footer" className="py-6 border-t border-black/10 bg-white/60 backdrop-blur">
           <div className="container">
             <div className="row">
               <div className="col">

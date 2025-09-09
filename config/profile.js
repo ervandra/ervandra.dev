@@ -1,7 +1,7 @@
 const profile = {
   name: 'Ervandra Halim',
   title: 'Technology Lead',
-  mission: 'Software Engineer & Technology Specialist',
+  mission: 'Tech Expert • 15+ Years • CPTO & Founder • Cost-Effective AI for SMEs',
   email: 'hi@ervandra.com',
   phone: '+6287708770800',
   photo: 'https://www.ervandra.com/wp-content/uploads/2020/12/ervan-round.png',
@@ -10,7 +10,7 @@ const profile = {
   offerIntro:
     'Get my thoughts twice a week in a bite size tech news called the Overcodes, where i cover about latest technologies, programming tips and modern business.',
   intro:
-    "I'm a technology lead based in Jakarta, Indonesia specializing in crafting (and occasionally designing) exceptional, highly-effective websites and applications.",
+    "Tech expert and builder (15+ years). CPTO and solo founder helping people and SMEs implement cost‑effective AI automation and AI solutions that deliver speed, accuracy, and visible results.",
   professionalSkills: [
     'Front-End Development',
     'HTML & CSS (SASS)',
@@ -56,8 +56,17 @@ const profile = {
       logoCompany: 'https://via.placeholder.com/12/e51837?text=+',
       promotion: [
         {
+          title: 'Chief Product & Technology Officer (CPTO)',
+          year: 'May 2025 - Present',
+          summary: [
+            'Hybrid role as co-founder and CPTO overseeing product strategy and technology execution.',
+            'Owns roadmap, architecture, security, delivery, and measurable outcomes for clients and ventures.',
+            'Leads AI automation and implementation initiatives across SMEs to streamline operations and increase ROI.',
+          ],
+        },
+        {
           title: 'VP of Engineering & Product',
-          year: 'Jan 2024 - Present',
+          year: 'Jan 2024 - Apr 2025',
           summary: [
             'Co-founded and leading Syntax Solution to bring our strategic initiatives in tailored software development and digital transformation.',
             'Strategic Planning and Business Development: Setting company goals, identifying growth opportunities, and developing business strategies.',
@@ -258,12 +267,15 @@ const profile = {
   color: 'ae2b26',
   cover: 'https://i.imgur.com/i4NZURh.jpg',
   recentSkills: [
+    'Product Strategy & Roadmapping',
     'Solution Architecture',
-    'Dashboard & Reporting',
-    'Business Inteligence & Analytics',
-    'Custom Integrations',
+    'AI Automation & Agents',
+    'AI Implementation & Evaluation',
+    'Business Intelligence & Analytics',
+    'Custom Integrations & APIs',
     'Cloud & Automation',
     'Security & Compliance',
+    'Cost Optimization',
   ],
   allSkills: [
     'React.js',

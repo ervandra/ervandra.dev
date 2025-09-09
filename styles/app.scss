@@ -4,10 +4,14 @@ body {
   font-size: 16px;
   font-weight: 400;
   background-color: #ffffff;
-  background-image: url(/images/bg-grid.webp), url(/images/bg-dust.webp);
-  background-size: 1200px, 900px, 200px;
-  background-position: 0 0, 100% 100%, 50%;
-  background-attachment: fixed, scroll, scroll;
+  /* Subtle radial glow + grid background for a modern monotone look */
+  background-image:
+    radial-gradient(600px 300px at 50% -10%, rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0) 60%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+  background-size: auto, 72px 72px, 72px 72px;
+  background-position: 0 0, center, center;
+  background-attachment: scroll, fixed, fixed;
   color: #121212;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -112,18 +116,24 @@ img {
     li {
       a {
         position: relative;
+        display: inline-block;
+        padding: 0.25rem 0;
+        color: #0f172a; /* slate-900 */
+        letter-spacing: 0.02em;
         &:after {
           content: '';
           display: block;
           width: 0;
           height: 1px;
-          opacity: 0.5;
-          background: transparent;
+          opacity: 0.7;
+          background: rgba(0, 0, 0, 0.7);
           position: absolute;
           bottom: -0.125em;
           left: 0;
-          transition: all ease 0.6s;
-          transition-delay: 1s;
+          transition: width 220ms ease;
+        }
+        &:hover:after {
+          width: 100%;
         }
       }
     }
@@ -159,11 +169,15 @@ img {
 
 #header,
 #footer {
-  background: url(/images/bg-dust.webp) center repeat;
-  background-size: contain;
+  background: transparent;
 }
 #header {
   @apply bg-white bg-opacity-60 z-30;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
 }
 .bg-dust {
   background: #15232dee url(/images/bg-dust.webp) center repeat;
@@ -173,19 +187,6 @@ img {
 
 #app-container {
   &.is-ready {
-    #hero {
-      @screen md {
-        background: url(/images/profile.svg) no-repeat right top;
-        background-size: auto 54%;
-        background-attachment: scroll;
-      }
-      @screen lg {
-        background-size: auto 90%;
-      }
-      @screen xl {
-        background-size: contain;
-      }
-    }
     #menu-mobile {
       transition: all ease 0.6s;
     }
@@ -194,15 +195,27 @@ img {
         li {
           a {
             &:after {
-              background: var(--bs-primary);
+              background: rgba(0, 0, 0, 0.7);
               height: 1px;
-              width: 12px;
             }
           }
         }
       }
     }
   }
+}
+
+/* Modern hero subtle radial overlay */
+#hero {
+  position: relative;
+}
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: -40px 0 auto 0;
+  height: 300px;
+  background: radial-gradient(600px 300px at 50% 0%, rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0) 60%);
+  pointer-events: none;
 }
 
 .experience-menu {
@@ -263,6 +276,11 @@ img {
   }
 }
 
+/* Hide legacy side elements for a cleaner layout */
+.side-elements {
+  display: none !important;
+}
+
 .social-list {
   li {
     display: block;
@@ -302,4 +320,22 @@ a[target='_blank'] {
   @media only screen and (max-width: 40em) {
     min-height: auto;
   }
+}
+
+/* Testimonial cards - minimal monotone */
+.testimony-item {
+  .card {
+    @apply rounded-xl border border-black/10 bg-white bg-opacity-70 backdrop-blur-md shadow-sm;
+  }
+  .card-body {
+    @apply p-6;
+  }
+}
+
+/* Service cards: minimal standout */
+.card {
+  @apply rounded-xl border border-black/10 bg-white/70 backdrop-blur-md shadow-sm transition-transform;
+}
+.card:hover {
+  transform: translateY(-2px);
 }

@@ -40,11 +40,13 @@ $enable-responsive-font-sizes: true;
   max-width: 640px;
   margin: 100px auto 100px;
   padding: 2rem;
-  background: #ffffff url(/images/bg-dust.png) center no-repeat;
-  background-size: cover;
+  background: rgba(255, 255, 255, 0.75);
   position: relative;
   border-radius: 1em;
-  box-shadow: var(--bs-shadow);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
   outline: none;
   &.small {
     max-width: 480px;
