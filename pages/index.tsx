@@ -179,13 +179,13 @@ export default function Home() {
                     Software Engineer | Technology Expert
                   </h1> */}
                     <h1 className="text-4xl md:text-6xl xl:text-7xl font-extrabold mb-4 leading-tight">
-                      Tech Expert & Builder — 15+ Years
+                      Technology Leader & Builder — 15+ Years
                     </h1>
                   </Fade>
                   <Fade delay={100} duration={100}>
                     {/* <h2 className="mb-3 mb-md-5 fs-4 fw-bold">{profile.mission}.</h2> */}
                     <h2 className="mb-6 font-medium text-lg md:text-2xl text-gray-700 md:mb-10">
-                      Co-founder & CPTO at Syntax • Solo founder building microSaaS
+                      CPTO & Co-founder at Syntax • Solo founder building micro‑SaaS
                     </h2>
                     {/* <h2 className="mb-3 mb-md-5 fs-4 fw-bold">
                           Technology Enthusiast & Consultant
@@ -193,7 +193,7 @@ export default function Home() {
                   </Fade>
                   <Fade delay={100} duration={100}>
                     <p className="mb-10 text-base md:text-xl text-gray-700">
-                      I lead digital transformation, AI automation, and custom implementations—personally or through Syntax Solution—to remove operational burden and streamline processes with speed, accuracy, and visible results. Innovation, technology, and security are always first principles.
+                      I partner with teams to design and ship reliable, secure systems that remove operational drag. I deliver digital transformation, AI automation, and tailored implementations—directly or through Syntax. Speed, accuracy, and measurable outcomes first.
                     </p>
                     {/* <p className="mb-3 fs-5">
                              I help people, startup/company to achieve their business goal faster
@@ -417,39 +417,39 @@ export default function Home() {
                     <Zoom top duration={300}>
                       <h2 className="text-2xl md:text-4xl font-bold">Services</h2>
                     </Zoom>
-                    <p className="mt-3 text-gray-700 md:text-lg">Engagements available directly or via Syntax Solution</p>
+                    <p className="mt-3 text-gray-700 md:text-lg">Advisory, delivery, or end‑to‑end — direct or via Syntax</p>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="card">
                       <div className="card-body p-6">
                         <h3 className="font-bold text-lg mb-2">Digital Transformation</h3>
-                        <p className="text-gray-700 mb-3">Assess, architect, and deliver systems that reduce operational friction and increase velocity.</p>
+                        <p className="text-gray-700 mb-3">Pragmatic process and architecture changes that unlock speed and reliability.</p>
                         <ul className="text-sm text-gray-700 list-disc pl-5 space-y-1">
-                          <li>Process mapping & prioritization</li>
-                          <li>Architecture & roadmap</li>
-                          <li>Change management & enablement</li>
+                          <li>Current‑state discovery & prioritization</li>
+                          <li>Target architecture & phased roadmap</li>
+                          <li>Enablement, training & adoption</li>
                         </ul>
                       </div>
                     </div>
                     <div className="card">
                       <div className="card-body p-6">
                         <h3 className="font-bold text-lg mb-2">AI Automation</h3>
-                        <p className="text-gray-700 mb-3">Automate repetitive workflows with AI agents and integrations—speed and accuracy by design.</p>
+                        <p className="text-gray-700 mb-3">Deploy agent workflows and integrations that save hours—not minutes—with guardrails.</p>
                         <ul className="text-sm text-gray-700 list-disc pl-5 space-y-1">
-                          <li>Agent workflows & approvals</li>
-                          <li>RPA + API integrations</li>
-                          <li>Human-in-the-loop safety</li>
+                          <li>Agentic workflows & approvals</li>
+                          <li>RPA and API orchestration</li>
+                          <li>Human‑in‑the‑loop quality</li>
                         </ul>
                       </div>
                     </div>
                     <div className="card">
                       <div className="card-body p-6">
                         <h3 className="font-bold text-lg mb-2">AI Implementation</h3>
-                        <p className="text-gray-700 mb-3">Embed AI safely into products and processes with a focus on security, reliability, and ROI.</p>
+                        <p className="text-gray-700 mb-3">Ship secure, ROI‑positive AI into products and operations with measurable outcomes.</p>
                         <ul className="text-sm text-gray-700 list-disc pl-5 space-y-1">
-                          <li>Use-case discovery & pilots</li>
-                          <li>Model selection & evaluation</li>
-                          <li>Security, governance, and cost</li>
+                          <li>Use‑case discovery & rapid pilots</li>
+                          <li>Model/vendor selection & evaluation</li>
+                          <li>Security, governance & cost controls</li>
                         </ul>
                       </div>
                     </div>
@@ -551,7 +551,7 @@ export default function Home() {
                   <div className="py-3 pt-20 md:py-5">
                     <Fade delay={300}>
                       <h4 className="text-xl md:text-2xl mb-0 text-center relative">
-                        Why'd they recommend to
+                        Why clients recommend working with
                       </h4>
 
                       <Zoom top duration={300}>
@@ -561,12 +561,11 @@ export default function Home() {
                             role="emoji">
                             👍🏻
                           </span>{' '}
-                          Work With Ervan?
+                          Work with Ervandra
                         </h2>
                       </Zoom>
                       <p className="md:text-xl mb-8 text-center">
-                        My partner and valuable clients will tell you their experiences to work with
-                        me.
+                        A few words from partners and clients.
                       </p>
                     </Fade>
                   </div>
@@ -644,8 +643,7 @@ export default function Home() {
                         </Zoom>
                       </h2>
                       <p className="mb-8 md:text-lg text-center">
-                        I would love to hear from you, connect and discussing ideas with you, and
-                        potentially sharing my expertise to help you getting advance in technology.
+                        Tell me about your goals. If there’s a fit, we’ll map next steps and the fastest path to impact—individually or via Syntax.
                       </p>
                       <Zoom delay={300} duration={300}>
                         {/* <a
