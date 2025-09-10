@@ -1,16 +1,16 @@
 const profile = {
   name: 'Ervandra Halim',
   title: 'Technology Lead',
-  mission: 'Tech Expert • 15+ Years • CPTO & Founder • Cost-Effective AI for SMEs',
+  mission: 'Technology Leader • 15+ Years • CPTO & Founder • AI for SMEs',
   email: 'hi@ervandra.com',
   phone: '+6287708770800',
   photo: 'https://www.ervandra.com/wp-content/uploads/2020/12/ervan-round.png',
   about:
-    "I'm Ervandra Halim, a Technology Enthusiast. Through-out my entire career, i realize that i love the most to conceptualize a website or web applications, write technical specifications and develop it with my team into a high-quality applications that are feasible, scalable, testable and measurable that will also meet with the business requirements.",
+    "I'm Ervandra Halim — a technology leader and product‑minded engineer. I turn ideas into reliable, secure systems through clear direction, robust architecture, and thoughtful execution. I enjoy translating business goals into technical outcomes that are scalable, testable, and measurable.",
   offerIntro:
     'Get my thoughts twice a week in a bite size tech news called the Overcodes, where i cover about latest technologies, programming tips and modern business.',
   intro:
-    "Tech expert and builder (15+ years). CPTO and solo founder helping people and SMEs implement cost‑effective AI automation and AI solutions that deliver speed, accuracy, and visible results.",
+    "Technology leader and builder with 15+ years. CPTO and founder helping SMEs achieve measurable results through digital transformation, AI automation, and secure implementations.",
   professionalSkills: [
     'Front-End Development',
     'HTML & CSS (SASS)',

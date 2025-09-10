@@ -245,12 +245,12 @@ export default function Home() {
               <div className="row">
                 <div className="col">
                   <h2>
-                    What You'll <strong>GET</strong> During This{' '}
+                    What You&apos;ll <strong>GET</strong> During This{' '}
                     <strong>Free Strategy Session</strong>
                   </h2>
                   <p>
                     I understand that both of our <strong>time</strong> are very{' '}
-                    <strong>valuable</strong>, so i wouldn't waste any of your time as mine also
+                    <strong>valuable</strong>, so i wouldn&apos;t waste any of your time as mine also
                     precious.
                   </p>
                   <p>
@@ -263,15 +263,15 @@ export default function Home() {
                       <div className="col-12 col-md-4">
                         <h3>Preparation</h3>
                         <p>
-                          Before we're going on call, you can prepare your website information,
-                          conversion rate, and business model as we're going through the deepest
+                          Before we&apos;re going on call, you can prepare your website information,
+                          conversion rate, and business model as we&apos;re going through the deepest
                           factor of your business: your sales funnel.
                         </p>
                       </div>
                       <div className="col-12 col-md-4">
                         <h3>Describe your situation and desired results</h3>
                         <p>
-                          While we're on call, we will talk about your current situation and your
+                          While we&apos;re on call, we will talk about your current situation and your
                           desired outcome that you want from us. I will help to simulate your goals
                           and insight within this call.
                         </p>
@@ -311,12 +311,12 @@ export default function Home() {
                     </p>
 
                     <p>
-                      Currently he's on a mission to help small business to leverage Sales Funnel to
+                      Currently he&apos;s on a mission to help small business to leverage Sales Funnel to
                       grow their business and reach the next level.
                     </p>
 
                     <p>
-                      He's a very technical-guy, and his solution will always work at a higher level
+                      He&apos;s a very technical-guy, and his solution will always work at a higher level
                       of implementation, he will be your first (or next) Tech Lead Consultant.
                     </p>
 
@@ -325,7 +325,7 @@ export default function Home() {
                       results.
                     </p>
 
-                    <p>And yes, he's always #overdeliver!</p>
+                    <p>And yes, he&apos;s always #overdeliver!</p>
                   </div>
                 </div>
               </div>

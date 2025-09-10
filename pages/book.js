@@ -52,7 +52,7 @@ export default function Home() {
               <div className="col">
                 <div className="text-center pt-md-5 pt-3">
                   <h1 className="display-6 display-md-3 text-primary fw-bold mb-3 border-bottom d-inline-block border-3 border-danger">
-                    Book your Free Strategy session now
+                    Book a free strategy session
                   </h1>
                   <InlineWidget url="https://calendly.com/ervandra/free-strategy" prefill={{}} />
                 </div>
