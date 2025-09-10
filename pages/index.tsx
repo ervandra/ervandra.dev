@@ -171,7 +171,7 @@ export default function Home() {
                         role="emoji">
                         👋🏻
                       </span>{' '}
-                      Hi, I'm Ervandra Halim.
+                      Hi, I&apos;m Ervandra Halim.
                     </h2>
                   </Fade>
                   <Fade duration={500}>
@@ -265,7 +265,7 @@ export default function Home() {
                         <Fade cascade top collapse delay={100}>
                           <div>
                             <h5 className="text-center mb-2 text-xl font-bold">
-                              Let's Connect{' '}
+                              Let&apos;s Connect{' '}
                               <span
                                 role="emoji"
                                 className="animate-bounce text-xl inline-block ml-2">
@@ -468,7 +468,7 @@ export default function Home() {
                         <span role="emoji" className="animate-bounce inline-block">
                           🌟
                         </span>{' '}
-                        Where I'm Contributing
+                        Where I&apos;m Contributing
                       </h2>
                     </Zoom>
                     <Fade duration={300}>
@@ -636,7 +636,7 @@ export default function Home() {
                 <div className="col-12 md:max-w-3xl mx-auto">
                   <div className="py-3 py-md-5">
                     <div className="text-center">
-                      <h4 className="text-xl md:text-2xl">What's next?</h4>
+                      <h4 className="text-xl md:text-2xl">What&apos;s next?</h4>
                       <h2 className="text-2xl md:text-4xl mb-8 text-center font-bold">
                         <Zoom cascade top duration={300}>
                           Get In Touch
