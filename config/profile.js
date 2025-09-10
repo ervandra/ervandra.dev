@@ -10,7 +10,7 @@ const profile = {
   offerIntro:
     'Get my thoughts twice a week in a bite size tech news called the Overcodes, where i cover about latest technologies, programming tips and modern business.',
   intro:
-    "Tech expert and builder (15+ years). CPTO and solo founder helping people and SMEs implement cost‑effective AI automation and AI solutions that deliver speed, accuracy, and visible results.",
+    'Technology leader and strategic architect (15+ years). As CPTO at Syntax Solution, I transform business operations through AI automation and digital transformation, delivering 40-70% operational efficiency gains with enterprise-grade security and measurable ROI.',
   professionalSkills: [
     'Front-End Development',
     'HTML & CSS (SASS)',

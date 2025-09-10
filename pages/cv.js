@@ -66,7 +66,8 @@ export default function Home() {
                         <h2 className="h5 mb-3">{profile.title}</h2>
                         <a
                           href={`mailto:${profile.email}`}
-                          className="mb-3 btn btn-success d-print-none fw-bold text-light shadow">
+                          className="mb-3 btn btn-success d-print-none fw-bold text-light shadow"
+                        >
                           Contact Me
                         </a>
                       </div>
@@ -132,7 +133,8 @@ export default function Home() {
                             <a
                               href={`mailto:${profile.email}`}
                               target="_blank"
-                              rel="noopener noreferrer">
+                              rel="noopener noreferrer"
+                            >
                               {profile.email}
                             </a>
                           </li>
@@ -141,7 +143,8 @@ export default function Home() {
                             <a
                               href={`tel:${profile.phone}`}
                               target="_blank"
-                              rel="noopener noreferrer">
+                              rel="noopener noreferrer"
+                            >
                               {profile.phone}
                             </a>
                           </li>
@@ -150,7 +153,8 @@ export default function Home() {
                             <a
                               href={`https://:${profile.website}`}
                               target="_blank"
-                              rel="noopener noreferrer">
+                              rel="noopener noreferrer"
+                            >
                               {profile.website}
                             </a>
                           </li>
