@@ -58,7 +58,7 @@ export default function Home() {
     <div>
       <Head>
         <title>
-          {profile.name} | {profile.mission}
+          {profile.name} | Strategic Systems Architect & Tech Partner
         </title>
         <meta name="description" content={profile.intro} key="sitedesc" />
         <meta name="author" content={profile.name} />
@@ -102,23 +102,16 @@ export default function Home() {
                         <ul className="m-0 mr-4 flex">
                           <li className="block ml-4 md:ml-10">
                             <Fade left duration={100}>
-                              <a className="text-decoration-none" href="#about">
-                                About
+                              <a className="text-decoration-none" href="/works">
+                                Works
                               </a>
                             </Fade>
                           </li>
 
                           <li className="block ml-4 md:ml-10">
                             <Fade left delay={100} duration={100}>
-                              <a className="text-decoration-none" href="#experience">
-                                Experience
-                              </a>
-                            </Fade>
-                          </li>
-                          <li className="block ml-4 md:ml-10">
-                            <Fade left delay={200} duration={100}>
-                              <a className="text-decoration-none" href="#testimonial">
-                                Testimonial
+                              <a className="text-decoration-none" href="#about">
+                                About
                               </a>
                             </Fade>
                           </li>
@@ -131,12 +124,14 @@ export default function Home() {
                           </li>
                         </ul>
                         <Zoom delay={300} duration={100}>
-                          <button
-                            className="ml-4 p-2 px-4 rounded bg-black text-white"
-                            onClick={() => setState({ isOpen: true })}>
-                            Get In Touch
-                            <span className="animate-pulse ml-2">⚡️</span>
-                          </button>
+                          <a
+                            href="https://calendly.com/ervandra/free-strategy"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="ml-4 p-2 px-4 rounded bg-black text-white text-decoration-none inline-block">
+                            Book Call
+                            <span className="animate-pulse ml-2">📞</span>
+                          </a>
                         </Zoom>
                       </div>
                       <div className="block md:hidden">
@@ -175,63 +170,37 @@ export default function Home() {
                     </h2>
                   </Fade>
                   <Fade duration={500}>
-                    {/* <h1 className="text-5xl xl:text-7xl font-extrabold mb-8">
-                    Software Engineer | Technology Expert
-                  </h1> */}
-                    <h1 className="text-2xl xl:text-4xl font-extrabold mb-4">
-                      {/* Software Engineer & Technology Specialist */}
-                      Digital Transformation Expert
+                    <h1 className="text-2xl xl:text-4xl font-extrabold mb-4 text-gray-900">
+                      I Align Technology With Your Business Growth.
                     </h1>
                   </Fade>
                   <Fade delay={100} duration={100}>
-                    {/* <h2 className="mb-3 mb-md-5 fs-4 fw-bold">{profile.mission}.</h2> */}
                     <h2 className="mb-4 font-bold text-lg md:text-2xl text-gray-900 md:mb-8">
-                      {/* Are you looking for a technopreneur that can help you and your business to
-                      thrive in the modern digital world? Let me help you. */}
-                      Customized Tech Solutions to Revolutionize Your Business Processes
+                      Strategic tech architecture for founders, operators, and business owners who want to scale without chaos.
                     </h2>
-                    {/* <h2 className="mb-3 mb-md-5 fs-4 fw-bold">
-                          Technology Enthusiast & Consultant
-                        </h2> */}
                   </Fade>
                   <Fade delay={100} duration={100}>
                     <p className="mb-8 text-base md:text-xl text-gray-900">
-                      {/* I'd love to discuss about ideas, and my hard-earned experiences + insights
-                      will help you in many ways. Let's get in touch! */}
-
-Harness technology with a Digital Transformation Expert. Specializing in custom software, strategic analysis, and system architecture, I lead a team dedicated to optimizing your business operations. Explore tailored tech solutions that drive efficiency and growth.
+                      Think of me as your tech partner — not a vendor who disappears after delivery.
                     </p>
-                    {/* <p className="mb-3 fs-5">
-                             I help people, startup/company to achieve their business goal faster
-                              through technology-based solution.
-                            </p>
-                            <p className="mb-5 fs-5">
-                              I want to add value for you, download this case study below:
-                            </p> */}
-                    {/* <p className="mb-5">
-                              Get my thoughts twice a month in a bite size tech news called the{' '}
-                              <strong className="text-warning">Tech-a-break</strong>, where i cover
-                              about latest technologies, programming tips and modern business.
-                            </p> */}
                   </Fade>
 
                   <div className="button-container">
                     <Zoom delay={300} duration={100}>
-                      {/* <Pulse forever={true} delay={1500} duration={2000}> */}
-                      <div className="flex items-center">
-                        {/* <input
-                          type="text"
-                          className="p-2 px-4 rounded border mr-2 max-w-xs flex-1 border-gray-500"
-                          placeholder="Enter your email"
-                        /> */}
-                        <button
-                          className="btn btn-outline-success p-3 px-4 md:p-4 md:px-8 font-bold text-base md:text-lg bg-black text-white rounded uppercase w-full md:w-auto"
-                          onClick={() => setState({ isOpen: true })}>
-                          Get In Touch
-                          <span className="animate-pulse ml-2">⚡️</span>
-                        </button>
+                      <div className="flex items-center flex-wrap">
+                        <a
+                          href="https://calendly.com/ervandra/free-strategy"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-outline-success p-3 px-4 md:p-4 md:px-8 font-bold text-base md:text-lg bg-black text-white rounded w-full md:w-auto text-center block md:inline-block mb-4 md:mb-0">
+                          Book Free Strategy Call
+                        </a>
+                        <a
+                          href="/works"
+                          className="btn btn-outline-success p-3 px-4 md:p-4 md:px-8 font-bold text-base md:text-lg border-2 border-black text-black rounded w-full md:w-auto text-center block md:inline-block md:ml-4 bg-transparent hover:bg-black hover:text-white transition-colors duration-300">
+                          See My Work →
+                        </a>
                       </div>
-                      {/* </Pulse> */}
                     </Zoom>
                   </div>
                 </div>
@@ -366,46 +335,27 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                             <span role="emoji" className="animate-bounce inline-block">
                               🧑🏻‍💻
                             </span>{' '}
-                            About Me
+                            How I Work
                           </h2>
                         </Zoom>
                         <Fade delay={300}>
-                          <p className="mb-4 lg:text-lg">
-                            As an engineer in heart and technology specialist who enjoy delivering technology solution for clients and working with people from around the world, I'm passionate about creating technology that can help people and business to thrive in the digital world.
+                          <p className="mb-8 lg:text-lg">
+                            Technology is only valuable if it protects revenue, reduces costs, or unlocks growth. I start with your business goals and bottlenecks — not your codebase.
                           </p>
-
-                          <p className="mb-4 lg:text-lg">
-                            Currently i am co-founding and managing {` `}
-                            <a
-                              href="https://syntax.id"
-                              target="_blank"
-                              className="font-bold inline-flex items-center hover:underline"
-                              rel="noopener noreferrer">
-                              Syntax Solution
-                            </a> as VP of engineering & product
-                          </p>
-
-                          <p className="mb-2 lg:text-lg">
-                            Here are a few technologies I've been worked on recently:
-                          </p>
-                          <div className="flex flex-wrap mb-4">
-                            {profile.recentSkills.map((skill, index) => (
-                              <div key={skill + index} className="text-warning w-full md:w-1/2">
-                                <Fade delay={index * 100 + 300}>
-                                  <div>
-                                    <span
-                                      className={`mr-1 text-gray-300 animate-spin inline-block relative`}
-                                      style={{
-                                        animationDelay: `${index * 250}ms`,
-                                        animationDuration: '3s',
-                                      }}>
-                                      ✦
-                                    </span>{' '}
-                                    {skill}
-                                  </div>
-                                </Fade>
-                              </div>
-                            ))}
+                          
+                          <div className="mb-6">
+                            <h3 className="font-bold text-xl mb-2">Strategic Before Technical</h3>
+                            <p className="text-gray-700">I start with your business goals, not technology trends. What are you trying to achieve? Where are the bottlenecks? Only then do we talk solutions.</p>
+                          </div>
+                          
+                          <div className="mb-6">
+                            <h3 className="font-bold text-xl mb-2">Systems That Scale Without You</h3>
+                            <p className="text-gray-700">Every solution I build is designed to work independently. Documented, maintainable, and structured so your team can operate it — or hand it off entirely.</p>
+                          </div>
+                          
+                          <div className="mb-6">
+                            <h3 className="font-bold text-xl mb-2">Transparent Partnerships</h3>
+                            <p className="text-gray-700">Fixed-scope audits, clear pricing, honest capacity communication. I'll tell you if I'm not the right fit. No surprises, no scope creep.</p>
                           </div>
                         </Fade>
                       </div>
@@ -415,89 +365,176 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
               </div>
             </div>
           </div>
-          <div id="experience" className="py-5 md:py-20 -mt-20 md:mt-0">
-            <div className="container">
-              <div className="row justify-center md:max-w-7xl mx-auto pt-20 md:pt-0">
-                <div className="col-12 col-lg-10">
-                  <div className="py-3 py-md-5">
-                    <Zoom top duration={300}>
-                      <h2 className="font-bold mb-8 text-2xl md:text-4xl">
-                        <span role="emoji" className="animate-bounce inline-block">
-                          🌟
-                        </span>{' '}
-                        Where I'm Contributing
-                      </h2>
-                    </Zoom>
-                    <Fade duration={300}>
-                      <div className="row flex justify-between flex-wrap">
-                        <div className="col-12 col-md-3 col-lg-2 w-full md:w-1/4 lg:w-1/6 md:pr-8">
-                          <div
-                            className="nav flex-md-column nav-pills me-0 md:mb-8 mb-3 experience-menu md:flex-col flex w-full"
-                            role="tablist"
-                            aria-orientation="vertical">
-                            {profile.experiences.map((exp, index) => {
-                              const active = index === workTab;
-                              if (active)
-                                return (
-                                  <Zoom
-                                    left
-                                    key={exp.company + index}
-                                    delay={index * 200 + 300}
-                                    duration={300}>
-                                    <button
-                                      key={exp.company + index}
-                                      className="nav-link text-center md:text-left p-2 px-4 text-nowrap whitespace-nowrap lg:text-lg active border-l-2 w-full border-l-black bg-black bg-opacity-10"
-                                      type="button"
-                                      role="tab">
-                                      {exp.company}
-                                    </button>
-                                  </Zoom>
-                                );
-                              return (
-                                <Zoom
-                                  left
-                                  key={exp.company + index}
-                                  delay={index * 200 + 300}
-                                  duration={300}>
-                                  <button
-                                    key={exp.company + index}
-                                    className="nav-link text-center md:text-left p-2 px-4 border-l-2 w-full whitespace-nowrap lg:text-lg border-l-black hover:bg-black hover:bg-opacity-5"
-                                    type="button"
-                                    onClick={() => setState({ workTab: index })}
-                                    role="tab">
-                                    {exp.company}
-                                  </button>
-                                </Zoom>
-                              );
-                            })}
-                          </div>
-                        </div>
-                        <div className="col-12 col-md-9 col-lg-10 w-full md:w-3/4 lg:w-5/6">
-                          <div className="tab-content">
-                            {profile.experiences.map((exp, index) => {
-                              const active = index === workTab;
-                              return (
-                                <div
-                                  className={`tab-pane ${
-                                    active ? 'block active show fade' : 'hidden'
-                                  }`}
-                                  role="tabpanel"
-                                  key={exp.company + index}>
-                                  <Accordion
-                                    data={exp.promotion}
-                                    company={exp.company}
-                                    currentJob={index === 0}
-                                  />
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
+          <div id="services" className="py-5 md:py-20 bg-gray-50 border-y border-gray-200">
+            <div className="container mx-auto px-5 md:px-0">
+              <Zoom top duration={300}>
+                <h2 className="font-bold mb-8 text-2xl md:text-4xl text-center">
+                  <span role="emoji" className="animate-bounce inline-block mr-2">🤝</span>
+                  How I Can Help
+                </h2>
+              </Zoom>
+              <div className="max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  <Fade bottom delay={100} duration={300}>
+                    <div className="bg-white p-6 rounded shadow-sm border border-gray-100 flex flex-col h-full">
+                      <div className="mb-4">
+                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 block">Strategic Engagement</span>
+                        <h3 className="text-xl font-bold mb-1">Fractional CTO</h3>
+                        <p className="text-primary font-medium text-sm"><span className="text-gray-400 text-xs">Starting from</span> IDR 15M/month</p>
                       </div>
-                    </Fade>
+                      <p className="text-gray-600 mb-6 flex-grow">Part-time tech leadership. Strategy, architecture, team oversight, vendor management.</p>
+                      <a href="https://calendly.com/ervandra/free-strategy" target="_blank" rel="noopener noreferrer" className="btn bg-black text-white w-full py-3 rounded font-bold text-center">Book Strategy Call</a>
+                    </div>
+                  </Fade>
+                  <Fade bottom delay={200} duration={300}>
+                    <div className="bg-white p-6 rounded shadow-sm border border-gray-100 flex flex-col h-full">
+                      <div className="mb-4">
+                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 block">Strategic Engagement</span>
+                        <h3 className="text-xl font-bold mb-1">Systems Audit & Design</h3>
+                        <p className="text-primary font-medium text-sm">IDR 5M / 2 weeks</p>
+                      </div>
+                      <p className="text-gray-600 mb-6 flex-grow">Deep dive into your ops and tech bottlenecks. You get a map, gap analysis, and 90-day roadmap.</p>
+                      <a href="https://calendly.com/ervandra/free-strategy" target="_blank" rel="noopener noreferrer" className="btn bg-black text-white w-full py-3 rounded font-bold text-center">Book Strategy Call</a>
+                    </div>
+                  </Fade>
+                  <Fade bottom delay={300} duration={300}>
+                    <div className="bg-white p-6 rounded shadow-sm border border-gray-100 flex flex-col h-full">
+                      <div className="mb-4">
+                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 block">Strategic Engagement</span>
+                        <h3 className="text-xl font-bold mb-1">Custom AI Implementation</h3>
+                        <p className="text-primary font-medium text-sm"><span className="text-gray-400 text-xs">Starting from</span> IDR 10M</p>
+                      </div>
+                      <p className="text-gray-600 mb-6 flex-grow">Custom AI agents, workflow automation, RAG pipelines. Not demos — production systems.</p>
+                      <a href="https://calendly.com/ervandra/free-strategy" target="_blank" rel="noopener noreferrer" className="btn bg-black text-white w-full py-3 rounded font-bold text-center">Book Strategy Call</a>
+                    </div>
+                  </Fade>
+                </div>
+                
+                <Fade bottom delay={400} duration={300}>
+                  <div className="bg-white p-6 md:p-8 rounded shadow-sm border border-gray-100 mb-8 flex flex-col md:flex-row items-center justify-between">
+                    <div className="mb-6 md:mb-0 md:mr-8">
+                      <h3 className="text-xl font-bold mb-2">Custom Development</h3>
+                      <p className="text-gray-600 mb-0">Scoped, project-based engagements for critical systems that need to be built right.</p>
+                    </div>
+                    <a href="https://calendly.com/ervandra/free-strategy" target="_blank" rel="noopener noreferrer" className="btn border-2 border-black text-black py-3 px-8 rounded font-bold text-center whitespace-nowrap hover:bg-black hover:text-white transition-colors duration-300">Let's Scope It</a>
                   </div>
+                </Fade>
+
+                <Fade bottom delay={500} duration={300}>
+                  <div className="text-center text-gray-600 mb-12 flex flex-col md:flex-row items-center justify-center">
+                    Need something faster? I also run <a href="https://karyakilat.com" target="_blank" rel="noopener noreferrer" className="text-black font-bold underline ml-1">KaryaKilat.com</a> <span className="mx-1 hidden md:inline-block">—</span> <span className="block md:inline-block">premium microsites for SMEs, live in 24 hours.</span>
+                  </div>
+                </Fade>
+
+                <Fade bottom delay={600} duration={300}>
+                  <div className="bg-black text-white p-6 md:p-8 rounded shadow-sm flex flex-col md:flex-row items-center justify-between">
+                    <div className="mb-6 md:mb-0 md:mr-8 text-center md:text-left">
+                      <h3 className="text-xl font-bold mb-2">Mentorship</h3>
+                      <p className="text-gray-300 mb-0 text-sm">1-on-1 guidance for developers, PMs, and aspiring tech leaders. Limited slots. Application required.</p>
+                    </div>
+                    <a href="mailto:hi@ervandra.com?subject=Mentorship Application" className="btn bg-white text-black py-3 px-8 rounded font-bold text-center whitespace-nowrap">Apply</a>
+                  </div>
+                </Fade>
+              </div>
+            </div>
+          </div>
+          
+          <div id="works" className="py-5 md:py-20">
+            <div className="container mx-auto px-5 md:px-0">
+              <Zoom top duration={300}>
+                <h2 className="font-bold mb-8 text-2xl md:text-4xl text-center">
+                  <span role="emoji" className="animate-bounce inline-block mr-2">🚀</span>
+                  Work & Impact
+                </h2>
+              </Zoom>
+              <div className="max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                  <Fade bottom delay={100} duration={300}>
+                    <div className="bg-gray-50 border border-gray-100 p-6 rounded">
+                      <h3 className="font-bold text-lg mb-2">MTF </h3>
+                      <p className="text-gray-700 m-0">Leading digital transformations for several internal systems also become the business analyst for existing systems</p>
+                    </div>
+                  </Fade>
+                  <Fade bottom delay={200} duration={300}>
+                    <div className="bg-gray-50 border border-gray-100 p-6 rounded">
+                      <h3 className="font-bold text-lg mb-2">R/GA</h3>
+                      <p className="text-gray-700 m-0">10+ Fortune 500 campaigns delivered — inducted into R/GA Hall of Immortality</p>
+                    </div>
+                  </Fade>
+                  <Fade bottom delay={300} duration={300}>
+                    <div className="bg-gray-50 border border-gray-100 p-6 rounded">
+                      <h3 className="font-bold text-lg mb-2">CIAYO</h3>
+                      <p className="text-gray-700 m-0">Leading team to build web platform from scratch to 656,000 registered users</p>
+                    </div>
+                  </Fade>
+                  <Fade bottom delay={400} duration={300}>
+                    <div className="bg-gray-50 border border-gray-100 p-6 rounded">
+                      <h3 className="font-bold text-lg mb-2">LifeLearn Platform</h3>
+                      <p className="text-gray-700 m-0">Saved 40+ engineering hours/month, without a backend rewrite</p>
+                    </div>
+                  </Fade>
+                </div>
+
+                <Fade bottom delay={500} duration={300}>
+                  <div className="mb-8">
+                    <p className="text-center text-sm font-bold tracking-widest text-gray-400 uppercase mb-6">TRUSTED BY TEAMS AT</p>
+                    <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 opacity-60 grayscale filter px-4">
+                      {/* Using text for logos to avoid missing images, or standard placeholder if needed */}
+                      <span className="text-xl font-bold">Syntax</span>
+                      <span className="text-xl font-bold">Komunal</span>
+                      <span className="text-xl font-bold">Yoona</span>
+                      <span className="text-xl font-bold">R/GA</span>
+                      <span className="text-xl font-bold">MTF</span>
+                      <span className="text-xl font-bold">CIAYO</span>
+                      <span className="text-xl font-bold">LifeLearn</span>
+                      <span className="text-xl font-bold">CakraStudio</span>
+                    </div>
+                  </div>
+                </Fade>
+
+                <div className="text-center">
+                  <a href="/works" className="inline-block border-b-2 border-black font-bold text-lg hover:text-gray-600 hover:border-gray-600 transition-colors pb-1">See All Case Studies →</a>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div id="availability" className="py-5 md:py-20 bg-gray-50 border-y border-gray-200">
+            <div className="container mx-auto px-5 md:px-0">
+              <Zoom top duration={300}>
+                <h2 className="font-bold mb-8 text-2xl md:text-4xl text-center">
+                  <span role="emoji" className="animate-bounce inline-block mr-4">📅</span>
+                 My Availability
+                </h2>
+              </Zoom>
+              <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <Fade bottom duration={300}>
+                  <div className="p-4 bg-white h-full rounded-lg shadow">
+                    <h3 className="font-bold text-xl mb-4 text-black border-b border-gray-200 pb-2">Active Projects</h3>
+                    <ul className="list-disc pl-5 text-gray-700 space-y-2">
+                      <li>Co-founder, CTO & Principal Architect at Syntax Solution</li>
+                      <li>Building &amp; growing KaryaKilat productized service</li>
+                      <li>NDA consulting engagements with corporates &amp; startups</li>
+                    </ul>
+                  </div>
+                </Fade>
+                <Fade bottom delay={100} duration={300}>
+                  <div className="p-4 bg-white h-full rounded-lg shadow">
+                    <h3 className="font-bold text-xl mb-4 text-green-700 border-b border-gray-200 pb-2">Capacity</h3>
+                    <ul className="list-disc pl-5 text-gray-700 space-y-2">
+                      <li>1–2 fractional CTO/Tech partnerships (8–12 hrs/week each)</li>
+                      <li>Systems audit projects (2-week engagements)</li>
+                      <li>AI implementation projects (scoped, project-based)</li>
+                      <li>Custom development for critical paths</li>
+                    </ul>
+                  </div>
+                </Fade>
+              </div>
+              <Fade bottom delay={300} duration={300}>
+                <div className="max-w-3xl mx-auto mt-12 text-center text-lg text-gray-600 italic">
+                  "If your needs align with my availability, let's talk. If I'm not the right fit, I'll tell you — and recommend alternatives."
+                </div>
+              </Fade>
             </div>
           </div>
 
@@ -594,30 +631,32 @@ Harness technology with a Digital Transformation Expert. Specializing in custom 
                 <div className="col-12 md:max-w-3xl mx-auto">
                   <div className="py-3 py-md-5">
                     <div className="text-center">
-                      <h4 className="text-xl md:text-2xl">What's next?</h4>
-                      <h2 className="text-2xl md:text-4xl mb-8 text-center font-bold">
+                      <h2 className="text-2xl md:text-4xl mb-4 text-center font-bold">
                         <Zoom cascade top duration={300}>
-                          Get In Touch
+                          If your needs align, let's talk.
                         </Zoom>
                       </h2>
-                      <p className="mb-8 md:text-lg text-center">
-                        I would love to hear from you, connect and discussing ideas with you, and
-                        potentially sharing my expertise to help you getting advance in technology.
+                      <p className="mb-8 md:text-lg text-center text-gray-700">
+                        I'll tell you upfront if I'm not the right fit —<br className="hidden md:block" />
+                        and point you somewhere better if I'm not.
                       </p>
                       <Zoom delay={300} duration={300}>
-                        {/* <a
-                          href="mailto:hi@ervandra.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-white text-black border-2 border-black p-4 px-8 rounded">
-                          <span className="mr-2">👋🏻</span> Say Hello
-                        </a> */}
-                        <button
-                          className="btn btn-outline-success p-3 md:p-4 px-8 font-bold text-base md:text-lg bg-black text-white rounded uppercase"
-                          onClick={() => setState({ isOpen: true })}>
-                          Get In Touch
-                          <span className="animate-pulse ml-2">⚡️</span>
-                        </button>
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                          <a
+                            href="https://calendly.com/ervandra/free-strategy"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-outline-success p-3 md:p-4 px-8 font-bold text-base md:text-lg bg-black text-white rounded uppercase w-full md:w-auto text-center mx-2 hover:bg-gray-800 transition-colors duration-300">
+                            Book Free 45-Min Call
+                          </a>
+                          <a
+                            href={`https://wa.me/${profile.phone.replace('+', '')}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-outline-success p-3 md:p-4 px-8 font-bold text-base md:text-lg border-2 border-black text-black bg-transparent hover:bg-black hover:text-white transition-colors duration-300 rounded uppercase w-full md:w-auto text-center mx-2">
+                            Message on WhatsApp
+                          </a>
+                        </div>
                       </Zoom>
                     </div>
                   </div>

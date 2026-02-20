@@ -1,16 +1,16 @@
 const profile = {
   name: 'Ervandra Halim',
-  title: 'Technology Lead',
-  mission: 'Software Engineer & Technology Specialist',
+  title: 'Strategic Systems Architect',
+  mission: 'Strategic Systems Architect & Tech Partner',
   email: 'hi@ervandra.com',
   phone: '+6287708770800',
   photo: 'https://www.ervandra.com/wp-content/uploads/2020/12/ervan-round.png',
   about:
-    "I'm Ervandra Halim, a Technology Enthusiast. Through-out my entire career, i realize that i love the most to conceptualize a website or web applications, write technical specifications and develop it with my team into a high-quality applications that are feasible, scalable, testable and measurable that will also meet with the business requirements.",
+    "I'm Ervandra Halim. I align technology with your business growth. Strategic tech architecture for founders, operators, and business owners who want to scale without chaos. Think of me as your tech partner — not a vendor who disappears after delivery.",
   offerIntro:
     'Get my thoughts twice a week in a bite size tech news called the Overcodes, where i cover about latest technologies, programming tips and modern business.',
   intro:
-    "I'm a technology lead based in Jakarta, Indonesia specializing in crafting (and occasionally designing) exceptional, highly-effective websites and applications.",
+    'Strategic tech architecture for founders, operators, and business owners who want to scale without chaos. Think of me as your tech partner — not a vendor who disappears after delivery.',
   professionalSkills: [
     'Front-End Development',
     'HTML & CSS (SASS)',
@@ -325,6 +325,16 @@ const profile = {
   ],
   testimonials: [
     {
+      name: 'Jussi Hurmola',
+      role: 'CEO - LifeLearn Holdings Pte Ltd',
+      photo: '/images/testimonials/jussi-hurmola.jpg',
+      text: 'Ervandra is a very special person for us. He always overdeliver his services, even without being asked. He saved us multiple times due to our primitive and outdated backend system, he provide quick and working solutions.\n\n Indeed, our most valuable person regarding to technology, especially web applications and technology solutions',
+      source: {
+        url: 'https://linkedin.com/in/ervandra',
+        text: 'LinkedIn',
+      },
+    },
+    {
       name: 'David Alfa Sunarna',
       role: 'Associate Technology Director - R/GA',
       photo: '/images/testimonials/david.jpeg',
@@ -355,30 +365,20 @@ const profile = {
       },
     },
     {
-      name: 'Erick Liemarga',
-      role: 'Chief Product Officer - LABABOOK',
-      photo: '/images/testimonials/erick-liemarga.jpg',
-      text: "If you're looking for a versatile frontend web developer I'll definitely recommend Ervandra right away. Several qualities of him that I could easily recommend are; Open minded, critical thinking, resourceful and always look for improvement.\n\n He's always work really hard to improve and expand his knowledge.",
-      source: {
-        url: 'https://linkedin.com/in/ervandra',
-        text: 'LinkedIn',
-      },
-    },
-    {
-      name: 'Jussi Hurmola',
-      role: 'CEO - LifeLearn Holdings Pte Ltd',
-      photo: '/images/testimonials/jussi-hurmola.jpg',
-      text: 'Ervandra is a very special person for us. He always overdeliver his services, even without being asked. He saved us multiple times due to our primitive and outdated backend system, he provide quick and working solutions.\n\n Indeed, our most valuable person regarding to technology, especially web applications and technology solutions',
-      source: {
-        url: 'https://linkedin.com/in/ervandra',
-        text: 'LinkedIn',
-      },
-    },
-    {
       name: 'Effene Henry',
       role: 'Lead Squad Engineer - Paper.id',
       photo: '/images/testimonials/effene.jpeg',
       text: "I've been working with Ervandra in CIAYO Comics for over 2 years and I was amazed by Ervandra’s skill in front end web developer. He is a highly focused person as well as analytical and can add to any team he is a part of.\n\n His energy to make things happen was contagious and it helped us achieve great goals. One of the best front end web developer we've had for sure.",
+      source: {
+        url: 'https://linkedin.com/in/ervandra',
+        text: 'LinkedIn',
+      },
+    },
+    {
+      name: 'Erick Liemarga',
+      role: 'Chief Product Officer - LABABOOK',
+      photo: '/images/testimonials/erick-liemarga.jpg',
+      text: "If you're looking for a versatile frontend web developer I'll definitely recommend Ervandra right away. Several qualities of him that I could easily recommend are; Open minded, critical thinking, resourceful and always look for improvement.\n\n He's always work really hard to improve and expand his knowledge.",
       source: {
         url: 'https://linkedin.com/in/ervandra',
         text: 'LinkedIn',
