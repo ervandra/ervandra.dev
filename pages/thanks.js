@@ -133,7 +133,8 @@ export default function Home() {
                   <div className="button-container text-center">
                     <button
                       className="btn btn-success btn-lg shadow-lg fw-bold p-3 px-5 text-uppercase text-light fs-3"
-                      onClick={() => setState({ isOpen: true })}>
+                      onClick={() => setState({ isOpen: true })}
+                    >
                       Claim Your Free Strategy Call
                     </button>
                   </div>
@@ -142,7 +143,8 @@ export default function Home() {
                     onRequestClose={() => setState({ isOpen: false })}
                     contentLabel="Modal"
                     className="reveal p-3 center small"
-                    ariaHideApp={false}>
+                    ariaHideApp={false}
+                  >
                     <div className="p-3">
                       {success ? (
                         <div className="p-0 text-center">
@@ -182,13 +184,15 @@ export default function Home() {
                           {isLoading ? (
                             <button
                               type="button"
-                              className="btn btn-lg btn-secondary text-uppercase fw-bold shadow w-100 text-light">
+                              className="btn btn-lg btn-secondary text-uppercase fw-bold shadow w-100 text-light"
+                            >
                               Submitting..
                             </button>
                           ) : (
                             <button
                               type="submit"
-                              className="btn btn-lg btn-success text-uppercase fw-bold shadow w-100 text-light">
+                              className="btn btn-lg btn-success text-uppercase fw-bold shadow w-100 text-light"
+                            >
                               Claim Free Strategy
                             </button>
                           )}
@@ -201,7 +205,8 @@ export default function Home() {
 
                     <button
                       className="btn btn-close close-reveal"
-                      onClick={() => setState({ isOpen: false })}>
+                      onClick={() => setState({ isOpen: false })}
+                    >
                       &times;
                     </button>
                   </Modal>

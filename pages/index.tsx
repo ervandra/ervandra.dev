@@ -2,13 +2,11 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import profile from '../config/profile';
-import Modal from 'react-modal';
 import { useSetState } from '@ervandra/use-setstate';
-import Fade from 'react-reveal/Fade';
-import Zoom from 'react-reveal/Zoom';
-import Pulse from 'react-reveal/Pulse';
-import Flash from 'react-reveal/Flash';
-import Bounce from 'react-reveal/Bounce';
+import { BlurFade } from '../components/ui/blur-fade';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../components/ui/dialog';
+import { Input } from '../components/ui/input';
+import { Button } from '../components/ui/button';
 import Accordion from '../components/molecules/Accordion/Accordion';
 
 import { subscribeForm } from '../libs/apis';
@@ -76,81 +74,77 @@ export default function Home() {
       <div
         id="app-container"
         className={`${isReady ? 'is-ready' : ''} ${isMenuOpen ? 'is-menu-open' : ''}`}>
-        <Bounce top duration={100}>
-          <header
-            id="header"
-            className={`${isMenuOpen ? '' : 'sticky top-0'} shadow py-2`}
-            style={{ backdropFilter: 'blur(5px)' }}>
-            <div className="container-fluid container mx-auto">
-              <div className="row">
-                <div className="col-12">
-                  <div className="flex items-center justify-between mx-5 md:mx-0">
-                    <Zoom right duration={300}>
-                      <div className="logo text-black h-10 my-2">
-                        <Image
-                          src="/images/logo-5.svg"
-                          alt="Ervandra Halim"
-                          width="40"
-                          height="40"
-                          layout="intrinsic"
-                          className="block"
-                        />
-                      </div>
-                    </Zoom>
-                    <nav id="mainmenu">
-                      <div className="hidden md:flex justify-end items-center">
-                        <ul className="m-0 mr-4 flex">
-                          <li className="block ml-4 md:ml-10">
-                            <Fade left duration={100}>
-                              <a className="text-decoration-none" href="/works">
-                                Works
-                              </a>
-                            </Fade>
-                          </li>
+        <header
+          id="header"
+          className={`${isMenuOpen ? '' : 'sticky top-0'} shadow py-2 z-30`}
+          style={{ backdropFilter: 'blur(5px)' }}>
+          <div className="container-fluid container mx-auto">
+            <div className="grid grid-cols-12">
+              <div className="col-span-12">
+                <div className="flex items-center justify-between mx-5 md:mx-0">
+                  <BlurFade delay={0.3} inView>
+                    <div className="logo text-black h-10 my-2">
+                      <Image
+                        src="/images/logo-5.svg"
+                        alt="Ervandra Halim"
+                        width="40"
+                        height="40"
+                        layout="intrinsic"
+                        className="block"
+                      />
+                    </div>
+                  </BlurFade>
+                  <nav id="mainmenu">
+                    <div className="hidden md:flex justify-end items-center">
+                      <ul className="m-0 mr-4 flex">
+                        <li className="block ml-4 md:ml-10">
+                          <BlurFade delay={0.1}>
+                            <a className="text-decoration-none" href="/works">
+                              Works
+                            </a>
+                          </BlurFade>
+                        </li>
 
-                          <li className="block ml-4 md:ml-10">
-                            <Fade left delay={100} duration={100}>
-                              <a className="text-decoration-none" href="#about">
-                                About
-                              </a>
-                            </Fade>
-                          </li>
-                          <li className="block ml-4 md:ml-10">
-                            <Fade left delay={300} duration={100}>
-                              <a className="text-decoration-none" href="#contact">
-                                Contact
-                              </a>
-                            </Fade>
-                          </li>
-                        </ul>
-                        <Zoom delay={300} duration={100}>
-                          <a
-                            href="https://calendly.com/ervandra/free-strategy"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="ml-4 p-2 px-4 rounded bg-black text-white text-decoration-none inline-block">
-                            Book Call
-                            <span className="animate-pulse ml-2">📞</span>
-                          </a>
-                        </Zoom>
-                      </div>
-                      <div className="block md:hidden">
-                        <Zoom delay={300}>
-                          <button
-                            className="btn bg-transparent text-2xl text-primary"
-                            onClick={() => setState({ isMenuOpen: !isMenuOpen })}
-                            style={{ width: '48px', height: '48px' }}>
-                            {isMenuOpen ? <span>×</span> : <span className="ehicon-menu" />}
-                          </button>
-                        </Zoom>
-                      </div>
-                    </nav>
-                  </div>
+                        <li className="block ml-4 md:ml-10">
+                          <BlurFade delay={0.2}>
+                            <a className="text-decoration-none" href="#about">
+                              About
+                            </a>
+                          </BlurFade>
+                        </li>
+                        <li className="block ml-4 md:ml-10">
+                          <BlurFade delay={0.3}>
+                            <a className="text-decoration-none" href="#contact">
+                              Contact
+                            </a>
+                          </BlurFade>
+                        </li>
+                      </ul>
+                      <BlurFade delay={0.4}>
+                        <button
+                          onClick={() => setState({ isOpen: true })}
+                          className="ml-4 p-2 px-4 rounded bg-black text-white text-decoration-none inline-block flex items-center border-0 cursor-pointer">
+                          Book Call
+                          <span className="animate-pulse ml-2">📞</span>
+                        </button>
+                      </BlurFade>
+                    </div>
+                    <div className="block md:hidden">
+                      <BlurFade delay={0.3}>
+                        <button
+                          className="btn bg-transparent text-2xl text-primary"
+                          onClick={() => setState({ isMenuOpen: !isMenuOpen })}
+                          style={{ width: '48px', height: '48px' }}>
+                          {isMenuOpen ? <span>×</span> : <span className="ehicon-menu" />}
+                        </button>
+                      </BlurFade>
+                    </div>
+                  </nav>
                 </div>
               </div>
             </div>
-          </header>
-        </Bounce>
+          </div>
+        </header>
 
         <section id="content" className="px-5 md:px-0 relative overflow-hidden md:-mt-18">
           <div
@@ -159,7 +153,7 @@ export default function Home() {
             <div className="container mx-auto">
               <div className="py-5 md:py-20 lg:w-1/2">
                 <div className="">
-                  <Fade duration={100}>
+                  <BlurFade delay={0.1}>
                     <h2 className="text-base text-gray-900 mb-4">
                       <span
                         className="mr-2 inline-block text-2xl animate-bounce relative"
@@ -168,25 +162,25 @@ export default function Home() {
                       </span>{' '}
                       Hi, i am Ervandra Halim.
                     </h2>
-                  </Fade>
-                  <Fade duration={500}>
+                  </BlurFade>
+                  <BlurFade delay={0.2} inView>
                     <h1 className="text-2xl xl:text-4xl font-extrabold mb-4 text-gray-900">
                       I Align Technology With Your Business Growth.
                     </h1>
-                  </Fade>
-                  <Fade delay={100} duration={100}>
+                  </BlurFade>
+                  <BlurFade delay={0.3} inView>
                     <h2 className="mb-4 font-bold text-lg md:text-2xl text-gray-900 md:mb-8">
                       Strategic tech architecture for founders, operators, and business owners who want to scale without chaos.
                     </h2>
-                  </Fade>
-                  <Fade delay={100} duration={100}>
+                  </BlurFade>
+                  <BlurFade delay={0.4} inView>
                     <p className="mb-8 text-base md:text-xl text-gray-900">
                       Think of me as your tech partner — not a vendor who disappears after delivery.
                     </p>
-                  </Fade>
+                  </BlurFade>
 
                   <div className="button-container">
-                    <Zoom delay={300} duration={100}>
+                    <BlurFade delay={0.5}>
                       <div className="flex items-center flex-wrap">
                         <a
                           href="https://calendly.com/ervandra/free-strategy"
@@ -201,109 +195,106 @@ export default function Home() {
                           See My Work →
                         </a>
                       </div>
-                    </Zoom>
+                    </BlurFade>
                   </div>
                 </div>
-                <Modal
-                  isOpen={isOpen}
-                  onRequestClose={() => setState({ success: false, isOpen: false })}
-                  contentLabel="Modal"
-                  className="reveal p-3 center small"
-                  ariaHideApp={false}>
-                  <div className="md:p-3 md:pt-4">
-                    {success ? (
-                      <div className="p-0 text-center">
-                        <h3 className="text-xl font-bold mb-2">
-                          <span
-                            className="mr-2 inline-block text-2xl animate-bounce relative"
-                            role="emoji">
-                            👍🏻
-                          </span>{' '}
-                          Thank you!
-                        </h3>
-                        <p className="text-gray-500 mb-4">
-                          I will sending you my onboarding document, so you can get the most of my
-                          expertise and leveraging them to your needs
-                        </p>
-                        <div className="flex justify-center mt-8">
-                          <button
-                            className="btn bg-gray-100 text-black p-2 px-6 mb-0 border-gray-200 border"
-                            onClick={() => {
-                              setState({ isOpen: false, success: false });
-                            }}>
-                            Close
-                          </button>
-                        </div>
-                      </div>
-                    ) : (
-                      <form onSubmit={handleSubmit} className="px-0 px-md-3">
-                        <Fade cascade top collapse delay={100}>
-                          <div>
-                            <h5 className="text-center mb-2 text-xl font-bold">
-                              Let's Connect{' '}
-                              <span
-                                role="emoji"
-                                className="animate-bounce text-xl inline-block ml-2">
-                                👇🏻
-                              </span>
-                            </h5>
-                            <p className="text-center mb-8 text-gray-500 md:px-6">
-                              I wanna connect with you properly, then we can set tech call to
-                              discuss some ideas.
-                            </p>
-                            <div className="form-group mb-4">
-                              <input
-                                type="text"
-                                className="form-control p-2 px-4 rounded border mb-0 w-full"
-                                placeholder="Your Name:"
-                                value={name}
-                                disabled={isLoading}
-                                onChange={e => setState({ name: e.target.value })}
-                              />
-                            </div>
-                            <div className="form-group mb-6">
-                              <input
-                                type="email"
-                                className="form-control p-2 px-4 rounded border mb-0 w-full"
-                                placeholder="Your Email:"
-                                required
-                                disabled={isLoading}
-                                value={email}
-                                onChange={e => setState({ email: e.target.value })}
-                              />
-                            </div>
-                            {isLoading ? (
-                              <button
-                                type="button"
-                                className="bg-gray-500 text-white cursor-not-allowed opacity-50 animate-pulse w-full rounded p-2 px-4 uppercase">
-                                Submitting..
-                              </button>
-                            ) : (
-                              <button
-                                type="submit"
-                                className="font-bold w-full p-2 px-4 rounded uppercase text-white bg-black">
-                                Get in Touch <span role="emoji animate-pulse ml-2">⚡️</span>
-                              </button>
-                            )}
-                            {/* <p className="text-center text-xs mt-4 text-gray-500 md:px-6">
-                              You will also receive my latest <u>portfolio</u> and <u>workflow</u>{' '}
-                              blueprint sent directly to your inbox.
-                            </p> */}
-                            <p className="mb-0 text-muted text-center mt-4 text-gray-500">
-                              Your privacy is protected
-                            </p>
+                <Dialog
+                  open={isOpen}
+                  onOpenChange={(open) => {
+                    if (!open) setState({ success: false, isOpen: false });
+                  }}>
+                  <DialogContent className="sm:max-w-md border-0 bg-white/90 backdrop-blur-xl">
+                    <DialogHeader className="sr-only">
+                      <DialogTitle>Contact Form</DialogTitle>
+                      <DialogDescription>Fill out this form to get in touch</DialogDescription>
+                    </DialogHeader>
+                    <div className="md:p-3 md:pt-4">
+                      {success ? (
+                        <div className="p-0 text-center">
+                          <h3 className="text-xl font-bold mb-2">
+                            <span
+                              className="mr-2 inline-block text-2xl animate-bounce relative"
+                              role="emoji">
+                              👍🏻
+                            </span>{' '}
+                            Thank you!
+                          </h3>
+                          <p className="text-gray-500 mb-4">
+                            I will sending you my onboarding document, so you can get the most of my
+                            expertise and leveraging them to your needs
+                          </p>
+                          <div className="flex justify-center mt-8">
+                            <Button
+                              variant="outline"
+                              className="px-6"
+                              onClick={() => {
+                                setState({ isOpen: false, success: false });
+                              }}>
+                              Close
+                            </Button>
                           </div>
-                        </Fade>
-                      </form>
-                    )}
-                  </div>
-
-                  <button
-                    className="btn btn-close close-reveal"
-                    onClick={() => setState({ success: false, isOpen: false })}>
-                    <span className=" text-lg ehicon-close"></span>
-                  </button>
-                </Modal>
+                        </div>
+                      ) : (
+                        <form onSubmit={handleSubmit} className="px-0 px-md-3">
+                          <BlurFade delay={0.1} offset={-10}>
+                            <div>
+                              <h5 className="text-center mb-2 text-xl font-bold">
+                                Let's Connect{' '}
+                                <span
+                                  role="emoji"
+                                  className="animate-bounce text-xl inline-block ml-2">
+                                  👇🏻
+                                </span>
+                              </h5>
+                              <p className="text-center mb-8 text-gray-500 md:px-6">
+                                I wanna connect with you properly, then we can set tech call to
+                                discuss some ideas.
+                              </p>
+                              <div className="mb-4">
+                                <Input
+                                  type="text"
+                                  className="w-full"
+                                  placeholder="Your Name:"
+                                  value={name}
+                                  disabled={isLoading}
+                                  onChange={e => setState({ name: e.target.value })}
+                                />
+                              </div>
+                              <div className="mb-6">
+                                <Input
+                                  type="email"
+                                  className="w-full"
+                                  placeholder="Your Email:"
+                                  required
+                                  disabled={isLoading}
+                                  value={email}
+                                  onChange={e => setState({ email: e.target.value })}
+                                />
+                              </div>
+                              {isLoading ? (
+                                <Button
+                                  type="button"
+                                  disabled
+                                  className="w-full uppercase animate-pulse">
+                                  Submitting..
+                                </Button>
+                              ) : (
+                                <Button
+                                  type="submit"
+                                  className="w-full uppercase font-bold">
+                                  Get in Touch <span role="emoji animate-pulse ml-2" className="ml-2">⚡️</span>
+                                </Button>
+                              )}
+                              <p className="mb-0 text-center mt-4 text-gray-500 text-sm">
+                                Your privacy is protected
+                              </p>
+                            </div>
+                          </BlurFade>
+                        </form>
+                      )}
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>
@@ -315,8 +306,7 @@ export default function Home() {
                     <div className="row md:max-w-7xl mx-auto flex flex-wrap justify-between">
                       <div className="col-12 col-md-3 order-md-2 text-end w-full md:w-3/12">
                         <div className="w-1/2 md:w-full mx-auto mb-5 md:mb-0">
-                          <Zoom right fraction={0.5}>
-                            <div className="rounded-full mb-3 mx-auto">
+                          <BlurFade delay={0.25} inView offset={0} className="rounded-full mb-3 mx-auto">
                               <Image
                                 src="/images/ervan.png"
                                 alt="Ervandra Halim"
@@ -325,20 +315,19 @@ export default function Home() {
                                 layout="responsive"
                                 className="rounded-full"
                               />
-                            </div>
-                          </Zoom>
+                          </BlurFade>
                         </div>
                       </div>
                       <div className="col-12 col-md-7 w-full md:w-8/12">
-                        <Zoom top duration={300}>
+                        <BlurFade delay={0.3} inView offset={-20}>
                           <h2 className="font-bold mb-4 text-2xl md:text-4xl">
                             <span role="emoji" className="animate-bounce inline-block">
                               🧑🏻‍💻
                             </span>{' '}
                             How I Work
                           </h2>
-                        </Zoom>
-                        <Fade delay={300}>
+                        </BlurFade>
+                        <BlurFade delay={0.3} inView>
                           <p className="mb-8 lg:text-lg">
                             Technology is only valuable if it protects revenue, reduces costs, or unlocks growth. I start with your business goals and bottlenecks — not your codebase.
                           </p>
@@ -357,7 +346,7 @@ export default function Home() {
                             <h3 className="font-bold text-xl mb-2">Transparent Partnerships</h3>
                             <p className="text-gray-700">Fixed-scope audits, clear pricing, honest capacity communication. I'll tell you if I'm not the right fit. No surprises, no scope creep.</p>
                           </div>
-                        </Fade>
+                        </BlurFade>
                       </div>
                     </div>
                   </div>
@@ -367,15 +356,15 @@ export default function Home() {
           </div>
           <div id="services" className="py-5 md:py-20 bg-gray-50 border-y border-gray-200">
             <div className="container mx-auto px-5 md:px-0">
-              <Zoom top duration={300}>
+              <BlurFade delay={0.3} inView offset={-20}>
                 <h2 className="font-bold mb-8 text-2xl md:text-4xl text-center">
                   <span role="emoji" className="animate-bounce inline-block mr-2">🤝</span>
                   How I Can Help
                 </h2>
-              </Zoom>
+              </BlurFade>
               <div className="max-w-5xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                  <Fade bottom delay={100} duration={300}>
+                  <BlurFade delay={0.1 * 2} inView>
                     <div className="bg-white p-6 rounded shadow-sm border border-gray-100 flex flex-col h-full">
                       <div className="mb-4">
                         <span className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 block">Strategic Engagement</span>
@@ -385,8 +374,8 @@ export default function Home() {
                       <p className="text-gray-600 mb-6 flex-grow">Part-time tech leadership. Strategy, architecture, team oversight, vendor management.</p>
                       <a href="https://calendly.com/ervandra/free-strategy" target="_blank" rel="noopener noreferrer" className="btn bg-black text-white w-full py-3 rounded font-bold text-center">Book Strategy Call</a>
                     </div>
-                  </Fade>
-                  <Fade bottom delay={200} duration={300}>
+                  </BlurFade>
+                  <BlurFade delay={0.2 * 2} inView>
                     <div className="bg-white p-6 rounded shadow-sm border border-gray-100 flex flex-col h-full">
                       <div className="mb-4">
                         <span className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 block">Strategic Engagement</span>
@@ -396,8 +385,8 @@ export default function Home() {
                       <p className="text-gray-600 mb-6 flex-grow">Deep dive into your ops and tech bottlenecks. You get a map, gap analysis, and 90-day roadmap.</p>
                       <a href="https://calendly.com/ervandra/free-strategy" target="_blank" rel="noopener noreferrer" className="btn bg-black text-white w-full py-3 rounded font-bold text-center">Book Strategy Call</a>
                     </div>
-                  </Fade>
-                  <Fade bottom delay={300} duration={300}>
+                  </BlurFade>
+                  <BlurFade delay={0.3 * 2} inView>
                     <div className="bg-white p-6 rounded shadow-sm border border-gray-100 flex flex-col h-full">
                       <div className="mb-4">
                         <span className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 block">Strategic Engagement</span>
@@ -407,10 +396,10 @@ export default function Home() {
                       <p className="text-gray-600 mb-6 flex-grow">Custom AI agents, workflow automation, RAG pipelines. Not demos — production systems.</p>
                       <a href="https://calendly.com/ervandra/free-strategy" target="_blank" rel="noopener noreferrer" className="btn bg-black text-white w-full py-3 rounded font-bold text-center">Book Strategy Call</a>
                     </div>
-                  </Fade>
+                  </BlurFade>
                 </div>
                 
-                <Fade bottom delay={400} duration={300}>
+                <BlurFade delay={0.4 * 2} inView>
                   <div className="bg-white p-6 md:p-8 rounded shadow-sm border border-gray-100 mb-8 flex flex-col md:flex-row items-center justify-between">
                     <div className="mb-6 md:mb-0 md:mr-8">
                       <h3 className="text-xl font-bold mb-2">Custom Development</h3>
@@ -418,15 +407,15 @@ export default function Home() {
                     </div>
                     <a href="https://calendly.com/ervandra/free-strategy" target="_blank" rel="noopener noreferrer" className="btn border-2 border-black text-black py-3 px-8 rounded font-bold text-center whitespace-nowrap hover:bg-black hover:text-white transition-colors duration-300">Let's Scope It</a>
                   </div>
-                </Fade>
+                </BlurFade>
 
-                <Fade bottom delay={500} duration={300}>
+                <BlurFade delay={0.5 * 2} inView>
                   <div className="text-center text-gray-600 mb-12 flex flex-col md:flex-row items-center justify-center">
                     Need something faster? I also run <a href="https://karyakilat.com" target="_blank" rel="noopener noreferrer" className="text-black font-bold underline ml-1">KaryaKilat.com</a> <span className="mx-1 hidden md:inline-block">—</span> <span className="block md:inline-block">premium microsites for SMEs, live in 24 hours.</span>
                   </div>
-                </Fade>
+                </BlurFade>
 
-                <Fade bottom delay={600} duration={300}>
+                <BlurFade delay={0.6 * 2} inView>
                   <div className="bg-black text-white p-6 md:p-8 rounded shadow-sm flex flex-col md:flex-row items-center justify-between">
                     <div className="mb-6 md:mb-0 md:mr-8 text-center md:text-left">
                       <h3 className="text-xl font-bold mb-2">Mentorship</h3>
@@ -434,48 +423,48 @@ export default function Home() {
                     </div>
                     <a href="mailto:hi@ervandra.com?subject=Mentorship Application" className="btn bg-white text-black py-3 px-8 rounded font-bold text-center whitespace-nowrap">Apply</a>
                   </div>
-                </Fade>
+                </BlurFade>
               </div>
             </div>
           </div>
           
           <div id="works" className="py-5 md:py-20">
             <div className="container mx-auto px-5 md:px-0">
-              <Zoom top duration={300}>
+              <BlurFade delay={0.3} inView offset={-20}>
                 <h2 className="font-bold mb-8 text-2xl md:text-4xl text-center">
                   <span role="emoji" className="animate-bounce inline-block mr-2">🚀</span>
                   Work & Impact
                 </h2>
-              </Zoom>
+              </BlurFade>
               <div className="max-w-5xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                  <Fade bottom delay={100} duration={300}>
+                  <BlurFade delay={0.1 * 2} inView>
                     <div className="bg-gray-50 border border-gray-100 p-6 rounded">
                       <h3 className="font-bold text-lg mb-2">MTF </h3>
                       <p className="text-gray-700 m-0">Leading digital transformations for several internal systems also become the business analyst for existing systems</p>
                     </div>
-                  </Fade>
-                  <Fade bottom delay={200} duration={300}>
+                  </BlurFade>
+                  <BlurFade delay={0.2 * 2} inView>
                     <div className="bg-gray-50 border border-gray-100 p-6 rounded">
                       <h3 className="font-bold text-lg mb-2">R/GA</h3>
                       <p className="text-gray-700 m-0">10+ Fortune 500 campaigns delivered — inducted into R/GA Hall of Immortality</p>
                     </div>
-                  </Fade>
-                  <Fade bottom delay={300} duration={300}>
+                  </BlurFade>
+                  <BlurFade delay={0.3 * 2} inView>
                     <div className="bg-gray-50 border border-gray-100 p-6 rounded">
                       <h3 className="font-bold text-lg mb-2">CIAYO</h3>
                       <p className="text-gray-700 m-0">Leading team to build web platform from scratch to 656,000 registered users</p>
                     </div>
-                  </Fade>
-                  <Fade bottom delay={400} duration={300}>
+                  </BlurFade>
+                  <BlurFade delay={0.4 * 2} inView>
                     <div className="bg-gray-50 border border-gray-100 p-6 rounded">
                       <h3 className="font-bold text-lg mb-2">LifeLearn Platform</h3>
                       <p className="text-gray-700 m-0">Saved 40+ engineering hours/month, without a backend rewrite</p>
                     </div>
-                  </Fade>
+                  </BlurFade>
                 </div>
 
-                <Fade bottom delay={500} duration={300}>
+                <BlurFade delay={0.5 * 2} inView>
                   <div className="mb-8">
                     <p className="text-center text-sm font-bold tracking-widest text-gray-400 uppercase mb-6">TRUSTED BY TEAMS AT</p>
                     <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 opacity-60 grayscale filter px-4">
@@ -490,7 +479,7 @@ export default function Home() {
                       <span className="text-xl font-bold">CakraStudio</span>
                     </div>
                   </div>
-                </Fade>
+                </BlurFade>
 
                 <div className="text-center">
                   <a href="/works" className="inline-block border-b-2 border-black font-bold text-lg hover:text-gray-600 hover:border-gray-600 transition-colors pb-1">See All Case Studies →</a>
@@ -501,14 +490,14 @@ export default function Home() {
 
           <div id="availability" className="py-5 md:py-20 bg-gray-50 border-y border-gray-200">
             <div className="container mx-auto px-5 md:px-0">
-              <Zoom top duration={300}>
+              <BlurFade delay={0.3} inView>
                 <h2 className="font-bold mb-8 text-2xl md:text-4xl text-center">
                   <span role="emoji" className="animate-bounce inline-block mr-4">📅</span>
                  My Availability
                 </h2>
-              </Zoom>
+              </BlurFade>
               <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-                <Fade bottom duration={300}>
+                <BlurFade delay={0.3} inView>
                   <div className="p-4 bg-white h-full rounded-lg shadow">
                     <h3 className="font-bold text-xl mb-4 text-black border-b border-gray-200 pb-2">Active Projects</h3>
                     <ul className="list-disc pl-5 text-gray-700 space-y-2">
@@ -517,8 +506,8 @@ export default function Home() {
                       <li>NDA consulting engagements with corporates &amp; startups</li>
                     </ul>
                   </div>
-                </Fade>
-                <Fade bottom delay={100} duration={300}>
+                </BlurFade>
+                <BlurFade delay={0.4} inView>
                   <div className="p-4 bg-white h-full rounded-lg shadow">
                     <h3 className="font-bold text-xl mb-4 text-green-700 border-b border-gray-200 pb-2">Capacity</h3>
                     <ul className="list-disc pl-5 text-gray-700 space-y-2">
@@ -528,13 +517,13 @@ export default function Home() {
                       <li>Custom development for critical paths</li>
                     </ul>
                   </div>
-                </Fade>
+                </BlurFade>
               </div>
-              <Fade bottom delay={300} duration={300}>
+              <BlurFade delay={0.6} inView>
                 <div className="max-w-3xl mx-auto mt-12 text-center text-lg text-gray-600 italic">
                   "If your needs align with my availability, let's talk. If I'm not the right fit, I'll tell you — and recommend alternatives."
                 </div>
-              </Fade>
+              </BlurFade>
             </div>
           </div>
 
@@ -543,12 +532,12 @@ export default function Home() {
               <div className="row justify-center">
                 <div className="col">
                   <div className="py-3 pt-20 md:py-5">
-                    <Fade delay={300}>
+                    <BlurFade delay={0.3} inView>
                       <h4 className="text-xl md:text-2xl mb-0 text-center relative">
                         Why'd they recommend to
                       </h4>
 
-                      <Zoom top duration={300}>
+                      <BlurFade delay={0.5} inView offset={-20}>
                         <h2 className="text-2xl md:text-4xl mb-8 text-center font-bold text-warning">
                           <span
                             className="mr-2 inline-block text-2xl animate-bounce relative"
@@ -557,12 +546,12 @@ export default function Home() {
                           </span>{' '}
                           Work With Ervan?
                         </h2>
-                      </Zoom>
+                      </BlurFade>
                       <p className="md:text-xl mb-8 text-center">
                         My partner and valuable clients will tell you their experiences to work with
                         me.
                       </p>
-                    </Fade>
+                    </BlurFade>
                   </div>
                 </div>
               </div>
@@ -573,7 +562,7 @@ export default function Home() {
                   {profile.testimonials.map((testimony, index) => {
                     return (
                       <div className="min-w-[70vw] md:min-w-[33vw]" key={index}>
-                        <Fade duration={300}>
+                        <BlurFade delay={0.3} inView>
                           <div className="testimony-item mb-3">
                             <div className="card rounded bg-white bg-opacity-50 filter backdrop-blur-lg shadow-lg border">
                               <div className="card-body p-5">
@@ -616,7 +605,7 @@ export default function Home() {
                               </div>
                             </div>
                           </div>
-                        </Fade>
+                        </BlurFade>
                       </div>
                     );
                   })}
@@ -632,15 +621,15 @@ export default function Home() {
                   <div className="py-3 py-md-5">
                     <div className="text-center">
                       <h2 className="text-2xl md:text-4xl mb-4 text-center font-bold">
-                        <Zoom cascade top duration={300}>
+                        <BlurFade delay={0.3} inView>
                           If your needs align, let's talk.
-                        </Zoom>
+                        </BlurFade>
                       </h2>
                       <p className="mb-8 md:text-lg text-center text-gray-700">
                         I'll tell you upfront if I'm not the right fit —<br className="hidden md:block" />
                         and point you somewhere better if I'm not.
                       </p>
-                      <Zoom delay={300} duration={300}>
+                      <BlurFade delay={0.6} inView offset={-20}>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                           <a
                             href="https://calendly.com/ervandra/free-strategy"
@@ -657,7 +646,7 @@ export default function Home() {
                             Message on WhatsApp
                           </a>
                         </div>
-                      </Zoom>
+                      </BlurFade>
                     </div>
                   </div>
                 </div>
@@ -673,7 +662,7 @@ export default function Home() {
                   <ul className="social-list m-0 p-0 flex justify-center py-2 mb-3">
                     {profile.socialLinks.map((social, index) => (
                       <li className="block px-3" key={social.icon + index}>
-                        <Fade delay={index * 200} duration={500}>
+                        <BlurFade delay={0.1 * index} inView>
                           <a
                             href={`${social.link}`}
                             target="_blank"
@@ -681,23 +670,23 @@ export default function Home() {
                             title={social.id}>
                             <span className={`ehicon-${social.icon}`} />
                           </a>
-                        </Fade>
+                        </BlurFade>
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div className="text-center copyright">
-                  <Fade>
+                  <BlurFade delay={0.2} inView>
                     <p className="mb-0 small flex items-center justify-center">
                       <span>&copy;2011-{new Date().getFullYear()}</span>
                       <strong className="flex items-center justify-center mx-2">
                         Ervandra Halim{' '}
-                        <Flash delay={1000}>
-                          <span className="ms-1">⚡️</span>
-                        </Flash>
+                        <BlurFade delay={0.5} inView className="ms-1 inline-block">
+                          <span>⚡️</span>
+                        </BlurFade>
                       </strong>
                     </p>
-                  </Fade>
+                  </BlurFade>
                 </div>
               </div>
             </div>
@@ -705,11 +694,11 @@ export default function Home() {
         </footer>
 
         <div className="side-elements left">
-          <Bounce left delay={300} duration={300}>
+          <BlurFade delay={0.3} inView offset={20}>
             <ul className="social-list side-element-item">
               {profile.socialLinks.map((social, index) => (
                 <li key={social.icon + index}>
-                  <Fade delay={index * 200 + 300} duration={300}>
+                  <BlurFade delay={0.1 * index + 0.3} inView>
                     <a
                       href={`${social.link}`}
                       target="_blank"
@@ -717,23 +706,23 @@ export default function Home() {
                       title={social.id}>
                       <span className={`ehicon-${social.icon}`} />
                     </a>
-                  </Fade>
+                  </BlurFade>
                 </li>
               ))}
             </ul>
-          </Bounce>
+          </BlurFade>
         </div>
 
         <div className="side-elements right">
-          <Bounce right delay={300} duration={300}>
+          <BlurFade delay={0.3} inView offset={20}>
             <div className="email-link side-element-item">
               <a href="mailto:ervandra.halim@gmail.com" target="_blank" rel="noopener noreferrer">
-                <Zoom top cascade delay={300} duration={300}>
+                <BlurFade delay={0.3} inView offset={-10}>
                   ervandra.halim@gmail.com
-                </Zoom>
+                </BlurFade>
               </a>
             </div>
-          </Bounce>
+          </BlurFade>
         </div>
 
         {isMenuOpen && (
@@ -759,36 +748,35 @@ export default function Home() {
               className="m-0 p-0 block mb-5 fw-bold"
               onClick={() => setState({ isMenuOpen: false })}>
               <li className="block mb-4">
-                <Fade when={isMenuOpen} bottom delay={0} duration={300}>
+                <BlurFade delay={0.1}>
                   <a className="text-decoration-none block" href="#about">
                     About
                   </a>
-                </Fade>
+                </BlurFade>
               </li>
               <li className="block mb-4">
-                <Fade when={isMenuOpen} bottom delay={300} duration={300}>
+                <BlurFade delay={0.2}>
                   <a className="text-decoration-none block" href="#experience">
                     Experience
                   </a>
-                </Fade>
+                </BlurFade>
               </li>
               <li className="block mb-4">
-                <Fade when={isMenuOpen} bottom delay={600} duration={300}>
+                <BlurFade delay={0.3}>
                   <a className="text-decoration-none block" href="#testimonial">
                     Testimonial
                   </a>
-                </Fade>
+                </BlurFade>
               </li>
               <li className="block mb-4">
-                <Fade when={isMenuOpen} bottom delay={900} duration={300}>
+                <BlurFade delay={0.4}>
                   <a className="text-decoration-none block" href="#contact">
                     Contact
                   </a>
-                </Fade>
+                </BlurFade>
               </li>
             </ul>
-            <Zoom bottom when={isMenuOpen} delay={1200} duration={500}>
-              {/* <Pulse forever={true} delay={1500} duration={2000}> */}
+            <BlurFade delay={0.5}>
               <button
                 className="btn p-3 px-4 w-full bg-black uppercase text-white font-bold"
                 onClick={() => setState({ isOpen: true })}>
@@ -797,8 +785,7 @@ export default function Home() {
                   ⚡️
                 </span>
               </button>
-              {/* </Pulse> */}
-            </Zoom>
+            </BlurFade>
           </div>
         </div>
       </div>
