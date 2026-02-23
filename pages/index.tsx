@@ -4,706 +4,597 @@ import Image from 'next/image';
 import profile from '../config/profile';
 import { useSetState } from '@ervandra/use-setstate';
 import { BlurFade } from '../components/ui/blur-fade';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../components/ui/dialog';
-import { Input } from '../components/ui/input';
-import { Button } from '../components/ui/button';
-import Accordion from '../components/molecules/Accordion/Accordion';
-
-import { subscribeForm } from '../libs/apis';
 
 export default function Home() {
   const initialState = {
-    isOpen: false,
-    name: '',
-    email: '',
-    isLoading: false,
-    isError: false,
-    success: false,
-    workTab: 0,
     isMenuOpen: false,
     isReady: false,
   };
 
   const { state, setState } = useSetState(initialState);
-  const { isOpen, name, email, isLoading, isMenuOpen, success, workTab, isReady } = state;
-  const handleSubmit = async e => {
-    e.preventDefault();
-    setState({ isLoading: true, isError: false, success: false });
-    const payload = {
-      lists: process.env.NEXT_PUBLIC_KE_LIST_ID,
-      email,
-      full_name: name,
-      tags: 'dev-strategy, via-api',
-    };
-    await subscribeForm(payload)
-      .then(resp => {
-        if (resp.status === 200) {
-          setState({ success: true, name: '', email: '' });
-        }
-      })
-      .catch(err => {
-        console.log('errors,', err);
-        setState({ isError: true });
-      })
-      .finally(() => setState({ isLoading: false }));
-  };
+  const { isMenuOpen, isReady } = state;
+
   useEffect(() => {
     setTimeout(() => {
       setState({ isReady: true });
     }, 100);
   }, []);
+
+  const calendlyUrl = 'https://calendly.com/ervandra/free-strategy';
+  const waUrl = `https://wa.me/${profile.phone.replace('+', '')}`;
+
   return (
     <div>
       <Head>
-        <title>
-          {profile.name} | Strategic Systems Architect & Tech Partner
-        </title>
+        <title>{profile.name} | Strategic Tech Partner</title>
         <meta name="description" content={profile.intro} key="sitedesc" />
         <meta name="author" content={profile.name} />
         <meta name="twitter:card" content="summary" key="twcard" />
         <meta name="twitter:creator" content="@ervandracom" key="twhandle" />
         <meta property="og:image" content="/images/cover.png" key="ogimage" />
-        <meta
-          property="og:site_name"
-          content={`${profile.name} | ${profile.mission}`}
-          key="ogsitename"
-        />
+        <meta property="og:site_name" content={`${profile.name} | ${profile.mission}`} key="ogsitename" />
         <meta property="og:title" content={`${profile.name} - ${profile.mission}`} key="ogtitle" />
         <meta property="og:description" content={profile.intro} key="ogdesc" />
       </Head>
-      <div
-        id="app-container"
-        className={`${isReady ? 'is-ready' : ''} ${isMenuOpen ? 'is-menu-open' : ''}`}>
-        <header
-          id="header"
-          className={`${isMenuOpen ? '' : 'sticky top-0'} shadow py-2 z-30`}
-          style={{ backdropFilter: 'blur(5px)' }}>
-          <div className="container-fluid container mx-auto">
-            <div className="grid grid-cols-12">
-              <div className="col-span-12">
-                <div className="flex items-center justify-between mx-5 md:mx-0">
-                  <BlurFade delay={0.3} inView>
-                    <div className="logo text-black h-10 my-2">
-                      <Image
-                        src="/images/logo-5.svg"
-                        alt="Ervandra Halim"
-                        width="40"
-                        height="40"
-                        layout="intrinsic"
-                        className="block"
-                      />
-                    </div>
-                  </BlurFade>
-                  <nav id="mainmenu">
-                    <div className="hidden md:flex justify-end items-center">
-                      <ul className="m-0 mr-4 flex">
-                        <li className="block ml-4 md:ml-10">
-                          <BlurFade delay={0.1}>
-                            <a className="text-decoration-none" href="/works">
-                              Works
-                            </a>
-                          </BlurFade>
-                        </li>
 
-                        <li className="block ml-4 md:ml-10">
-                          <BlurFade delay={0.2}>
-                            <a className="text-decoration-none" href="#about">
-                              About
-                            </a>
-                          </BlurFade>
-                        </li>
-                        <li className="block ml-4 md:ml-10">
-                          <BlurFade delay={0.3}>
-                            <a className="text-decoration-none" href="#contact">
-                              Contact
-                            </a>
-                          </BlurFade>
-                        </li>
-                      </ul>
-                      <BlurFade delay={0.4}>
-                        <button
-                          onClick={() => setState({ isOpen: true })}
-                          className="ml-4 p-2 px-4 rounded bg-black text-white text-decoration-none inline-block flex items-center border-0 cursor-pointer">
-                          Book Call
-                          <span className="animate-pulse ml-2">📞</span>
-                        </button>
-                      </BlurFade>
-                    </div>
-                    <div className="block md:hidden">
-                      <BlurFade delay={0.3}>
-                        <button
-                          className="btn bg-transparent text-2xl text-primary"
-                          onClick={() => setState({ isMenuOpen: !isMenuOpen })}
-                          style={{ width: '48px', height: '48px' }}>
-                          {isMenuOpen ? <span>×</span> : <span className="ehicon-menu" />}
-                        </button>
-                      </BlurFade>
-                    </div>
-                  </nav>
+      <div id="app-container" className={`${isReady ? 'is-ready' : ''} ${isMenuOpen ? 'is-menu-open' : ''}`}>
+
+        {/* ═══════════ HEADER ═══════════ */}
+        <header id="header" className={`${isMenuOpen ? '' : 'sticky top-0'} py-3 z-30`}>
+          <div className="container mx-auto px-5 md:px-8 xl:px-0 max-w-6xl">
+            <div className="flex items-center justify-between">
+              <BlurFade delay={0.2} inView>
+                <a href="/" className="block">
+                  <Image src="/images/logo-5.svg" alt="Ervandra Halim" width="36" height="36" layout="intrinsic" />
+                </a>
+              </BlurFade>
+              <nav id="mainmenu">
+                <div className="hidden md:flex items-center">
+                  <ul className="m-0 flex items-center">
+                    <li className="block ml-8">
+                      <BlurFade delay={0.1}><a href="/works">Works</a></BlurFade>
+                    </li>
+                    <li className="block ml-8">
+                      <BlurFade delay={0.15}><a href="#about">About</a></BlurFade>
+                    </li>
+                    <li className="block ml-8">
+                      <BlurFade delay={0.2}><a href="#contact">Contact</a></BlurFade>
+                    </li>
+                  </ul>
+                  <BlurFade delay={0.25}>
+                    <a
+                      href={calendlyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-8 py-2.5 px-6 rounded-md text-sm font-semibold transition-all duration-300"
+                      style={{ backgroundColor: '#1B4D4F', color: '#FAFAF8' }}
+                    >
+                      Book Call
+                    </a>
+                  </BlurFade>
                 </div>
-              </div>
+                <div className="block md:hidden">
+                  <BlurFade delay={0.2}>
+                    <button
+                      className="bg-transparent text-2xl p-2"
+                      style={{ width: '44px', height: '44px', border: 'none' }}
+                      onClick={() => setState({ isMenuOpen: !isMenuOpen })}
+                    >
+                      {isMenuOpen ? <span>×</span> : <span className="ehicon-menu" />}
+                    </button>
+                  </BlurFade>
+                </div>
+              </nav>
             </div>
           </div>
         </header>
 
-        <section id="content" className="px-5 md:px-0 relative overflow-hidden md:-mt-18">
-          <div
-            id="hero"
-            className="py-4 md:py-10 bg-opacity-10 relative wide:min-h-screen min-h-[50vw] flex flex-col justify-center">
-            <div className="container mx-auto">
-              <div className="py-5 md:py-20 lg:w-1/2">
-                <div className="">
-                  <BlurFade delay={0.1}>
-                    <h2 className="text-base text-gray-900 mb-4">
-                      <span
-                        className="mr-2 inline-block text-2xl animate-bounce relative"
-                        role="emoji">
-                        👋🏻
-                      </span>{' '}
-                      Hi, i am Ervandra Halim.
-                    </h2>
-                  </BlurFade>
+        <section id="content" className="relative overflow-hidden md:-mt-16">
+
+          {/* ═══════════ 1. HERO ═══════════ */}
+          <div id="hero" className="py-8 md:py-16 relative min-h-[50vw] wide:min-h-screen flex flex-col justify-center">
+            <div className="container mx-auto px-5 md:px-8 xl:px-0 max-w-6xl">
+              <div className="py-8 md:py-20 lg:w-7/12">
+                <BlurFade delay={0.1}>
+                  <p className="text-base mb-4" style={{ color: '#6B7280' }}>
+                    👋 Hi, I'm Ervandra Halim.
+                  </p>
+                </BlurFade>
+                <BlurFade delay={0.2} inView>
+                  <h1 className="text-3xl md:text-5xl xl:text-6xl mb-6 leading-tight">
+                    I Align Technology With<br className="hidden md:block" /> Your Business Growth.
+                  </h1>
+                </BlurFade>
+                <BlurFade delay={0.3} inView>
+                  <p className="text-lg md:text-xl mb-3" style={{ color: '#1A1A1A' }}>
+                    Strategic tech architecture for founders and business owners who need a partner — not another vendor.
+                  </p>
+                </BlurFade>
+                <BlurFade delay={0.35} inView>
+                  <p className="text-base mb-10" style={{ color: '#6B7280' }}>
+                    15+ years building systems that scale. From startups to Fortune 500.
+                  </p>
+                </BlurFade>
+                <BlurFade delay={0.4}>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a
+                      href={calendlyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="py-3.5 px-8 rounded-md font-semibold text-base text-center transition-all duration-300 hover:opacity-90"
+                      style={{ backgroundColor: '#1B4D4F', color: '#FAFAF8' }}
+                    >
+                      Book Free Strategy Call
+                    </a>
+                    <a
+                      href="#works"
+                      className="py-3.5 px-8 rounded-md font-semibold text-base text-center transition-all duration-300 border-2 hover:opacity-80"
+                      style={{ borderColor: '#1A1A1A', color: '#1A1A1A' }}
+                    >
+                      See My Work →
+                    </a>
+                  </div>
+                </BlurFade>
+              </div>
+            </div>
+          </div>
+
+          {/* ═══════════ 2. HOW I WORK ═══════════ */}
+          <div id="about" className="py-16 md:py-24">
+            <div className="container mx-auto px-5 md:px-8 xl:px-0 max-w-6xl">
+              <div className="flex flex-wrap md:flex-nowrap gap-12 md:gap-20 items-start">
+                <div className="w-full md:w-4/12 shrink-0">
                   <BlurFade delay={0.2} inView>
-                    <h1 className="text-2xl xl:text-4xl font-extrabold mb-4 text-gray-900">
-                      I Align Technology With Your Business Growth.
-                    </h1>
+                    <div className="w-48 md:w-full mx-auto md:mx-0 mb-6 md:mb-0">
+                      <Image
+                        src="/images/ervan.png"
+                        alt="Ervandra Halim"
+                        width={300}
+                        height={300}
+                        layout="responsive"
+                        className="rounded-2xl"
+                      />
+                    </div>
+                  </BlurFade>
+                </div>
+                <div className="w-full md:w-8/12">
+                  <BlurFade delay={0.2} inView>
+                    <p className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: '#C9973E' }}>
+                      How I Work
+                    </p>
+                  </BlurFade>
+                  <BlurFade delay={0.25} inView>
+                    <h2 className="text-2xl md:text-4xl mb-6">
+                      Technology projects fail not because of bad code — but because of misaligned goals.
+                    </h2>
                   </BlurFade>
                   <BlurFade delay={0.3} inView>
-                    <h2 className="mb-4 font-bold text-lg md:text-2xl text-gray-900 md:mb-8">
-                      Strategic tech architecture for founders, operators, and business owners who want to scale without chaos.
-                    </h2>
-                  </BlurFade>
-                  <BlurFade delay={0.4} inView>
-                    <p className="mb-8 text-base md:text-xl text-gray-900">
-                      Think of me as your tech partner — not a vendor who disappears after delivery.
+                    <p className="text-base mb-10" style={{ color: '#6B7280' }}>
+                      I've spent 15 years learning this. Every engagement starts with understanding your business — not your codebase.
                     </p>
                   </BlurFade>
 
-                  <div className="button-container">
-                    <BlurFade delay={0.5}>
-                      <div className="flex items-center flex-wrap">
-                        <a
-                          href="https://calendly.com/ervandra/free-strategy"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn btn-outline-success p-3 px-4 md:p-4 md:px-8 font-bold text-base md:text-lg bg-black text-white rounded w-full md:w-auto text-center block md:inline-block mb-4 md:mb-0">
-                          Book Free Strategy Call
-                        </a>
-                        <a
-                          href="/works"
-                          className="btn btn-outline-success p-3 px-4 md:p-4 md:px-8 font-bold text-base md:text-lg border-2 border-black text-black rounded w-full md:w-auto text-center block md:inline-block md:ml-4 bg-transparent hover:bg-black hover:text-white transition-colors duration-300">
-                          See My Work →
-                        </a>
+                  <div className="space-y-8">
+                    <BlurFade delay={0.35} inView>
+                      <div className="flex gap-4">
+                        <div className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: '#1B4D4F', color: '#FAFAF8' }}>1</div>
+                        <div>
+                          <h3 className="text-xl mb-2" style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}>Strategic Before Technical</h3>
+                          <p className="text-base" style={{ color: '#6B7280' }}>
+                            I start with your business goals, not technology trends. What are you trying to achieve? Where are the bottlenecks? Only then do we talk solutions.
+                          </p>
+                        </div>
+                      </div>
+                    </BlurFade>
+                    <BlurFade delay={0.4} inView>
+                      <div className="flex gap-4">
+                        <div className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: '#1B4D4F', color: '#FAFAF8' }}>2</div>
+                        <div>
+                          <h3 className="text-xl mb-2" style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}>Systems That Scale Without You</h3>
+                          <p className="text-base" style={{ color: '#6B7280' }}>
+                            Every solution I build is designed to work independently. Documented, maintainable, and structured so your team can operate it — or hand it off entirely.
+                          </p>
+                        </div>
+                      </div>
+                    </BlurFade>
+                    <BlurFade delay={0.45} inView>
+                      <div className="flex gap-4">
+                        <div className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: '#1B4D4F', color: '#FAFAF8' }}>3</div>
+                        <div>
+                          <h3 className="text-xl mb-2" style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}>Transparent Partnerships</h3>
+                          <p className="text-base" style={{ color: '#6B7280' }}>
+                            Fixed-scope audits, clear pricing, honest capacity communication. I'll tell you if I'm not the right fit. No surprises, no scope creep.
+                          </p>
+                        </div>
                       </div>
                     </BlurFade>
                   </div>
                 </div>
-                <Dialog
-                  open={isOpen}
-                  onOpenChange={(open) => {
-                    if (!open) setState({ success: false, isOpen: false });
-                  }}>
-                  <DialogContent className="sm:max-w-md border-0 bg-white/90 backdrop-blur-xl">
-                    <DialogHeader className="sr-only">
-                      <DialogTitle>Contact Form</DialogTitle>
-                      <DialogDescription>Fill out this form to get in touch</DialogDescription>
-                    </DialogHeader>
-                    <div className="md:p-3 md:pt-4">
-                      {success ? (
-                        <div className="p-0 text-center">
-                          <h3 className="text-xl font-bold mb-2">
-                            <span
-                              className="mr-2 inline-block text-2xl animate-bounce relative"
-                              role="emoji">
-                              👍🏻
-                            </span>{' '}
-                            Thank you!
-                          </h3>
-                          <p className="text-gray-500 mb-4">
-                            I will sending you my onboarding document, so you can get the most of my
-                            expertise and leveraging them to your needs
-                          </p>
-                          <div className="flex justify-center mt-8">
-                            <Button
-                              variant="outline"
-                              className="px-6"
-                              onClick={() => {
-                                setState({ isOpen: false, success: false });
-                              }}>
-                              Close
-                            </Button>
-                          </div>
-                        </div>
-                      ) : (
-                        <form onSubmit={handleSubmit} className="px-0 px-md-3">
-                          <BlurFade delay={0.1} offset={-10}>
-                            <div>
-                              <h5 className="text-center mb-2 text-xl font-bold">
-                                Let's Connect{' '}
-                                <span
-                                  role="emoji"
-                                  className="animate-bounce text-xl inline-block ml-2">
-                                  👇🏻
-                                </span>
-                              </h5>
-                              <p className="text-center mb-8 text-gray-500 md:px-6">
-                                I wanna connect with you properly, then we can set tech call to
-                                discuss some ideas.
-                              </p>
-                              <div className="mb-4">
-                                <Input
-                                  type="text"
-                                  className="w-full"
-                                  placeholder="Your Name:"
-                                  value={name}
-                                  disabled={isLoading}
-                                  onChange={e => setState({ name: e.target.value })}
-                                />
-                              </div>
-                              <div className="mb-6">
-                                <Input
-                                  type="email"
-                                  className="w-full"
-                                  placeholder="Your Email:"
-                                  required
-                                  disabled={isLoading}
-                                  value={email}
-                                  onChange={e => setState({ email: e.target.value })}
-                                />
-                              </div>
-                              {isLoading ? (
-                                <Button
-                                  type="button"
-                                  disabled
-                                  className="w-full uppercase animate-pulse">
-                                  Submitting..
-                                </Button>
-                              ) : (
-                                <Button
-                                  type="submit"
-                                  className="w-full uppercase font-bold">
-                                  Get in Touch <span role="emoji animate-pulse ml-2" className="ml-2">⚡️</span>
-                                </Button>
-                              )}
-                              <p className="mb-0 text-center mt-4 text-gray-500 text-sm">
-                                Your privacy is protected
-                              </p>
-                            </div>
-                          </BlurFade>
-                        </form>
-                      )}
-                    </div>
-                  </DialogContent>
-                </Dialog>
               </div>
             </div>
           </div>
-          <div id="about" className="py-5 md:py-20 -mt-20 md:mt-0">
-            <div className="container">
-              <div className="row justify-center pt-20 md:pt-0">
-                <div className="col-12 col-lg-10">
-                  <div className="py-3 py-md-5">
-                    <div className="row md:max-w-7xl mx-auto flex flex-wrap justify-between">
-                      <div className="col-12 col-md-3 order-md-2 text-end w-full md:w-3/12">
-                        <div className="w-1/2 md:w-full mx-auto mb-5 md:mb-0">
-                          <BlurFade delay={0.25} inView offset={0} className="rounded-full mb-3 mx-auto">
-                              <Image
-                                src="/images/ervan.png"
-                                alt="Ervandra Halim"
-                                width="300"
-                                height="300"
-                                layout="responsive"
-                                className="rounded-full"
-                              />
-                          </BlurFade>
-                        </div>
-                      </div>
-                      <div className="col-12 col-md-7 w-full md:w-8/12">
-                        <BlurFade delay={0.3} inView offset={-20}>
-                          <h2 className="font-bold mb-4 text-2xl md:text-4xl">
-                            <span role="emoji" className="animate-bounce inline-block">
-                              🧑🏻‍💻
-                            </span>{' '}
-                            How I Work
-                          </h2>
-                        </BlurFade>
-                        <BlurFade delay={0.3} inView>
-                          <p className="mb-8 lg:text-lg">
-                            Technology is only valuable if it protects revenue, reduces costs, or unlocks growth. I start with your business goals and bottlenecks — not your codebase.
-                          </p>
-                          
-                          <div className="mb-6">
-                            <h3 className="font-bold text-xl mb-2">Strategic Before Technical</h3>
-                            <p className="text-gray-700">I start with your business goals, not technology trends. What are you trying to achieve? Where are the bottlenecks? Only then do we talk solutions.</p>
-                          </div>
-                          
-                          <div className="mb-6">
-                            <h3 className="font-bold text-xl mb-2">Systems That Scale Without You</h3>
-                            <p className="text-gray-700">Every solution I build is designed to work independently. Documented, maintainable, and structured so your team can operate it — or hand it off entirely.</p>
-                          </div>
-                          
-                          <div className="mb-6">
-                            <h3 className="font-bold text-xl mb-2">Transparent Partnerships</h3>
-                            <p className="text-gray-700">Fixed-scope audits, clear pricing, honest capacity communication. I'll tell you if I'm not the right fit. No surprises, no scope creep.</p>
-                          </div>
-                        </BlurFade>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="services" className="py-5 md:py-20 bg-gray-50 border-y border-gray-200">
-            <div className="container mx-auto px-5 md:px-0">
-              <BlurFade delay={0.3} inView offset={-20}>
-                <h2 className="font-bold mb-8 text-2xl md:text-4xl text-center">
-                  <span role="emoji" className="animate-bounce inline-block mr-2">🤝</span>
-                  How I Can Help
-                </h2>
+
+          {/* ═══════════ 3. SERVICES ═══════════ */}
+          <div id="services" className="py-16 md:py-24" style={{ backgroundColor: '#F5F3EF' }}>
+            <div className="container mx-auto px-5 md:px-8 xl:px-0 max-w-6xl">
+              <BlurFade delay={0.2} inView>
+                <p className="text-xs font-semibold tracking-widest uppercase mb-4 text-center" style={{ color: '#C9973E' }}>
+                  Services
+                </p>
               </BlurFade>
-              <div className="max-w-5xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                  <BlurFade delay={0.1 * 2} inView>
-                    <div className="bg-white p-6 rounded shadow-sm border border-gray-100 flex flex-col h-full">
-                      <div className="mb-4">
-                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 block">Strategic Engagement</span>
-                        <h3 className="text-xl font-bold mb-1">Fractional CTO</h3>
-                        <p className="text-primary font-medium text-sm"><span className="text-gray-400 text-xs">Starting from</span> IDR 15M/month</p>
-                      </div>
-                      <p className="text-gray-600 mb-6 flex-grow">Part-time tech leadership. Strategy, architecture, team oversight, vendor management.</p>
-                      <a href="https://calendly.com/ervandra/free-strategy" target="_blank" rel="noopener noreferrer" className="btn bg-black text-white w-full py-3 rounded font-bold text-center">Book Strategy Call</a>
-                    </div>
-                  </BlurFade>
-                  <BlurFade delay={0.2 * 2} inView>
-                    <div className="bg-white p-6 rounded shadow-sm border border-gray-100 flex flex-col h-full">
-                      <div className="mb-4">
-                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 block">Strategic Engagement</span>
-                        <h3 className="text-xl font-bold mb-1">Systems Audit & Design</h3>
-                        <p className="text-primary font-medium text-sm">IDR 5M / 2 weeks</p>
-                      </div>
-                      <p className="text-gray-600 mb-6 flex-grow">Deep dive into your ops and tech bottlenecks. You get a map, gap analysis, and 90-day roadmap.</p>
-                      <a href="https://calendly.com/ervandra/free-strategy" target="_blank" rel="noopener noreferrer" className="btn bg-black text-white w-full py-3 rounded font-bold text-center">Book Strategy Call</a>
-                    </div>
-                  </BlurFade>
-                  <BlurFade delay={0.3 * 2} inView>
-                    <div className="bg-white p-6 rounded shadow-sm border border-gray-100 flex flex-col h-full">
-                      <div className="mb-4">
-                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 block">Strategic Engagement</span>
-                        <h3 className="text-xl font-bold mb-1">Custom AI Implementation</h3>
-                        <p className="text-primary font-medium text-sm"><span className="text-gray-400 text-xs">Starting from</span> IDR 10M</p>
-                      </div>
-                      <p className="text-gray-600 mb-6 flex-grow">Custom AI agents, workflow automation, RAG pipelines. Not demos — production systems.</p>
-                      <a href="https://calendly.com/ervandra/free-strategy" target="_blank" rel="noopener noreferrer" className="btn bg-black text-white w-full py-3 rounded font-bold text-center">Book Strategy Call</a>
-                    </div>
-                  </BlurFade>
-                </div>
-                
-                <BlurFade delay={0.4 * 2} inView>
-                  <div className="bg-white p-6 md:p-8 rounded shadow-sm border border-gray-100 mb-8 flex flex-col md:flex-row items-center justify-between">
-                    <div className="mb-6 md:mb-0 md:mr-8">
-                      <h3 className="text-xl font-bold mb-2">Custom Development</h3>
-                      <p className="text-gray-600 mb-0">Scoped, project-based engagements for critical systems that need to be built right.</p>
-                    </div>
-                    <a href="https://calendly.com/ervandra/free-strategy" target="_blank" rel="noopener noreferrer" className="btn border-2 border-black text-black py-3 px-8 rounded font-bold text-center whitespace-nowrap hover:bg-black hover:text-white transition-colors duration-300">Let's Scope It</a>
-                  </div>
-                </BlurFade>
-
-                <BlurFade delay={0.5 * 2} inView>
-                  <div className="text-center text-gray-600 mb-12 flex flex-col md:flex-row items-center justify-center">
-                    Need something faster? I also run <a href="https://karyakilat.com" target="_blank" rel="noopener noreferrer" className="text-black font-bold underline ml-1">KaryaKilat.com</a> <span className="mx-1 hidden md:inline-block">—</span> <span className="block md:inline-block">premium microsites for SMEs, live in 24 hours.</span>
-                  </div>
-                </BlurFade>
-
-                <BlurFade delay={0.6 * 2} inView>
-                  <div className="bg-black text-white p-6 md:p-8 rounded shadow-sm flex flex-col md:flex-row items-center justify-between">
-                    <div className="mb-6 md:mb-0 md:mr-8 text-center md:text-left">
-                      <h3 className="text-xl font-bold mb-2">Mentorship</h3>
-                      <p className="text-gray-300 mb-0 text-sm">1-on-1 guidance for developers, PMs, and aspiring tech leaders. Limited slots. Application required.</p>
-                    </div>
-                    <a href="mailto:hi@ervandra.com?subject=Mentorship Application" className="btn bg-white text-black py-3 px-8 rounded font-bold text-center whitespace-nowrap">Apply</a>
-                  </div>
-                </BlurFade>
-              </div>
-            </div>
-          </div>
-          
-          <div id="works" className="py-5 md:py-20">
-            <div className="container mx-auto px-5 md:px-0">
-              <BlurFade delay={0.3} inView offset={-20}>
-                <h2 className="font-bold mb-8 text-2xl md:text-4xl text-center">
-                  <span role="emoji" className="animate-bounce inline-block mr-2">🚀</span>
-                  Work & Impact
-                </h2>
+              <BlurFade delay={0.25} inView>
+                <h2 className="text-2xl md:text-4xl mb-4 text-center">How I Can Help</h2>
               </BlurFade>
-              <div className="max-w-5xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                  <BlurFade delay={0.1 * 2} inView>
-                    <div className="bg-gray-50 border border-gray-100 p-6 rounded">
-                      <h3 className="font-bold text-lg mb-2">MTF </h3>
-                      <p className="text-gray-700 m-0">Leading digital transformations for several internal systems also become the business analyst for existing systems</p>
-                    </div>
-                  </BlurFade>
-                  <BlurFade delay={0.2 * 2} inView>
-                    <div className="bg-gray-50 border border-gray-100 p-6 rounded">
-                      <h3 className="font-bold text-lg mb-2">R/GA</h3>
-                      <p className="text-gray-700 m-0">10+ Fortune 500 campaigns delivered — inducted into R/GA Hall of Immortality</p>
-                    </div>
-                  </BlurFade>
-                  <BlurFade delay={0.3 * 2} inView>
-                    <div className="bg-gray-50 border border-gray-100 p-6 rounded">
-                      <h3 className="font-bold text-lg mb-2">CIAYO</h3>
-                      <p className="text-gray-700 m-0">Leading team to build web platform from scratch to 656,000 registered users</p>
-                    </div>
-                  </BlurFade>
-                  <BlurFade delay={0.4 * 2} inView>
-                    <div className="bg-gray-50 border border-gray-100 p-6 rounded">
-                      <h3 className="font-bold text-lg mb-2">LifeLearn Platform</h3>
-                      <p className="text-gray-700 m-0">Saved 40+ engineering hours/month, without a backend rewrite</p>
-                    </div>
-                  </BlurFade>
-                </div>
-
-                <BlurFade delay={0.5 * 2} inView>
-                  <div className="mb-8">
-                    <p className="text-center text-sm font-bold tracking-widest text-gray-400 uppercase mb-6">TRUSTED BY TEAMS AT</p>
-                    <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 opacity-60 grayscale filter px-4">
-                      {/* Using text for logos to avoid missing images, or standard placeholder if needed */}
-                      <span className="text-xl font-bold">Syntax</span>
-                      <span className="text-xl font-bold">Komunal</span>
-                      <span className="text-xl font-bold">Yoona</span>
-                      <span className="text-xl font-bold">R/GA</span>
-                      <span className="text-xl font-bold">MTF</span>
-                      <span className="text-xl font-bold">CIAYO</span>
-                      <span className="text-xl font-bold">LifeLearn</span>
-                      <span className="text-xl font-bold">CakraStudio</span>
-                    </div>
-                  </div>
-                </BlurFade>
-
-                <div className="text-center">
-                  <a href="/works" className="inline-block border-b-2 border-black font-bold text-lg hover:text-gray-600 hover:border-gray-600 transition-colors pb-1">See All Case Studies →</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div id="availability" className="py-5 md:py-20 bg-gray-50 border-y border-gray-200">
-            <div className="container mx-auto px-5 md:px-0">
               <BlurFade delay={0.3} inView>
-                <h2 className="font-bold mb-8 text-2xl md:text-4xl text-center">
-                  <span role="emoji" className="animate-bounce inline-block mr-4">📅</span>
-                 My Availability
-                </h2>
+                <p className="text-base text-center mb-12 max-w-2xl mx-auto" style={{ color: '#6B7280' }}>
+                  Whether you need strategic guidance, hands-on technical leadership, or a system built right — here's how we can work together.
+                </p>
               </BlurFade>
-              <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+
+              {/* Strategic Engagements */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                {[
+                  {
+                    label: 'Strategic Engagement',
+                    title: 'Tech & System Audit',
+                    price: 'IDR 5M',
+                    priceSuffix: '/ 2 weeks',
+                    desc: 'A deep dive into your operations and technology. You get a gap analysis, risk map, and a 90-day action plan — not a generic report.',
+                  },
+                  {
+                    label: 'Strategic Engagement',
+                    title: 'Fractional CTO',
+                    price: 'IDR 15M',
+                    priceSuffix: '/ month',
+                    desc: 'Part-time tech leadership for your business. Strategy, architecture, team oversight, vendor management — without the full-time commitment.',
+                    featured: true,
+                  },
+                  {
+                    label: 'Strategic Engagement',
+                    title: 'AI Implementation',
+                    price: 'IDR 10M',
+                    priceSuffix: '/ project',
+                    desc: 'Custom AI agents, workflow automation, and intelligent systems. Production-ready, not demo-ware.',
+                  },
+                ].map((service, i) => (
+                  <BlurFade key={service.title} delay={0.15 * (i + 1)} inView>
+                    <div
+                      className="p-7 rounded-xl flex flex-col h-full transition-all duration-300 hover:shadow-lg"
+                      style={{
+                        backgroundColor: '#FAFAF8',
+                        border: service.featured ? '2px solid #C9973E' : '1px solid #E5E2DC',
+                      }}
+                    >
+                      <p className="text-xs font-semibold tracking-wider uppercase mb-4" style={{ color: '#6B7280' }}>
+                        {service.label}
+                      </p>
+                      <h3 className="text-xl mb-2" style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}>
+                        {service.title}
+                      </h3>
+                      <p className="text-sm mb-1 font-semibold" style={{ color: '#1B4D4F' }}>
+                        <span className="text-xs font-normal" style={{ color: '#9CA3AF' }}>Starting from </span>
+                        {service.price}
+                        <span className="font-normal" style={{ color: '#9CA3AF' }}> {service.priceSuffix}</span>
+                      </p>
+                      <p className="text-sm mt-3 mb-6 flex-grow" style={{ color: '#6B7280' }}>
+                        {service.desc}
+                      </p>
+                      <a
+                        href={calendlyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-center py-3 rounded-md text-sm font-semibold transition-all duration-300 hover:opacity-90"
+                        style={{ backgroundColor: '#1B4D4F', color: '#FAFAF8' }}
+                      >
+                        Book Strategy Call
+                      </a>
+                    </div>
+                  </BlurFade>
+                ))}
+              </div>
+
+              {/* Custom Development */}
+              <BlurFade delay={0.5} inView>
+                <div
+                  className="p-7 md:p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 mb-8 transition-all duration-300 hover:shadow-lg"
+                  style={{ backgroundColor: '#FAFAF8', border: '1px solid #E5E2DC' }}
+                >
+                  <div>
+                    <h3 className="text-xl mb-2" style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}>Custom Development</h3>
+                    <p className="text-sm mb-0" style={{ color: '#6B7280' }}>
+                      For critical systems that need to be built right. Let's scope it together to see if we're the right fit for your tech needs.
+                    </p>
+                  </div>
+                  <a
+                    href={calendlyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 py-3 px-8 rounded-md text-sm font-semibold transition-all duration-300 border-2 whitespace-nowrap hover:opacity-80"
+                    style={{ borderColor: '#1A1A1A', color: '#1A1A1A' }}
+                  >
+                    Let's Scope It
+                  </a>
+                </div>
+              </BlurFade>
+
+              {/* Karya Kilat mention */}
+              <BlurFade delay={0.55} inView>
+                <p className="text-sm text-center" style={{ color: '#6B7280' }}>
+                  Need a premium microsite fast? I also run{' '}
+                  <a href="https://karyakilat.com" target="_blank" rel="noopener noreferrer" className="font-semibold underline" style={{ color: '#1A1A1A' }}>
+                    KaryaKilat.com
+                  </a>
+                  {' — '}professionally crafted microsites delivered in 14 days.
+                </p>
+              </BlurFade>
+            </div>
+          </div>
+
+          {/* ═══════════ 4. WORK & IMPACT ═══════════ */}
+          <div id="works" className="py-16 md:py-24">
+            <div className="container mx-auto px-5 md:px-8 xl:px-0 max-w-6xl">
+              <BlurFade delay={0.2} inView>
+                <p className="text-xs font-semibold tracking-widest uppercase mb-4 text-center" style={{ color: '#C9973E' }}>
+                  Work & Impact
+                </p>
+              </BlurFade>
+              <BlurFade delay={0.25} inView>
+                <h2 className="text-2xl md:text-4xl mb-4 text-center">Problems Solved, Growth Delivered</h2>
+              </BlurFade>
+              <BlurFade delay={0.3} inView>
+                <p className="text-base text-center mb-12 max-w-2xl mx-auto" style={{ color: '#6B7280' }}>
+                  I don't just write code — I partner with businesses to solve real problems. Here's what that looks like.
+                </p>
+              </BlurFade>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                {profile.caseStudies.map((study, i) => (
+                  <BlurFade key={study.company} delay={0.15 * (i + 1)} inView>
+                    <div
+                      className="p-7 rounded-xl h-full transition-all duration-300 hover:shadow-lg"
+                      style={{ backgroundColor: '#F5F3EF', border: '1px solid #E5E2DC' }}
+                    >
+                      <h3 className="text-xl mb-5" style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}>
+                        {study.company}
+                      </h3>
+                      <div className="space-y-4">
+                        <div>
+                          <p className="text-xs font-semibold tracking-wider uppercase mb-1.5" style={{ color: '#C9973E' }}>
+                            The Challenge
+                          </p>
+                          <p className="text-sm" style={{ color: '#6B7280' }}>{study.challenge}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold tracking-wider uppercase mb-1.5" style={{ color: '#1B4D4F' }}>
+                            The Impact
+                          </p>
+                          <p className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>{study.impact}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold tracking-wider uppercase mb-1.5" style={{ color: '#6B7280' }}>
+                            My Role
+                          </p>
+                          <p className="text-sm" style={{ color: '#6B7280' }}>{study.role}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </BlurFade>
+                ))}
+              </div>
+
+              {/* Logo strip */}
+              <BlurFade delay={0.6} inView>
+                <div className="mb-8">
+                  <p className="text-center text-xs font-semibold tracking-widest uppercase mb-6" style={{ color: '#9CA3AF' }}>
+                    Trusted by teams at
+                  </p>
+                  <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 px-4">
+                    {profile.trustedBy.map((name) => (
+                      <span key={name} className="text-lg font-semibold" style={{ color: '#C4C0B8' }}>{name}</span>
+                    ))}
+                  </div>
+                </div>
+              </BlurFade>
+
+              <div className="text-center">
+                <BlurFade delay={0.65} inView>
+                  <a href="/works" className="inline-block font-semibold text-base pb-1 transition-colors duration-300 hover:opacity-70" style={{ color: '#1A1A1A', borderBottom: '2px solid #1A1A1A' }}>
+                    See All Case Studies →
+                  </a>
+                </BlurFade>
+              </div>
+            </div>
+          </div>
+
+          {/* ═══════════ 5. TESTIMONIALS ═══════════ */}
+          <div id="testimonials" className="py-16 md:py-24" style={{ backgroundColor: '#F5F3EF' }}>
+            <div className="container mx-auto px-5 md:px-8 xl:px-0 max-w-6xl">
+              <BlurFade delay={0.2} inView>
+                <p className="text-xs font-semibold tracking-widest uppercase mb-4 text-center" style={{ color: '#C9973E' }}>
+                  Testimonials
+                </p>
+              </BlurFade>
+              <BlurFade delay={0.25} inView>
+                <h2 className="text-2xl md:text-4xl mb-12 text-center">What They Say</h2>
+              </BlurFade>
+
+              {/* Featured testimonial — Jussi */}
+              {profile.testimonials.filter(t => t.featured).map((t) => (
+                <BlurFade key={t.name} delay={0.3} inView>
+                  <div className="max-w-3xl mx-auto mb-16 text-center">
+                    <div className="text-6xl mb-4 leading-none" style={{ color: '#C9973E', fontFamily: "'Instrument Serif', Georgia, serif" }}>"</div>
+                    <p className="text-lg md:text-xl mb-6 italic leading-relaxed" style={{ color: '#1A1A1A' }}>
+                      {t.text.replace(/\n\n/g, ' ')}
+                    </p>
+                    <div className="flex items-center justify-center gap-4">
+                      <div className="w-14 h-14 rounded-full overflow-hidden shadow-md">
+                        <Image src={t.photo} alt={t.name} width={56} height={56} layout="responsive" className="rounded-full" />
+                      </div>
+                      <div className="text-left">
+                        <p className="font-semibold text-base mb-0" style={{ color: '#1A1A1A' }}>{t.name}</p>
+                        <p className="text-sm mb-0" style={{ color: '#6B7280' }}>{t.role}</p>
+                      </div>
+                    </div>
+                  </div>
+                </BlurFade>
+              ))}
+
+              {/* Remaining testimonials — horizontal scroll */}
+              <div className="overflow-x-auto -mx-5 md:-mx-8 xl:mx-0">
+                <div className="flex gap-6 px-5 md:px-8 xl:px-0" style={{ minWidth: 'min-content' }}>
+                  {profile.testimonials.filter(t => !t.featured).map((t, i) => (
+                    <BlurFade key={t.name} delay={0.15 * (i + 1)} inView>
+                      <div
+                        className="w-[320px] md:w-[380px] shrink-0 p-6 rounded-xl transition-all duration-300 hover:shadow-lg"
+                        style={{ backgroundColor: '#FAFAF8', border: '1px solid #E5E2DC' }}
+                      >
+                        <div className="text-3xl mb-3 leading-none" style={{ color: '#C9973E', fontFamily: "'Instrument Serif', Georgia, serif" }}>"</div>
+                        <p className="text-sm italic mb-5 leading-relaxed" style={{ color: '#4B5563' }}>
+                          {t.text.length > 250 ? t.text.substring(0, 250).replace(/\n\n/g, ' ') + '...' : t.text.replace(/\n\n/g, ' ')}
+                        </p>
+                        <div className="flex items-center gap-3 pt-4" style={{ borderTop: '1px solid #E5E2DC' }}>
+                          <div className="w-10 h-10 rounded-full overflow-hidden shadow-sm">
+                            <Image src={t.photo} alt={t.name} width={40} height={40} layout="responsive" className="rounded-full" />
+                          </div>
+                          <div>
+                            <p className="font-semibold text-sm mb-0" style={{ color: '#1A1A1A' }}>{t.name}</p>
+                            <p className="text-xs mb-0" style={{ color: '#6B7280' }}>{t.role}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </BlurFade>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ═══════════ 6. AVAILABILITY ═══════════ */}
+          <div id="availability" className="py-16 md:py-24">
+            <div className="container mx-auto px-5 md:px-8 xl:px-0 max-w-6xl">
+              <BlurFade delay={0.2} inView>
+                <p className="text-xs font-semibold tracking-widest uppercase mb-4 text-center" style={{ color: '#C9973E' }}>
+                  Availability
+                </p>
+              </BlurFade>
+              <BlurFade delay={0.25} inView>
+                <h2 className="text-2xl md:text-4xl mb-12 text-center">Current Capacity</h2>
+              </BlurFade>
+
+              <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
                 <BlurFade delay={0.3} inView>
-                  <div className="p-4 bg-white h-full rounded-lg shadow">
-                    <h3 className="font-bold text-xl mb-4 text-black border-b border-gray-200 pb-2">Active Projects</h3>
-                    <ul className="list-disc pl-5 text-gray-700 space-y-2">
-                      <li>Co-founder, CTO & Principal Architect at Syntax Solution</li>
-                      <li>Building &amp; growing KaryaKilat productized service</li>
-                      <li>NDA consulting engagements with corporates &amp; startups</li>
+                  <div className="p-6 rounded-xl h-full" style={{ backgroundColor: '#F5F3EF', border: '1px solid #E5E2DC' }}>
+                    <h3 className="text-lg mb-4 pb-3" style={{ fontFamily: "'Instrument Serif', Georgia, serif", borderBottom: '1px solid #E5E2DC' }}>Currently</h3>
+                    <ul className="space-y-2.5 list-none p-0 m-0">
+                      <li className="text-sm" style={{ color: '#6B7280' }}>• Co-founder & CTO at Syntax Solution</li>
+                      <li className="text-sm" style={{ color: '#6B7280' }}>• Growing KaryaKilat premium service</li>
+                      <li className="text-sm" style={{ color: '#6B7280' }}>• Select consulting engagements (NDA)</li>
+                    </ul>
+                  </div>
+                </BlurFade>
+                <BlurFade delay={0.35} inView>
+                  <div className="p-6 rounded-xl h-full" style={{ backgroundColor: '#FAFAF8', border: '2px solid #1B4D4F' }}>
+                    <h3 className="text-lg mb-4 pb-3" style={{ fontFamily: "'Instrument Serif', Georgia, serif", color: '#1B4D4F', borderBottom: '2px solid #1B4D4F' }}>Open For</h3>
+                    <ul className="space-y-2.5 list-none p-0 m-0">
+                      <li className="text-sm" style={{ color: '#1A1A1A' }}>• 1–2 fractional CTO partnerships (8–12 hrs/week)</li>
+                      <li className="text-sm" style={{ color: '#1A1A1A' }}>• Systems audit projects (2-week sprints)</li>
+                      <li className="text-sm" style={{ color: '#1A1A1A' }}>• AI implementation (scoped, project-based)</li>
+                      <li className="text-sm" style={{ color: '#1A1A1A' }}>• Custom development for critical paths</li>
                     </ul>
                   </div>
                 </BlurFade>
                 <BlurFade delay={0.4} inView>
-                  <div className="p-4 bg-white h-full rounded-lg shadow">
-                    <h3 className="font-bold text-xl mb-4 text-green-700 border-b border-gray-200 pb-2">Capacity</h3>
-                    <ul className="list-disc pl-5 text-gray-700 space-y-2">
-                      <li>1–2 fractional CTO/Tech partnerships (8–12 hrs/week each)</li>
-                      <li>Systems audit projects (2-week engagements)</li>
-                      <li>AI implementation projects (scoped, project-based)</li>
-                      <li>Custom development for critical paths</li>
+                  <div className="p-6 rounded-xl h-full" style={{ backgroundColor: '#F5F3EF', border: '1px solid #E5E2DC' }}>
+                    <h3 className="text-lg mb-4 pb-3" style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}>Not the Right Fit If You Need</h3>
+                    <ul className="space-y-2.5 list-none p-0 m-0">
+                      <li className="text-sm" style={{ color: '#6B7280' }}>• Full-time employment</li>
+                      <li className="text-sm" style={{ color: '#6B7280' }}>• 24/7 support or maintenance-only</li>
+                      <li className="text-sm" style={{ color: '#6B7280' }}>• Execution without strategic input</li>
                     </ul>
                   </div>
                 </BlurFade>
               </div>
-              <BlurFade delay={0.6} inView>
-                <div className="max-w-3xl mx-auto mt-12 text-center text-lg text-gray-600 italic">
-                  "If your needs align with my availability, let's talk. If I'm not the right fit, I'll tell you — and recommend alternatives."
-                </div>
+
+              <BlurFade delay={0.5} inView>
+                <p className="max-w-2xl mx-auto mt-12 text-center text-base italic" style={{ color: '#6B7280' }}>
+                  "If your needs align, let's talk. If I'm not the right fit, I'll tell you upfront — and recommend someone better."
+                </p>
               </BlurFade>
             </div>
           </div>
 
-          <div id="testimonial" className="py-5 md:py-20 -mt-20">
-            <div className="container">
-              <div className="row justify-center">
-                <div className="col">
-                  <div className="py-3 pt-20 md:py-5">
-                    <BlurFade delay={0.3} inView>
-                      <h4 className="text-xl md:text-2xl mb-0 text-center relative">
-                        Why'd they recommend to
-                      </h4>
-
-                      <BlurFade delay={0.5} inView offset={-20}>
-                        <h2 className="text-2xl md:text-4xl mb-8 text-center font-bold text-warning">
-                          <span
-                            className="mr-2 inline-block text-2xl animate-bounce relative"
-                            role="emoji">
-                            👍🏻
-                          </span>{' '}
-                          Work With Ervan?
-                        </h2>
-                      </BlurFade>
-                      <p className="md:text-xl mb-8 text-center">
-                        My partner and valuable clients will tell you their experiences to work with
-                        me.
-                      </p>
-                    </BlurFade>
-                  </div>
+          {/* ═══════════ 7. FINAL CTA ═══════════ */}
+          <div id="contact" className="py-16 md:py-24" style={{ backgroundColor: '#1A1A1A' }}>
+            <div className="container mx-auto px-5 md:px-8 xl:px-0 max-w-3xl text-center">
+              <BlurFade delay={0.2} inView>
+                <h2 className="text-2xl md:text-4xl mb-4" style={{ color: '#FAFAF8' }}>
+                  Ready to align your technology with growth?
+                </h2>
+              </BlurFade>
+              <BlurFade delay={0.3} inView>
+                <p className="text-base mb-10" style={{ color: '#9CA3AF' }}>
+                  I'll tell you upfront if I'm not the right fit — and point you somewhere better if I'm not.
+                </p>
+              </BlurFade>
+              <BlurFade delay={0.4} inView>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <a
+                    href={calendlyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-3.5 px-8 rounded-md font-semibold text-base text-center transition-all duration-300 hover:opacity-90 w-full sm:w-auto"
+                    style={{ backgroundColor: '#C9973E', color: '#FAFAF8' }}
+                  >
+                    Book Free 45-Min Call
+                  </a>
+                  <a
+                    href={waUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-3.5 px-8 rounded-md font-semibold text-base text-center transition-all duration-300 border-2 w-full sm:w-auto hover:opacity-80"
+                    style={{ borderColor: '#6B7280', color: '#FAFAF8' }}
+                  >
+                    Message on WhatsApp
+                  </a>
                 </div>
-              </div>
-            </div>
-            <div id="client-testimony">
-              <div className="overflow-x-auto px-5 md:px-10 -mx-5 md:mx-auto">
-                <div className="gap-10 flex flex-nowrap">
-                  {profile.testimonials.map((testimony, index) => {
-                    return (
-                      <div className="min-w-[70vw] md:min-w-[33vw]" key={index}>
-                        <BlurFade delay={0.3} inView>
-                          <div className="testimony-item mb-3">
-                            <div className="card rounded bg-white bg-opacity-50 filter backdrop-blur-lg shadow-lg border">
-                              <div className="card-body p-5">
-                                <div className="flex items-end">
-                                  <div
-                                    className=" shadow rounded-full mr-4"
-                                    style={{ width: '72px', flexBasis: '72px', flexShrink: 0 }}>
-                                    <Image
-                                      src={testimony.photo}
-                                      alt={testimony.name}
-                                      width="72"
-                                      height="72"
-                                      layout="responsive"
-                                      className="rounded-full"
-                                    />
-                                  </div>
-                                  <div className="flex-auto">
-                                    <h3 className="mb-0 fw-bold text-lg">{testimony.name}</h3>
-                                    <h4 className="mb-0 font-normal text-sm text-gray-700">
-                                      {testimony.role}
-                                    </h4>
-                                  </div>
-                                </div>
-
-                                <p className="font-light whitespace-pre-line italic text-base text-gray-900 mb-0 mt-4">
-                                  {testimony.text}
-                                </p>
-                                <p className="text-sm text-gray-500 mt-2">
-                                  <em>
-                                    Source:{' '}
-                                    <a
-                                      href={testimony.source?.url}
-                                      rel="noopener noreferrer"
-                                      target="_blank"
-                                      className="underline">
-                                      {testimony.source?.text}
-                                    </a>
-                                  </em>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </BlurFade>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div id="contact" className="py-5 md:py-20">
-            <div className="container">
-              <div className="row justify-center">
-                <div className="col-12 md:max-w-3xl mx-auto">
-                  <div className="py-3 py-md-5">
-                    <div className="text-center">
-                      <h2 className="text-2xl md:text-4xl mb-4 text-center font-bold">
-                        <BlurFade delay={0.3} inView>
-                          If your needs align, let's talk.
-                        </BlurFade>
-                      </h2>
-                      <p className="mb-8 md:text-lg text-center text-gray-700">
-                        I'll tell you upfront if I'm not the right fit —<br className="hidden md:block" />
-                        and point you somewhere better if I'm not.
-                      </p>
-                      <BlurFade delay={0.6} inView offset={-20}>
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                          <a
-                            href="https://calendly.com/ervandra/free-strategy"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn btn-outline-success p-3 md:p-4 px-8 font-bold text-base md:text-lg bg-black text-white rounded uppercase w-full md:w-auto text-center mx-2 hover:bg-gray-800 transition-colors duration-300">
-                            Book Free 45-Min Call
-                          </a>
-                          <a
-                            href={`https://wa.me/${profile.phone.replace('+', '')}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn btn-outline-success p-3 md:p-4 px-8 font-bold text-base md:text-lg border-2 border-black text-black bg-transparent hover:bg-black hover:text-white transition-colors duration-300 rounded uppercase w-full md:w-auto text-center mx-2">
-                            Message on WhatsApp
-                          </a>
-                        </div>
-                      </BlurFade>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </BlurFade>
             </div>
           </div>
         </section>
-        <footer id="footer" className="py-3 bg-dark">
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <div className="social-footer">
-                  <ul className="social-list m-0 p-0 flex justify-center py-2 mb-3">
-                    {profile.socialLinks.map((social, index) => (
-                      <li className="block px-3" key={social.icon + index}>
-                        <BlurFade delay={0.1 * index} inView>
-                          <a
-                            href={`${social.link}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            title={social.id}>
-                            <span className={`ehicon-${social.icon}`} />
-                          </a>
-                        </BlurFade>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="text-center copyright">
-                  <BlurFade delay={0.2} inView>
-                    <p className="mb-0 small flex items-center justify-center">
-                      <span>&copy;2011-{new Date().getFullYear()}</span>
-                      <strong className="flex items-center justify-center mx-2">
-                        Ervandra Halim{' '}
-                        <BlurFade delay={0.5} inView className="ms-1 inline-block">
-                          <span>⚡️</span>
-                        </BlurFade>
-                      </strong>
-                    </p>
-                  </BlurFade>
-                </div>
-              </div>
+
+        {/* ═══════════ FOOTER ═══════════ */}
+        <footer id="footer" className="py-6">
+          <div className="container mx-auto px-5 md:px-8 xl:px-0 max-w-6xl">
+            <div className="social-footer">
+              <ul className="m-0 p-0 flex justify-center py-2 mb-3">
+                {profile.socialLinks.map((social, index) => (
+                  <li className="block px-3" key={social.icon + index}>
+                    <a href={social.link} target="_blank" rel="noopener noreferrer" title={social.id}>
+                      <span className={`ehicon-${social.icon}`} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="text-center">
+              <p className="mb-0 text-sm flex items-center justify-center" style={{ color: '#6B7280' }}>
+                <span>©2011-{new Date().getFullYear()}</span>
+                <strong className="flex items-center justify-center mx-2" style={{ color: '#9CA3AF' }}>
+                  Ervandra Halim <span className="ml-1">⚡️</span>
+                </strong>
+              </p>
             </div>
           </div>
         </footer>
 
+        {/* Side elements (desktop) */}
         <div className="side-elements left">
           <BlurFade delay={0.3} inView offset={20}>
             <ul className="social-list side-element-item">
               {profile.socialLinks.map((social, index) => (
                 <li key={social.icon + index}>
                   <BlurFade delay={0.1 * index + 0.3} inView>
-                    <a
-                      href={`${social.link}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title={social.id}>
+                    <a href={social.link} target="_blank" rel="noopener noreferrer" title={social.id}>
                       <span className={`ehicon-${social.icon}`} />
                     </a>
                   </BlurFade>
@@ -716,75 +607,60 @@ export default function Home() {
         <div className="side-elements right">
           <BlurFade delay={0.3} inView offset={20}>
             <div className="email-link side-element-item">
-              <a href="mailto:ervandra.halim@gmail.com" target="_blank" rel="noopener noreferrer">
+              <a href="mailto:hi@ervandra.com" target="_blank" rel="noopener noreferrer">
                 <BlurFade delay={0.3} inView offset={-10}>
-                  ervandra.halim@gmail.com
+                  hi@ervandra.com
                 </BlurFade>
               </a>
             </div>
           </BlurFade>
         </div>
 
+        {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="menu-mobile-overlay" onClick={() => setState({ isMenuOpen: false })}>
-            &nbsp;
-          </div>
+          <div className="menu-mobile-overlay" onClick={() => setState({ isMenuOpen: false })}>&nbsp;</div>
         )}
 
         <div id="menu-mobile" className={`${isMenuOpen ? 'active' : ''}`}>
-          <div className="">
-            <div
-              className="btn-container flex justify-end items-center p-2 mb-0"
-              style={{ margin: '-1em' }}>
+          <div>
+            <div className="flex justify-end items-center p-2 mb-4 -mr-2 -mt-2">
               <button
                 aria-label="Close"
-                className="btn btn-transparent p-0 text-center lh-1"
-                style={{ width: '40px', height: '40px' }}
-                onClick={() => setState({ isMenuOpen: false })}>
+                className="bg-transparent p-0 text-center text-2xl"
+                style={{ width: '40px', height: '40px', border: 'none' }}
+                onClick={() => setState({ isMenuOpen: false })}
+              >
                 <span className="ehicon-close" />
               </button>
             </div>
-            <ul
-              className="m-0 p-0 block mb-5 fw-bold"
-              onClick={() => setState({ isMenuOpen: false })}>
-              <li className="block mb-4">
-                <BlurFade delay={0.1}>
-                  <a className="text-decoration-none block" href="#about">
-                    About
-                  </a>
-                </BlurFade>
-              </li>
-              <li className="block mb-4">
-                <BlurFade delay={0.2}>
-                  <a className="text-decoration-none block" href="#experience">
-                    Experience
-                  </a>
-                </BlurFade>
-              </li>
-              <li className="block mb-4">
-                <BlurFade delay={0.3}>
-                  <a className="text-decoration-none block" href="#testimonial">
-                    Testimonial
-                  </a>
-                </BlurFade>
-              </li>
-              <li className="block mb-4">
-                <BlurFade delay={0.4}>
-                  <a className="text-decoration-none block" href="#contact">
-                    Contact
-                  </a>
-                </BlurFade>
-              </li>
+            <ul className="m-0 p-0 block mb-8" onClick={() => setState({ isMenuOpen: false })}>
+              {[
+                { label: 'How I Work', href: '#about' },
+                { label: 'Services', href: '#services' },
+                { label: 'Work & Impact', href: '#works' },
+                { label: 'Testimonials', href: '#testimonials' },
+                { label: 'Availability', href: '#availability' },
+                { label: 'Contact', href: '#contact' },
+              ].map((item, i) => (
+                <li className="block mb-4" key={item.href}>
+                  <BlurFade delay={0.1 * (i + 1)}>
+                    <a className="block text-base font-medium" style={{ textDecoration: 'none', color: '#1A1A1A' }} href={item.href}>
+                      {item.label}
+                    </a>
+                  </BlurFade>
+                </li>
+              ))}
             </ul>
             <BlurFade delay={0.5}>
-              <button
-                className="btn p-3 px-4 w-full bg-black uppercase text-white font-bold"
-                onClick={() => setState({ isOpen: true })}>
-                Get In Touch{' '}
-                <span className="animate-pulse ml-2" role="emoji">
-                  ⚡️
-                </span>
-              </button>
+              <a
+                href={calendlyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full py-3 rounded-md font-semibold text-center text-base"
+                style={{ backgroundColor: '#1B4D4F', color: '#FAFAF8', textDecoration: 'none' }}
+              >
+                Book Call ↗
+              </a>
             </BlurFade>
           </div>
         </div>

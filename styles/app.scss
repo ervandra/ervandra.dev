@@ -1,43 +1,43 @@
 body {
-  font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 16px;
   font-weight: 400;
-  background-color: #ffffff;
-  background-image: url(/images/bg-grid.webp), url(/images/bg-dust.webp);
-  background-size: 1200px, 900px, 200px;
-  background-position: 0 0, 100% 100%, 50%;
-  background-attachment: fixed, scroll, scroll;
-  color: #121212;
-  line-height: 1.5;
+  background-color: #FAFAF8;
+  color: #1A1A1A;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   font-smooth: auto;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px;
+  }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.3;
-  font-weight: 500;
-  strong {
-    font-weight: 700;
-  }
-  &.fw-300 {
-    font-weight: 300;
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  line-height: 1.2;
+  font-weight: 400;
+  color: #1A1A1A;
 }
-ol li,
-ul li,
-p {
-  line-height: 1.5;
-  strong {
-    font-weight: 400;
-  }
+
+p, li, span, a, button, input, textarea {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+ol li, ul li, p {
+  line-height: 1.6;
 }
 
 img {
@@ -46,234 +46,169 @@ img {
   height: auto;
 }
 
-.cv {
-  @media only print {
-    padding: 0 1rem;
-  }
-  p,
-  ul li,
-  ol li {
-    font-size: 0.875em;
-  }
-  .cv-photo {
-    img {
-      max-width: 200px;
-      @media only print {
-        max-width: 100px;
-      }
-    }
-  }
+// Logo
+.logo > div {
+  display: block !important;
 }
 
-.highlight {
-  background: #f2ad0699;
+// Header
+#header {
+  background: rgba(250, 250, 248, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 30;
 }
 
-img {
-  &.img-grayscale {
-    filter: grayscale(100%);
-    opacity: 0.5;
+// Navigation
+#mainmenu ul li a {
+  position: relative;
+  font-weight: 500;
+  color: #1A1A1A;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #1B4D4F;
   }
-}
 
-@media only print {
-  .shadow {
-    box-shadow: none !important;
+  &:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #1B4D4F;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    transition: width 0.3s ease;
   }
-}
 
-.img-thumbnail {
-  background: none;
-  border-color: var(--bs-primary);
-  border-width: 2px;
-}
-
-.about-img {
-  @media only screen and (max-width: 48em) {
-    max-width: 120px;
+  &:hover:after {
+    width: 100%;
   }
 }
 
-.w-md-50 {
-  width: 50% !important;
-  @media only screen and (max-width: 40em) {
-    width: 100% !important;
+// Hero
+#app-container.is-ready #hero {
+  @screen md {
+    background: url(/images/profile.svg) no-repeat right top;
+    background-size: auto 54%;
+    background-attachment: scroll;
+  }
+  @screen lg {
+    background-size: auto 90%;
+  }
+  @screen xl {
+    background-size: contain;
   }
 }
 
-.logo {
-  > div {
-    display: block !important;
-  }
-}
-
-#mainmenu {
-  ul {
-    li {
-      a {
-        position: relative;
-        &:after {
-          content: '';
-          display: block;
-          width: 0;
-          height: 1px;
-          opacity: 0.5;
-          background: transparent;
-          position: absolute;
-          bottom: -0.125em;
-          left: 0;
-          transition: all ease 0.6s;
-          transition-delay: 1s;
-        }
-      }
-    }
-  }
-}
-
+// Mobile menu
 #menu-mobile {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  width: 60vw;
-  z-index: 5;
-  transform: translateX(60vw);
+  width: 70vw;
+  max-width: 320px;
+  z-index: 50;
+  transform: translateX(100%);
   opacity: 0;
-  background: #ffffff url(/images/bg-dust.webp) center repeat;
-  background-size: contain;
-  padding: 1em;
+  background: #FAFAF8;
+  padding: 1.5em;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.08);
+  transition: all ease 0.4s;
+
   &.active {
     transform: translateX(0);
     opacity: 1;
   }
 }
+
 .menu-mobile-overlay {
   position: fixed;
-  z-index: 4;
+  z-index: 40;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
 }
 
-#header,
-#footer {
-  background: url(/images/bg-dust.webp) center repeat;
-  background-size: contain;
-}
-#header {
-  @apply bg-white bg-opacity-60 z-30;
-}
-.bg-dust {
-  background: #15232dee url(/images/bg-dust.webp) center repeat;
-  background-size: contain;
-  background-attachment: fixed;
-}
-
-#app-container {
-  &.is-ready {
-    #hero {
-      @screen md {
-        background: url(/images/profile.svg) no-repeat right top;
-        background-size: auto 54%;
-        background-attachment: scroll;
-      }
-      @screen lg {
-        background-size: auto 90%;
-      }
-      @screen xl {
-        background-size: contain;
-      }
-    }
-    #menu-mobile {
-      transition: all ease 0.6s;
-    }
-    #mainmenu {
-      ul {
-        li {
-          a {
-            &:after {
-              background: var(--bs-primary);
-              height: 1px;
-              width: 12px;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-.experience-menu {
-  @media only screen and (max-width: 48em) {
-    flex-wrap: nowrap;
-    overflow: auto;
-    button {
-      border-width: 0 0 2px 0 !important;
-      border-style: solid !important;
-    }
-  }
-}
-
+// Side elements (desktop)
 .side-elements {
   position: fixed;
   bottom: 0;
+
   &.left {
-    left: 20px;
+    left: 24px;
     width: 20px;
     z-index: 10;
   }
+
   &.right {
-    right: 20px;
+    right: 24px;
     width: 20px;
     z-index: 10;
   }
+
   .side-element-item {
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    -webkit-box-align: center;
     align-items: center;
     position: relative;
+
     &:after {
       content: '';
       display: block;
       width: 1px;
       height: 40px;
       margin: 20px auto 0;
-      @apply bg-black;
+      background: #1A1A1A;
+      opacity: 0.3;
     }
   }
-  .email-link {
-    a {
-      letter-spacing: 1px;
-      transition: all ease 0.3s;
-      -webkit-writing-mode: vertical-rl;
-      writing-mode: vertical-rl;
-      text-decoration: none;
-      &:hover {
-        transform: translateY(-4px);
-      }
+
+  .email-link a {
+    letter-spacing: 1px;
+    transition: all ease 0.3s;
+    writing-mode: vertical-rl;
+    text-decoration: none;
+    font-size: 0.8125rem;
+    color: #6B7280;
+
+    &:hover {
+      transform: translateY(-4px);
+      color: #1B4D4F;
     }
   }
+
   @media only screen and (max-width: 48em) {
     display: none;
   }
 }
 
-.social-list {
-  li {
+// Social links
+.social-list li {
+  display: block;
+  transition: all ease 0.3s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  a {
     display: block;
-    transition: all ease 0.3s;
+    font-size: 1.25em;
+    padding: 0.25rem;
+    color: #6B7280;
+    transition: color 0.3s ease;
+
     &:hover {
-      transform: translateY(-4px);
-    }
-    a {
-      display: block;
-      font-size: 1.5em;
-      padding: 0.25rem;
+      color: #1B4D4F;
     }
   }
 }
@@ -282,24 +217,36 @@ a[target='_blank'] {
   cursor: ne-resize;
 }
 
+// Footer
+#footer {
+  background: #1A1A1A;
+  color: #FAFAF8;
+
+  a {
+    color: #9CA3AF;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #C9973E;
+    }
+  }
+}
+
 .social-footer {
   display: none;
+
   @media only screen and (max-width: 48em) {
     display: block;
   }
 }
 
-.workplace-content {
-  h6 {
-    @media only screen and (max-width: 40em) {
-      font-size: 0.875em;
-    }
-  }
+// Misc
+.cv p, .cv ul li, .cv ol li {
+  font-size: 0.875em;
 }
 
-.vh-90 {
-  min-height: 90vh;
-  @media only screen and (max-width: 40em) {
-    min-height: auto;
+@media only print {
+  .shadow {
+    box-shadow: none !important;
   }
 }
