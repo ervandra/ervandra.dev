@@ -10,6 +10,17 @@ const profile = {
   intro:
     'Strategic tech architecture for founders and business owners who need a partner — not another vendor.',
   website: 'www.ervandra.dev',
+  professionalSkills: [],
+  personalSkills: [],
+  social: [],
+  education: [
+    {
+      title: 'Bachelor of Computer Science (Interactive Multimedia)',
+      school: 'Bina Nusantara University',
+      year: '2008 - 2012',
+    },
+  ],
+  experiences: [],
   socialLinks: [
     {
       id: 'github',
