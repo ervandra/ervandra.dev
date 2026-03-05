@@ -52,7 +52,7 @@ export default function Home() {
                 <div className="hidden md:flex items-center">
                   <ul className="m-0 flex items-center">
                     <li className="block ml-8">
-                      <BlurFade delay={0.1}><a href="/works">Works</a></BlurFade>
+                      <BlurFade delay={0.1}><a href="#works">Works</a></BlurFade>
                     </li>
                     <li className="block ml-8">
                       <BlurFade delay={0.15}><a href="#about">About</a></BlurFade>
@@ -396,13 +396,13 @@ export default function Home() {
                 </div>
               </BlurFade>
 
-              <div className="text-center">
+              {/* <div className="text-center">
                 <BlurFade delay={0.65} inView>
                   <a href="/works" className="inline-block font-semibold text-base pb-1 transition-colors duration-300 hover:opacity-70" style={{ color: '#1A1A1A', borderBottom: '2px solid #1A1A1A' }}>
                     See All Case Studies →
                   </a>
                 </BlurFade>
-              </div>
+              </div> */}
             </div>
           </div>
 
