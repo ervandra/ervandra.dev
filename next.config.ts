@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      // Old Pages Router routes
+      { source: "/cv", destination: "/about", permanent: true },
+      { source: "/thanks", destination: "/", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

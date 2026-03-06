@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Merriweather, Fira_Sans } from "next/font/google";
+import { GTMHead, GTMBody } from "@/components/layout/analytics";
+import JsonLd from "@/components/layout/json-ld";
 import "./globals.css";
 
 const merriweather = Merriweather({
@@ -32,6 +34,9 @@ export const metadata: Metadata = {
     "Tech Consultant",
   ],
   authors: [{ name: "Ervandra Halim" }],
+  alternates: {
+    types: { "application/rss+xml": "/feed.xml" },
+  },
   openGraph: {
     title: "Ervandra Halim | Strategic Tech Partner",
     description:
@@ -59,7 +64,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${merriweather.variable} ${firaSans.variable}`}>
-      <body className="relative z-[1]">{children}</body>
+      <head>
+        <GTMHead />
+        <JsonLd />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      </head>
+      <body className="relative z-[1]">
+        <GTMBody />
+        {children}
+      </body>
     </html>
   );
 }

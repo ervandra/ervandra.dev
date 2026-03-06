@@ -7,13 +7,22 @@ import { ArrowRight, FileCheck } from "lucide-react";
 export default function LeadMagnet() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+    setLoading(true);
+    try {
+      await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, tags: "ai-checklist, lead-magnet, via-website" }),
+      });
       setSubmitted(true);
       setEmail("");
-    }
+    } catch { /* silent fail */ }
+    setLoading(false);
   };
 
   return (
@@ -91,13 +100,15 @@ export default function LeadMagnet() {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Your email address"
                         required
+                        disabled={loading}
                         className="w-full"
                       />
                       <button
                         type="submit"
-                        className="w-full bg-navy text-white px-8 py-4 font-[family-name:var(--font-body)] font-semibold text-[0.8125rem] tracking-[0.04em] uppercase flex items-center justify-center gap-2 hover:bg-navy-light transition-colors duration-300 cursor-pointer"
+                        disabled={loading}
+                        className="w-full bg-navy text-white px-8 py-4 font-[family-name:var(--font-body)] font-semibold text-[0.8125rem] tracking-[0.04em] uppercase flex items-center justify-center gap-2 hover:bg-navy-light transition-colors duration-300 cursor-pointer disabled:opacity-50"
                       >
-                        Download Free Checklist
+                        {loading ? "Submitting..." : "Download Free Checklist"}
                         <ArrowRight size={16} strokeWidth={2} />
                       </button>
                     </form>
