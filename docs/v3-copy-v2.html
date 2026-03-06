@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ervandra Halim — CTO & Principal Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&family=Fira+Sans:wght@200;300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       THE BLUEPRINT — Swiss Design × Architectural Portfolio
+       ═══════════════════════════════════════════════════════ */
+    :root {
+      --ink: #0f1729;
+      --ink-80: #2a3550;
+      --ink-50: #576380;
+      --ink-30: #8892a8;
+      --ink-15: #c0c5d0;
+      --ink-08: #dfe1e7;
+      --ink-04: #eef0f3;
+      --warm: #b8976a;
+      --warm-light: #d4c4a8;
+      --warm-dim: rgba(184,151,106,0.08);
+      --paper: #fdfcfa;
+      --paper-alt: #f7f6f3;
+      --grid-color: rgba(15,23,41,0.04);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Fira Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      cursor: default;
+      overflow-x: hidden;
+    }
+
+    /* ─── Paper texture ─── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10000;
+      opacity: 0.018;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ─── Blueprint grid background ─── */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        repeating-linear-gradient(90deg, var(--grid-color) 0, var(--grid-color) 1px, transparent 1px, transparent 120px),
+        repeating-linear-gradient(0deg, var(--grid-color) 0, var(--grid-color) 1px, transparent 1px, transparent 120px);
+    }
+
+    /* ─── Resets ─── */
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--warm); color: white; }
+
+    /* ─── Wrapper ─── */
+    .frame {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── Coordinate markers (architectural refs) ─── */
+    .coord {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.55rem;
+      color: var(--ink-15);
+      letter-spacing: 0.1em;
+      position: absolute;
+      user-select: none;
+    }
+
+    /* ═══════════════════════════════════════
+       ANIMATIONS
+       ═══════════════════════════════════════ */
+    @keyframes revealUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes revealLine {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(20px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .sr {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .sr.vis { opacity: 1; transform: none; }
+    .sr-d1 { transition-delay: 0.1s; }
+    .sr-d2 { transition-delay: 0.2s; }
+    .sr-d3 { transition-delay: 0.3s; }
+    .sr-d4 { transition-delay: 0.4s; }
+    .sr-d5 { transition-delay: 0.5s; }
+
+    /* ═══════════════════════════════════════
+       NAV — Minimal, Swiss
+       ═══════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      mix-blend-mode: difference;
+      padding: 1.5rem 0;
+    }
+    .nav .frame {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-name {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: white;
+      letter-spacing: 0.06em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.03em;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: white; }
+    .nav-links .cta-link {
+      color: var(--warm-light);
+      font-weight: 500;
+    }
+
+    /* ═══════════════════════════════════════
+       HERO — Typographic composition
+       ═══════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero .frame { width: 100%; }
+
+    /* Large background number */
+    .hero-bg-year {
+      position: absolute;
+      right: -2%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: clamp(15rem, 25vw, 28rem);
+      color: var(--ink-04);
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+      user-select: none;
+      z-index: 0;
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-tag {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--warm);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      animation: fadeIn 0.8s 0.2s both;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 50px;
+      height: 1px;
+      background: var(--warm);
+      animation: revealLine 0.6s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+      transform-origin: left;
+    }
+
+    .hero h1 {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: clamp(3.2rem, 6vw, 5.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+      margin-bottom: 0;
+      animation: revealUp 1s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .hero h1 .line2 {
+      display: block;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-50);
+      font-size: 0.85em;
+      animation: revealUp 1s 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-sub {
+      margin-top: 2.5rem;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--ink-50);
+      max-width: 480px;
+      line-height: 1.85;
+      animation: revealUp 1s 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    /* Hero stats — positioned as architectural annotations */
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      margin-top: 4rem;
+      animation: revealUp 1s 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .h-stat {
+      padding: 1.8rem 2.5rem 1.8rem 0;
+      position: relative;
+    }
+    .h-stat:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 50%;
+      width: 1px;
+      background: var(--ink-08);
+    }
+    .h-stat:not(:first-child) { padding-left: 2.5rem; }
+    .h-stat-num {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 2.8rem;
+      color: var(--ink);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .h-stat-label {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.6rem;
+      color: var(--ink-30);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.6rem;
+    }
+
+    /* ═══════════════════════════════════════
+       MARQUEE — Continuous trust signal
+       ═══════════════════════════════════════ */
+    .marquee-wrap {
+      border-top: 1px solid var(--ink-08);
+      border-bottom: 1px solid var(--ink-08);
+      overflow: hidden;
+      padding: 1.6rem 0;
+      background: var(--paper-alt);
+      position: relative;
+      z-index: 1;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--ink);
+      opacity: 0.12;
+      white-space: nowrap;
+      padding: 0 3rem;
+      letter-spacing: -0.01em;
+      transition: opacity 0.3s;
+    }
+    .marquee-item:hover { opacity: 0.4; }
+    .marquee-sep {
+      color: var(--warm);
+      opacity: 0.3;
+      padding: 0 0.5rem;
+      font-size: 0.6rem;
+      align-self: center;
+    }
+
+    /* ═══════════════════════════════════════
+       SECTION SYSTEM
+       ═══════════════════════════════════════ */
+    .sect {
+      position: relative;
+      z-index: 1;
+      padding: 8rem 0;
+    }
+    .sect-label {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.6rem;
+      color: var(--warm);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .sect-title {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 2.8rem;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+    }
+    .sect-title i {
+      font-weight: 300;
+      color: var(--ink-50);
+    }
+
+    /* ═══════════════════════════════════════
+       ABOUT — Asymmetric editorial
+       ═══════════════════════════════════════ */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 2fr 5fr 4fr;
+      gap: 0;
+      margin-top: 4rem;
+    }
+    .about-aside {
+      padding-right: 2rem;
+      border-right: 1px solid var(--ink-08);
+    }
+    .about-aside .aside-label {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.55rem;
+      color: var(--ink-30);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .aside-fact {
+      margin-bottom: 1.2rem;
+    }
+    .aside-fact .af-val {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      display: block;
+    }
+    .aside-fact .af-key {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.55rem;
+      color: var(--ink-30);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .about-body {
+      padding: 0 3rem;
+    }
+    .about-body p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--ink-80);
+      line-height: 1.95;
+      margin-bottom: 1.5rem;
+    }
+    .about-body strong {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .about-pull {
+      padding-left: 2.5rem;
+      border-left: 1px solid var(--ink-08);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .about-pull blockquote {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.3rem;
+      line-height: 1.6;
+      color: var(--ink);
+      position: relative;
+    }
+    .about-pull blockquote::before {
+      content: '';
+      position: absolute;
+      top: -1.5rem;
+      left: 0;
+      width: 30px;
+      height: 3px;
+      background: var(--warm);
+    }
+
+    /* ═══════════════════════════════════════
+       WHAT I DO — Numbered columns
+       ═══════════════════════════════════════ */
+    .roles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      border-top: 1px solid var(--ink-08);
+    }
+    .role {
+      padding: 3rem 2.5rem;
+      border-right: 1px solid var(--ink-08);
+      position: relative;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .role:last-child { border-right: none; }
+    .role:hover {
+      background: var(--paper-alt);
+    }
+    .role:hover .role-idx { color: var(--warm); }
+    .role-idx {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 4.5rem;
+      color: var(--ink-04);
+      line-height: 1;
+      letter-spacing: -0.06em;
+      transition: color 0.5s;
+      margin-bottom: 1rem;
+    }
+    .role h3 {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.01em;
+    }
+    .role-tag {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.62rem;
+      color: var(--warm);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.2rem;
+    }
+    .role p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink-50);
+      line-height: 1.8;
+    }
+
+    /* ═══════════════════════════════════════
+       WORK — Full-bleed alternating panels
+       ═══════════════════════════════════════ */
+    .work-list { margin-top: 4rem; }
+
+    .work-entry {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+      border-top: 1px solid var(--ink-08);
+      position: relative;
+      overflow: hidden;
+    }
+    .work-entry:last-child { border-bottom: 1px solid var(--ink-08); }
+    .work-entry:nth-child(even) { direction: rtl; }
+    .work-entry:nth-child(even) > * { direction: ltr; }
+
+    .work-text {
+      padding: 3.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .work-cat {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.58rem;
+      color: var(--warm);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .work-text h3 {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .work-text .work-desc {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ink-50);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .work-data {
+      display: flex;
+      gap: 2.5rem;
+    }
+    .wd { }
+    .wd-val {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--ink);
+      display: block;
+    }
+    .wd-key {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.55rem;
+      color: var(--ink-30);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.15rem;
+      display: block;
+    }
+
+    .work-vis {
+      background: var(--paper-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Architectural gridlines inside visual */
+    .work-vis::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(90deg, transparent, transparent 59px, var(--ink-04) 59px, var(--ink-04) 60px),
+        repeating-linear-gradient(0deg, transparent, transparent 59px, var(--ink-04) 59px, var(--ink-04) 60px);
+      opacity: 0.7;
+    }
+    .work-vis::after {
+      content: '';
+      position: absolute;
+      inset: 2rem;
+      border: 1px solid var(--ink-08);
+    }
+    .wv-label {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 3.5rem;
+      color: var(--ink);
+      opacity: 0.04;
+      letter-spacing: -0.04em;
+      position: relative;
+      z-index: 1;
+    }
+    /* Hover: visual panel shifts */
+    .work-entry:hover .work-vis {
+      background: var(--ink);
+    }
+    .work-entry:hover .work-vis::before {
+      background:
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.04) 59px, rgba(255,255,255,0.04) 60px),
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.04) 59px, rgba(255,255,255,0.04) 60px);
+    }
+    .work-entry:hover .work-vis::after { border-color: rgba(255,255,255,0.08); }
+    .work-entry:hover .wv-label { color: white; opacity: 0.08; }
+    .work-entry { transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .work-vis { transition: background 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .wv-label { transition: all 0.6s; }
+
+    /* ═══════════════════════════════════════
+       CAREER — Horizontal blocks, not timeline
+       ═══════════════════════════════════════ */
+    .career-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      border: 1px solid var(--ink-08);
+    }
+    .c-block {
+      padding: 2rem 1.8rem;
+      border-right: 1px solid var(--ink-08);
+      border-bottom: 1px solid var(--ink-08);
+      transition: all 0.4s;
+      position: relative;
+    }
+    .c-block:nth-child(4n) { border-right: none; }
+    .c-block:nth-last-child(-n+4) { border-bottom: none; }
+    .c-block.now {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+    .c-block.now .c-year { color: var(--warm); }
+    .c-block.now .c-org { color: rgba(255,255,255,0.5); }
+    .c-block.now .c-note { color: rgba(255,255,255,0.35); }
+    .c-block:not(.now):hover { background: var(--paper-alt); }
+    .c-year {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.6rem;
+      color: var(--ink-30);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.8rem;
+    }
+    .c-role {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1.3;
+      margin-bottom: 0.25rem;
+    }
+    .c-org {
+      font-size: 0.82rem;
+      color: var(--ink-50);
+    }
+    .c-note {
+      font-size: 0.72rem;
+      font-style: italic;
+      color: var(--ink-30);
+      margin-top: 0.4rem;
+    }
+
+    /* ═══════════════════════════════════════
+       TESTIMONIALS — Editorial pull quotes
+       ═══════════════════════════════════════ */
+    .testi-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 4rem;
+    }
+    .testi {
+      position: relative;
+      padding-top: 2.5rem;
+    }
+    .testi::before {
+      content: '"';
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 8rem;
+      color: var(--ink-04);
+      line-height: 0.6;
+      position: absolute;
+      top: 0;
+      left: -0.15em;
+    }
+    .testi blockquote {
+      font-family: 'Merriweather', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 2;
+      color: var(--ink-80);
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+    .testi-name {
+      font-weight: 600;
+      font-size: 0.88rem;
+    }
+    .testi-info {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.62rem;
+      color: var(--ink-30);
+      letter-spacing: 0.04em;
+      margin-top: 0.15rem;
+    }
+
+    /* ═══════════════════════════════════════
+       CONTACT — Full-bleed dark
+       ═══════════════════════════════════════ */
+    .cta-block {
+      background: var(--ink);
+      color: white;
+      padding: 8rem 0;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    /* Grid overlay on dark */
+    .cta-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255,255,255,0.02) 119px, rgba(255,255,255,0.02) 120px),
+        repeating-linear-gradient(0deg, transparent, transparent 119px, rgba(255,255,255,0.02) 119px, rgba(255,255,255,0.02) 120px);
+    }
+    .cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+    }
+    .cta-text .sect-label { color: var(--warm); }
+    .cta-text h2 {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 3.2rem;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    .cta-text h2 i { font-weight: 300; color: var(--ink-50); }
+    .cta-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 440px;
+    }
+    .cta-btns { display: flex; gap: 1rem; }
+    .btn-warm {
+      padding: 0.9rem 2.2rem;
+      background: var(--warm);
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-warm:hover {
+      background: var(--warm-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(184,151,106,0.2);
+    }
+    .btn-outline {
+      padding: 0.9rem 2.2rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+      font-size: 0.88rem;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.4);
+      color: white;
+    }
+
+    .cta-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .cta-link-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.88rem;
+      transition: all 0.25s;
+    }
+    .cta-link-row:hover { padding-left: 0.5rem; }
+    .cta-link-row .clr-label { color: rgba(255,255,255,0.3); font-size: 0.75rem; }
+    .cta-link-row .clr-val { color: rgba(255,255,255,0.7); }
+    .cta-link-row:hover .clr-val { color: var(--warm); }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════ */
+    .site-foot {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      position: relative;
+      z-index: 1;
+    }
+    .foot-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 4rem;
+    }
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 1.6fr repeat(4, 1fr);
+      gap: 2rem;
+      padding: 4rem 0 3rem;
+    }
+    .foot-brand {}
+    .foot-name {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 1rem;
+      color: white;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .foot-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.25);
+      line-height: 1.7;
+      max-width: 260px;
+      margin-bottom: 1.5rem;
+    }
+    .foot-connect {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: all 0.25s;
+    }
+    .foot-connect:hover {
+      border-color: var(--warm);
+      color: var(--warm);
+    }
+    .foot-col h4 {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      margin-bottom: 1.3rem;
+    }
+    .foot-col ul { list-style: none; }
+    .foot-col ul li { margin-bottom: 0.55rem; }
+    .foot-col ul li a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+      transition: color 0.2s;
+    }
+    .foot-col ul li a:hover { color: white; }
+
+    .foot-bottom {
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 1.3rem 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.15);
+      font-family: 'Fira Code', monospace;
+      letter-spacing: 0.03em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid-bg"></div>
+
+  <!-- ─── NAV ─── -->
+  <nav class="nav">
+    <div class="frame">
+      <span class="nav-name">ERVANDRA HALIM</span>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#career">Career</a>
+        <a href="#voices">Voices</a>
+        <a href="#contact" class="cta-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-bg-year">15</div>
+    <div class="frame">
+      <div class="hero-content">
+        <p class="hero-tag">CTO · Architect · Tech Partner</p>
+        <h1>
+          I build systems
+          <span class="line2">that outlast me.</span>
+        </h1>
+        <p class="hero-sub">Fifteen years of engineering what matters. I'm the technical partner companies trust when the architecture has to be right.</p>
+        <div class="hero-stats">
+          <div class="h-stat">
+            <div class="h-stat-num">15+</div>
+            <div class="h-stat-label">Years in Tech</div>
+          </div>
+          <div class="h-stat">
+            <div class="h-stat-num">656K</div>
+            <div class="h-stat-label">Users Served</div>
+          </div>
+          <div class="h-stat">
+            <div class="h-stat-num">6</div>
+            <div class="h-stat-label">Companies Built</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MARQUEE ─── -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">R/GA</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">MTF Finance</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Komunal</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">CIAYO Comics</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">LifeLearn</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Syntax Solution</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Magnificat Consulthink</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">CakraStudio</span><span class="marquee-sep">◆</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="marquee-item">R/GA</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">MTF Finance</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Komunal</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">CIAYO Comics</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">LifeLearn</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Syntax Solution</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Magnificat Consulthink</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">CakraStudio</span><span class="marquee-sep">◆</span>
+    </div>
+  </div>
+
+  <!-- ─── ABOUT ─── -->
+  <section class="sect" id="about">
+    <div class="frame">
+      <div class="sr">
+        <p class="sect-label">01 — About</p>
+        <h2 class="sect-title">Engineer first.<br><i>Architect always.</i></h2>
+      </div>
+
+      <div class="about-layout sr sr-d2">
+        <div class="about-aside">
+          <p class="aside-label">Quick Facts</p>
+          <div class="aside-fact">
+            <span class="af-val">Tangerang, ID</span>
+            <span class="af-key">Location</span>
+          </div>
+          <div class="aside-fact">
+            <span class="af-val">CTO & Principal Architect</span>
+            <span class="af-key">Current Role</span>
+          </div>
+          <div class="aside-fact">
+            <span class="af-val">React · Next.js · Flutter · .NET</span>
+            <span class="af-key">Core Stack</span>
+          </div>
+          <div class="aside-fact">
+            <span class="af-val">Architecture · Leadership · AI</span>
+            <span class="af-key">Focus</span>
+          </div>
+          <div class="aside-fact">
+            <span class="af-val">R/GA Hall of Immortality</span>
+            <span class="af-key">Recognition</span>
+          </div>
+        </div>
+        <div class="about-body">
+          <p>I started writing code fifteen years ago because I wanted to understand how things work. That instinct hasn't changed — only the scale has. I built CIAYO Comics' reading platform from scratch, serving <strong>656,000 readers</strong>. I replaced my predecessor at R/GA New York to lead global engineering teams. I built Yoona's entire platform — dashboard, webstore, partner system — <strong>solo, in eight months</strong>.</p>
+          <p>Today, I lead engineering at <strong>Syntax Solution</strong>, co-founded <strong>Magnificat Consulthink</strong> to bring technology to financial consulting, and selectively partner with businesses that need <strong>architectural clarity</strong> — not just more code.</p>
+        </div>
+        <div class="about-pull">
+          <blockquote>I'd rather build one system that lasts than ten that don't.</blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHAT I DO ─── -->
+  <section class="sect" id="services" style="padding-top:0;">
+    <div class="frame">
+      <div class="sr">
+        <p class="sect-label">02 — What I Do</p>
+        <h2 class="sect-title">Three roles,<br><i>one standard.</i></h2>
+      </div>
+      <div class="roles sr sr-d2">
+        <div class="role">
+          <div class="role-idx">01</div>
+          <h3>Syntax Solution</h3>
+          <div class="role-tag">CTO & Principal Architect</div>
+          <p>Enterprise systems for financial institutions — fleet management, mobile banking, collection platforms. If it needs to scale and it needs to work on day one, this is where I operate.</p>
+        </div>
+        <div class="role">
+          <div class="role-idx">02</div>
+          <h3>Magnificat Consulthink</h3>
+          <div class="role-tag">Tech Partner & Co-founder</div>
+          <p>Tax compliance is complicated. Technology shouldn't make it worse. We bridge traditional financial consulting with modern systems that actually simplify operations.</p>
+        </div>
+        <div class="role">
+          <div class="role-idx">03</div>
+          <h3>Strategic Partnerships</h3>
+          <div class="role-tag">Independent Tech Partner</div>
+          <p>Not every company needs a full-time CTO. Some need someone who's built at this scale before — to audit, to architect, to course-correct. That's what I offer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WORK ─── -->
+  <section class="sect" id="work">
+    <div class="frame">
+      <div class="sr">
+        <p class="sect-label">03 — Selected Work</p>
+        <h2 class="sect-title">Proof of<br><i>work.</i></h2>
+      </div>
+    </div>
+    <div class="frame">
+      <div class="work-list">
+        <div class="work-entry sr">
+          <div class="work-text">
+            <p class="work-cat">Enterprise · Fleet Management</p>
+            <h3>MTF Fleet System</h3>
+            <p class="work-desc">When a major multifinance company needed their entire field operations digitized — prospect tracking, inventory, credit simulation — they didn't need a prototype. They needed it to work.</p>
+            <div class="work-data">
+              <div class="wd"><span class="wd-val">Enterprise</span><span class="wd-key">Scale</span></div>
+              <div class="wd"><span class="wd-val">Full-stack</span><span class="wd-key">Scope</span></div>
+              <div class="wd"><span class="wd-val">Active</span><span class="wd-key">Status</span></div>
+            </div>
+          </div>
+          <div class="work-vis"><span class="wv-label">FLEET</span></div>
+        </div>
+
+        <div class="work-entry sr">
+          <div class="work-text">
+            <p class="work-cat">Mobile · Collection & Inventory</p>
+            <h3>Collecta</h3>
+            <p class="work-desc">A billion-rupiah system for asset repossession, grading, and auction lifecycle. I didn't just architect it — I laid the technical foundation that the entire vendor team builds on.</p>
+            <div class="work-data">
+              <div class="wd"><span class="wd-val">1.17B IDR</span><span class="wd-key">Contract Value</span></div>
+              <div class="wd"><span class="wd-val">Flutter + .NET</span><span class="wd-key">Stack</span></div>
+              <div class="wd"><span class="wd-val">2026</span><span class="wd-key">Kickoff</span></div>
+            </div>
+          </div>
+          <div class="work-vis"><span class="wv-label">COLLECTA</span></div>
+        </div>
+
+        <div class="work-entry sr">
+          <div class="work-text">
+            <p class="work-cat">Consumer · Digital Comics</p>
+            <h3>CIAYO Comics</h3>
+            <p class="work-desc">Built the web reading platform from scratch. 656,000 people used it daily. When CIAYO shut down in 2020, the technology was the last thing standing.</p>
+            <div class="work-data">
+              <div class="wd"><span class="wd-val">656K</span><span class="wd-key">Users</span></div>
+              <div class="wd"><span class="wd-val">Frontend Lead</span><span class="wd-key">Role</span></div>
+              <div class="wd"><span class="wd-val">2015–2020</span><span class="wd-key">Period</span></div>
+            </div>
+          </div>
+          <div class="work-vis"><span class="wv-label">CIAYO</span></div>
+        </div>
+
+        <div class="work-entry sr">
+          <div class="work-text">
+            <p class="work-cat">Agency · Global Teams</p>
+            <h3>R/GA — New York</h3>
+            <p class="work-desc">My predecessor told R/GA I'd replace him someday. I did. Leading global teams remotely from Indonesia for one of the world's most awarded agencies taught me that great engineering has no timezone.</p>
+            <div class="work-data">
+              <div class="wd"><span class="wd-val">🏆 Award</span><span class="wd-key">Hall of Immortality</span></div>
+              <div class="wd"><span class="wd-val">Global</span><span class="wd-key">Team Scope</span></div>
+              <div class="wd"><span class="wd-val">2021–2022</span><span class="wd-key">Period</span></div>
+            </div>
+          </div>
+          <div class="work-vis"><span class="wv-label">R/GA</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CAREER ─── -->
+  <section class="sect" id="career">
+    <div class="frame">
+      <div class="sr">
+        <p class="sect-label">04 — Career</p>
+        <h2 class="sect-title">Fifteen years.<br><i>One trajectory.</i></h2>
+      </div>
+      <div class="career-grid sr sr-d2">
+        <div class="c-block now">
+          <div class="c-year">2026 — Present</div>
+          <div class="c-role">CTO & Principal Architect</div>
+          <div class="c-org">Syntax Solution</div>
+        </div>
+        <div class="c-block now">
+          <div class="c-year">2026 — Present</div>
+          <div class="c-role">Tech Partner & Co-founder</div>
+          <div class="c-org">Magnificat Consulthink</div>
+        </div>
+        <div class="c-block">
+          <div class="c-year">2024 — 2025</div>
+          <div class="c-role">VP of Engineering & Product</div>
+          <div class="c-org">Syntax Solution</div>
+        </div>
+        <div class="c-block">
+          <div class="c-year">2022 — 2026</div>
+          <div class="c-role">Tech Partner & Lead Developer</div>
+          <div class="c-org">Yoona</div>
+          <div class="c-note">Built entire platform solo in 8 months</div>
+        </div>
+        <div class="c-block">
+          <div class="c-year">2021 — 2022</div>
+          <div class="c-role">Tech Lead</div>
+          <div class="c-org">R/GA (New York, Remote)</div>
+          <div class="c-note">Awarded Hall of Immortality</div>
+        </div>
+        <div class="c-block">
+          <div class="c-year">2017 — 2020</div>
+          <div class="c-role">Tech Partner & Full-stack Dev</div>
+          <div class="c-org">LifeLearn (Finland)</div>
+        </div>
+        <div class="c-block">
+          <div class="c-year">2015 — 2020</div>
+          <div class="c-role">Frontend Division Head</div>
+          <div class="c-org">CIAYO Comics</div>
+          <div class="c-note">656,000 users platform</div>
+        </div>
+        <div class="c-block">
+          <div class="c-year">2012 — 2015</div>
+          <div class="c-role">Senior Web Developer</div>
+          <div class="c-org">CakraStudio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <section class="sect" id="voices">
+    <div class="frame">
+      <div class="sr">
+        <p class="sect-label">05 — Voices</p>
+        <h2 class="sect-title">Trust is<br><i>earned.</i></h2>
+      </div>
+      <div class="testi-layout sr sr-d2">
+        <div class="testi">
+          <blockquote>When I first met Ervan, I knew he would be a leader in engineering someday. And it happened — I moved from R/GA and Ervan replaced me to lead a world-class team. His skill is no doubt.</blockquote>
+          <div class="testi-name">David Alfa Sunarna</div>
+          <div class="testi-info">Associate Technology Director — R/GA</div>
+        </div>
+        <div class="testi">
+          <blockquote>Ervan built our entire platform from scratch — dashboard, webstore, partner system, everything. One developer, eight months. The technical breadth and speed was remarkable.</blockquote>
+          <div class="testi-name">Client Testimonial</div>
+          <div class="testi-info">Enterprise Platform · Yoona</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT CTA ─── -->
+  <div class="cta-block" id="contact">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <p class="sect-label">06 — Contact</p>
+        <h2>The best partnerships<br>start with <i>honest conversations.</i></h2>
+        <p class="cta-sub">I'm selective about what I take on — not out of arrogance, but because the work deserves full commitment. If you have a hard problem and need someone who'll tell you the truth about it, let's talk.</p>
+        <div class="cta-btns">
+          <a href="mailto:ervandra.halim@gmail.com" class="btn-warm">Get in touch →</a>
+          <a href="https://linkedin.com/in/ervandra" class="btn-outline" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <a href="mailto:ervandra.halim@gmail.com" class="cta-link-row">
+          <span class="clr-label">Email</span>
+          <span class="clr-val">ervandra.halim@gmail.com</span>
+        </a>
+        <a href="https://linkedin.com/in/ervandra" class="cta-link-row" target="_blank">
+          <span class="clr-label">LinkedIn</span>
+          <span class="clr-val">in/ervandra</span>
+        </a>
+        <a href="https://github.com/ervandra" class="cta-link-row" target="_blank">
+          <span class="clr-label">GitHub</span>
+          <span class="clr-val">@ervandra</span>
+        </a>
+        <a href="https://instagram.com/ervandra" class="cta-link-row" target="_blank">
+          <span class="clr-label">Instagram</span>
+          <span class="clr-val">@ervandra</span>
+        </a>
+        <a href="tel:+6287708770800" class="cta-link-row">
+          <span class="clr-label">Phone</span>
+          <span class="clr-val">+62 877 0877 0800</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <div class="foot-name">Ervandra Halim</div>
+          <p class="foot-desc">CTO & Principal Architect. Fifteen years of building what lasts. Selective about partnerships, serious about the ones I take.</p>
+          <a href="mailto:ervandra.halim@gmail.com" class="foot-connect">Let's connect →</a>
+        </div>
+        <div class="foot-col">
+          <h4>Ventures</h4>
+          <ul>
+            <li><a href="https://syntax.id" target="_blank">Syntax Solution</a></li>
+            <li><a href="https://magnificat.id" target="_blank">Magnificat Consulthink</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Tech Audit</a></li>
+            <li><a href="#services">Fractional CTO</a></li>
+            <li><a href="#services">Tech Partnership</a></li>
+            <li><a href="#services">System Architecture</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#work">Portfolio</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="#career">Career</a></li>
+            <li><a href="#voices">Testimonials</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://linkedin.com/in/ervandra" target="_blank">LinkedIn</a></li>
+            <li><a href="https://instagram.com/ervandra" target="_blank">Instagram</a></li>
+            <li><a href="https://facebook.com/ervandrahalim" target="_blank">Facebook</a></li>
+            <li><a href="mailto:ervandra.halim@gmail.com">Email</a></li>
+            <li><a href="tel:+6287708770800">Phone</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2011–2026 Ervandra Halim</span>
+        <span>Tangerang, Indonesia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.sr').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
