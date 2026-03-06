@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Fade from 'react-reveal';
+import { motion } from 'framer-motion';
 
 export default function Accordion({ data, company, currentJob = false }) {
   const initialState = { activeAccordion: 0 };
@@ -39,16 +39,36 @@ export default function Accordion({ data, company, currentJob = false }) {
               </div>
 
               <div className={`eh-accordion__content ${active ? 'active' : 'hidden'}`}>
-                <Fade cascade>
-                  <div className="job-desc">
+                {active && (
+                  <motion.div
+                    className="job-desc"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: {
+                        opacity: 1,
+                        transition: {
+                          staggerChildren: 0.1,
+                        },
+                      },
+                    }}
+                  >
                     {work.summary.map((sum, idx) => (
-                      <h6 className="font-light my-2 lg:text-lg flex" key={sum + idx}>
+                      <motion.h6
+                        className="font-light my-2 lg:text-lg flex"
+                        key={sum + idx}
+                        variants={{
+                          hidden: { opacity: 0, y: 10 },
+                          visible: { opacity: 1, y: 0 },
+                        }}
+                      >
                         <span className="text-warning text-red-900 mr-4">⌲</span>
                         <span>{sum}</span>
-                      </h6>
+                      </motion.h6>
                     ))}
-                  </div>
-                </Fade>
+                  </motion.div>
+                )}
               </div>
             </div>
           );
