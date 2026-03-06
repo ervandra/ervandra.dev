@@ -1,11 +1,11 @@
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import {
   motion,
   MotionProps,
   useInView,
   UseInViewOptions,
   Variants,
-} from "motion/react"
+} from "framer-motion"
 
 type MarginType = UseInViewOptions["margin"]
 
@@ -41,6 +41,11 @@ export function BlurFade({
   const ref = useRef(null)
   const inViewResult = useInView(ref, { once: true, margin: inViewMargin })
   const isInView = !inView || inViewResult
+  
+  const [isMounted, setIsMounted] = useState(false)
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
   const defaultVariants: Variants = {
     hidden: {
       [direction === "left" || direction === "right" ? "x" : "y"]:
@@ -55,6 +60,10 @@ export function BlurFade({
     },
   }
   const combinedVariants = variant || defaultVariants
+  if (!isMounted) {
+    return <div className={className}>{children}</div>
+  }
+
   return (
     <motion.div
       ref={ref}
