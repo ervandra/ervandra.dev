@@ -1,0 +1,117 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Brain, Rocket, Handshake, Code } from "lucide-react";
+import servicesData from "@/config/services";
+
+const iconMap: Record<string, React.ComponentType<{ size?: number; strokeWidth?: number }>> = {
+  brain: Brain,
+  rocket: Rocket,
+  handshake: Handshake,
+  code: Code,
+};
+
+export default function Services() {
+  return (
+    <section id="services" className="relative py-24 md:py-32">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+        {/* Section Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 md:mb-20">
+          <div className="lg:col-span-5">
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="editorial-label"
+            >
+              What I Do
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-4"
+            >
+              Services
+            </motion.h2>
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7 flex items-end">
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-navy/50 text-[1.0625rem] leading-relaxed"
+            >
+              Engagements available directly or via Syntax Solution. Every
+              project starts with understanding your business — then applying
+              the right technology to move it forward.
+            </motion.p>
+          </div>
+        </div>
+
+        {/* Service Grid — 2x2 with editorial numbering */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-navy/[0.06]">
+          {servicesData.map((service, i) => {
+            const Icon = iconMap[service.icon];
+            return (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{
+                  duration: 0.6,
+                  delay: i * 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="group bg-white hover:bg-warm-gray/50 transition-colors duration-500 p-8 md:p-10 lg:p-12 relative"
+              >
+                {/* Number */}
+                <span className="font-[family-name:var(--font-heading)] text-[3.5rem] font-black text-navy/[0.05] absolute top-6 right-8 leading-none select-none">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+
+                <div className="flex items-start gap-4 mb-5">
+                  {Icon && (
+                    <div className="w-10 h-10 flex items-center justify-center text-navy/70 group-hover:text-navy transition-colors duration-300 shrink-0 mt-0.5">
+                      <Icon size={24} strokeWidth={1.5} />
+                    </div>
+                  )}
+                  <h3 className="text-[1.25rem] font-bold leading-snug">
+                    {service.title}
+                  </h3>
+                </div>
+
+                <p className="text-navy/50 text-[0.9375rem] leading-relaxed mb-6">
+                  {service.description}
+                </p>
+
+                <ul className="space-y-2">
+                  {service.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-3 text-[0.875rem] text-navy/60"
+                    >
+                      <span className="w-1 h-1 bg-navy/30 mt-[0.55rem] shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 pt-6 border-t border-navy/[0.06]">
+                  <p className="text-[0.8125rem] text-navy/40 italic font-[family-name:var(--font-heading)]">
+                    {service.outcome}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 section-divider" />
+    </section>
+  );
+}
