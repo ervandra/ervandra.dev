@@ -1,0 +1,80 @@
+$enable-shadows: true;
+$dark: #15232d;
+$primary: #a5ff90;
+$danger: #fb6970;
+$success: #a5ff90;
+$warning: #ffc600;
+$border-radius: 0.5em;
+$border-radius-lg: 1em;
+
+$enable-responsive-font-sizes: true;
+
+// @import 'bootstrap/scss/bootstrap.scss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply scroll-smooth;
+  }
+}
+
+/* modal css */
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.ReactModal__Overlay {
+  z-index: 1200;
+  background: rgba(0, 0, 0, 0.66) !important;
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.reveal {
+  width: 100%;
+  max-width: 640px;
+  margin: 100px auto 100px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.75);
+  position: relative;
+  border-radius: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  outline: none;
+  &.small {
+    max-width: 480px;
+  }
+  &.medium {
+    max-width: 520px;
+  }
+  &.special {
+    overflow: visible;
+  }
+  &.dialog-modal {
+    max-width: 360px;
+    .button {
+      margin: 0;
+      color: #fff;
+    }
+    &.success {
+      background: #efe;
+    }
+  }
+  @media only screen and (max-width: 640px) {
+    max-width: 90% !important;
+    &.small {
+      max-width: 90%;
+    }
+  }
+}
+
+.close-reveal {
+  @apply text-gray-300 text-lg top-2 right-3 absolute z-10 hover:text-gray-500;
+}
