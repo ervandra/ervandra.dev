@@ -1,46 +1,54 @@
 import type { Metadata } from "next";
-import { Merriweather, Fira_Sans } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { GTMHead, GTMBody } from "@/components/layout/analytics";
 import JsonLd from "@/components/layout/json-ld";
 import "./globals.css";
 
-const merriweather = Merriweather({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-heading",
   display: "swap",
 });
 
-const firaSans = Fira_Sans({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
 
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://ervandra.dev"),
-  title: "Ervandra Halim | Strategic Tech Partner — CPTO & Co-founder",
+  title: "Ervandra Halim — CTO & Principal Architect",
   description:
-    "Strategic Tech Partner with 15+ years experience. I help SMEs and professionals build AI-powered businesses through digital transformation, AI automation, and custom software development.",
+    "I architect digital systems that outlast the project and outgrow the plan. CTO & Principal Architect with 15+ years building scalable systems, leading teams, and shipping technology.",
   keywords: [
     "Ervandra Halim",
-    "Strategic Tech Partner",
-    "CPTO",
-    "AI Automation",
-    "Digital Transformation",
+    "CTO",
+    "Principal Architect",
+    "Solution Architecture",
+    "AI Integration",
     "Fractional CTO",
-    "Software Development",
-    "Tech Consultant",
+    "Tech Partner",
+    "Agentic AI",
+    "Digital Transformation",
   ],
   authors: [{ name: "Ervandra Halim" }],
   alternates: {
     types: { "application/rss+xml": "/feed.xml" },
   },
   openGraph: {
-    title: "Ervandra Halim | Strategic Tech Partner",
+    title: "Ervandra Halim — CTO & Principal Architect",
     description:
-      "15+ years building, leading, and shipping technology that drives real business results.",
+      "I architect digital systems that outlast the project and outgrow the plan. 15+ years building scalable systems.",
     url: "https://ervandra.dev",
     siteName: "Ervandra Halim",
     images: [{ url: "/images/cover.png", width: 1200, height: 630 }],
@@ -49,9 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ervandra Halim | Strategic Tech Partner",
+    title: "Ervandra Halim — CTO & Principal Architect",
     description:
-      "15+ years building, leading, and shipping technology that drives real business results.",
+      "I architect digital systems that outlast the project and outgrow the plan.",
     creator: "@ervandracom",
   },
   robots: { index: true, follow: true },
@@ -63,7 +71,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${merriweather.variable} ${firaSans.variable}`}>
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
         <GTMHead />
         <JsonLd />

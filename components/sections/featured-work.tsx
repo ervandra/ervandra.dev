@@ -28,7 +28,7 @@ export default function FeaturedWork() {
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="mt-4"
             >
-              Projects &amp; Impact
+              Projects &amp; impact
             </motion.h2>
           </div>
           <motion.p
@@ -36,14 +36,14 @@ export default function FeaturedWork() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="text-navy/40 text-[0.8125rem] tracking-[0.06em] uppercase font-medium"
+            className="mono text-navy/30 text-[0.6875rem] tracking-[0.1em] uppercase font-medium"
           >
             {projectsData.length} Projects Delivered
           </motion.p>
         </div>
 
-        {/* Project list — editorial style with horizontal rules */}
-        <div className="border-t border-navy/[0.1]">
+        {/* Project list */}
+        <div className="border-t border-navy/[0.08]">
           {featured.map((project, i) => (
             <motion.div
               key={project.id}
@@ -55,33 +55,33 @@ export default function FeaturedWork() {
                 delay: i * 0.08,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="group border-b border-navy/[0.1] py-8 md:py-10 cursor-default"
+              className="group border-b border-navy/[0.08] py-8 md:py-10 cursor-default"
             >
               <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
                 {/* Number + Client */}
                 <div className="md:col-span-2">
-                  <span className="text-[0.6875rem] tracking-[0.15em] uppercase text-navy/30 font-medium">
+                  <span className="mono text-[0.625rem] tracking-[0.15em] uppercase text-navy/20 font-medium">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-[0.8125rem] text-navy/50 mt-1 font-medium">
+                  <p className="text-[0.8125rem] text-navy/45 mt-1 font-medium">
                     {project.client}
                   </p>
                 </div>
 
                 {/* Title */}
                 <div className="md:col-span-4">
-                  <h3 className="text-[1.375rem] md:text-[1.5rem] font-bold leading-tight group-hover:translate-x-1 transition-transform duration-500">
+                  <h3 className="text-[1.25rem] md:text-[1.375rem] font-semibold leading-tight group-hover:translate-x-1 transition-transform duration-500">
                     {project.title}
                     <ArrowUpRight
-                      size={18}
-                      className="inline-block ml-2 opacity-0 -translate-y-1 translate-x-[-4px] group-hover:opacity-40 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-500"
+                      size={16}
+                      className="inline-block ml-2 opacity-0 -translate-y-1 translate-x-[-4px] group-hover:opacity-30 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-500"
                     />
                   </h3>
                 </div>
 
                 {/* Description */}
                 <div className="md:col-span-4">
-                  <p className="text-[0.9375rem] text-navy/50 leading-relaxed">
+                  <p className="text-[0.875rem] text-navy/45 leading-relaxed">
                     {project.description}
                   </p>
                 </div>
@@ -91,7 +91,7 @@ export default function FeaturedWork() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[0.6875rem] tracking-[0.08em] uppercase text-navy/35 border border-navy/[0.08] px-3 py-1 font-medium"
+                      className="mono text-[0.5625rem] tracking-[0.08em] uppercase text-navy/30 border border-navy/[0.06] px-2.5 py-1 font-medium"
                     >
                       {tag}
                     </span>

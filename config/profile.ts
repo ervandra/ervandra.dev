@@ -42,16 +42,17 @@ export interface Profile {
 
 const profile: Profile = {
   name: "Ervandra Halim",
-  title: "Strategic Tech Partner",
-  headline: "I help SMEs & professionals build AI-powered businesses that scale.",
+  title: "CTO & Principal Architect",
+  headline:
+    "I architect digital systems that outlast the project and outgrow the plan.",
   subheadline:
-    "Strategic Tech Partner | CPTO & Co-founder | 15+ Years in Tech",
+    "CTO & Principal Architect | Co-founder at Syntax & Magnificat | 15+ Years in Tech",
   mission:
-    "Strategic Tech Partner for SMEs — 15+ years building, leading, and shipping technology that drives real business results.",
+    "Business problems first. Architecture second. Implementation last.",
   email: "hi@ervandra.com",
   phone: "+6287708770800",
   intro:
-    "Tech expert and builder with 15+ years of experience. CPTO and co-founder helping SMEs and professionals implement cost-effective AI automation and digital transformation that deliver speed, accuracy, and visible results.",
+    "CTO & Principal Architect at Syntax Solution, co-founder of Magnificat Consulthink. With 15+ years in technology — from New York agencies to leading a 20+ person engineering team in Indonesia — I build scalable systems, integrate AI into real operations, and lead teams that ship.",
   website: "www.ervandra.dev",
   socialLinks: [
     { id: "github", icon: "github", link: "https://www.github.com/ervandra" },
@@ -67,15 +68,15 @@ const profile: Profile = {
     },
   ],
   recentSkills: [
-    "Product Strategy & Roadmapping",
     "Solution Architecture",
-    "AI Automation & Agents",
-    "AI Implementation & Evaluation",
-    "Business Intelligence & Analytics",
-    "Custom Integrations & APIs",
-    "Cloud & Automation",
-    "Security & Compliance",
-    "Cost Optimization",
+    "Cloud Infrastructure",
+    "AI / LLM Integration",
+    "Agentic AI Systems",
+    "Intelligent Automation",
+    "Next.js & TypeScript",
+    "Node.js & Python",
+    "Team Leadership (20+)",
+    "Fractional CTO Advisory",
   ],
   allSkills: [
     "React.js",

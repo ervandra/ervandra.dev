@@ -39,15 +39,15 @@ export default function BlogPreview({ posts }: { posts: BlogPost[] }) {
           >
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-[0.8125rem] tracking-[0.06em] uppercase text-navy/50 hover:text-navy font-medium transition-colors duration-300"
+              className="inline-flex items-center gap-2 mono text-[0.6875rem] tracking-[0.08em] uppercase text-navy/40 hover:text-navy font-medium transition-colors duration-300"
             >
               View all posts
-              <ArrowRight size={14} />
+              <ArrowRight size={12} />
             </Link>
           </motion.div>
         </div>
 
-        <div className="border-t border-navy/[0.1]">
+        <div className="border-t border-navy/[0.08]">
           {posts.slice(0, 3).map((post, i) => (
             <motion.div
               key={post.slug}
@@ -58,11 +58,11 @@ export default function BlogPreview({ posts }: { posts: BlogPost[] }) {
             >
               <Link
                 href={`/blog/${post.slug}`}
-                className="group block border-b border-navy/[0.1] py-8 md:py-10"
+                className="group block border-b border-navy/[0.08] py-8 md:py-10"
               >
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 items-start">
                   <div className="md:col-span-2">
-                    <span className="text-[0.8125rem] text-navy/25 font-medium">
+                    <span className="mono text-[0.6875rem] text-navy/20 font-medium">
                       {new Date(post.frontmatter.date).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
@@ -70,16 +70,16 @@ export default function BlogPreview({ posts }: { posts: BlogPost[] }) {
                     </span>
                   </div>
                   <div className="md:col-span-5">
-                    <h3 className="font-[family-name:var(--font-heading)] text-navy text-[1.25rem] font-bold leading-tight group-hover:translate-x-1 transition-transform duration-500">
+                    <h3 className="font-[family-name:var(--font-heading)] text-navy text-[1.125rem] font-semibold leading-tight group-hover:translate-x-1 transition-transform duration-500">
                       {post.frontmatter.title}
                       <ArrowRight
-                        size={14}
+                        size={12}
                         className="inline-block ml-2 opacity-0 group-hover:opacity-30 transition-opacity duration-500"
                       />
                     </h3>
                   </div>
                   <div className="md:col-span-5">
-                    <p className="text-[0.9375rem] text-navy/40 leading-relaxed">
+                    <p className="text-[0.875rem] text-navy/35 leading-relaxed">
                       {post.frontmatter.description}
                     </p>
                   </div>

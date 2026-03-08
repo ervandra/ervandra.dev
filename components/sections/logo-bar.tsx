@@ -4,16 +4,17 @@ import { motion } from "framer-motion";
 
 const companies = [
   { name: "R/GA", highlight: true },
-  { name: "Komunal" },
-  { name: "Yoona" },
-  { name: "CIAYO" },
+  { name: "Google", highlight: false },
+  { name: "Komunal", highlight: false },
+  { name: "Yoona", highlight: false },
+  { name: "CIAYO", highlight: false },
   { name: "Syntax", highlight: true },
-  { name: "Cakra Studio" },
+  { name: "Magnificat", highlight: true },
 ];
 
 export default function LogoBar() {
   return (
-    <section className="relative py-16 md:py-20 overflow-hidden">
+    <section className="relative py-14 md:py-16 overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <motion.p
           initial={{ opacity: 0 }}
@@ -22,10 +23,10 @@ export default function LogoBar() {
           transition={{ duration: 0.6 }}
           className="editorial-label text-center mb-10"
         >
-          Previously building at
+          Previously & currently building at
         </motion.p>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 md:gap-x-16">
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 md:gap-x-14">
           {companies.map((company, i) => (
             <motion.div
               key={company.name}
@@ -34,16 +35,16 @@ export default function LogoBar() {
               viewport={{ once: true, margin: "-30px" }}
               transition={{
                 duration: 0.5,
-                delay: i * 0.07,
+                delay: i * 0.06,
                 ease: [0.16, 1, 0.3, 1],
               }}
               className="group relative"
             >
               <span
-                className={`font-[family-name:var(--font-heading)] text-[1.25rem] md:text-[1.5rem] tracking-tight transition-colors duration-300 ${
+                className={`font-[family-name:var(--font-heading)] text-[1.125rem] md:text-[1.25rem] tracking-tight transition-colors duration-300 ${
                   company.highlight
-                    ? "text-navy font-bold"
-                    : "text-navy/30 font-bold group-hover:text-navy/60"
+                    ? "text-navy font-semibold"
+                    : "text-navy/25 font-semibold group-hover:text-navy/50"
                 }`}
               >
                 {company.name}

@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #0a192f;
-  --color-navy-light: #112240;
-  --color-navy-muted: #1d3557;
-  --color-slate: #64748b;
-  --color-slate-light: #94a3b8;
-  --color-warm-white: #faf9f7;
-  --color-warm-gray: #f3f1ee;
-  --color-warm-gray-dark: #e8e4df;
-  --color-ink: #1a1a2e;
-  --color-accent: #0a192f;
+  --color-navy: #0a0f1a;
+  --color-navy-light: #141b2d;
+  --color-navy-muted: #1c2640;
+  --color-slate: #5a6578;
+  --color-slate-light: #8892a4;
+  --color-warm-white: #f8f7f4;
+  --color-warm-gray: #f0eeea;
+  --color-warm-gray-dark: #e2dfd9;
+  --color-ink: #12161f;
+  --color-accent: #0a0f1a;
 
-  --font-heading: "Merriweather", "Georgia", serif;
-  --font-body: "Fira Sans", "Helvetica Neue", sans-serif;
+  --font-heading: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-sine: cubic-bezier(0.37, 0, 0.63, 1);
@@ -38,27 +39,25 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   color: var(--color-ink);
   line-height: 1.7;
-  background-color: #ffffff;
-  background-image:
-    url("/images/bg-grid.webp");
-  background-size: 72px 72px;
+  background-color: #fafaf8;
+  background-image: url("/images/bg-grid.webp");
+  background-size: 80px 80px;
   background-position: center;
   background-attachment: fixed;
   background-repeat: repeat;
 }
 
-/* Soft overlay on the grid texture */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(10, 25, 47, 0.03), transparent 70%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(250, 249, 247, 0.88) 100%);
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(10, 15, 26, 0.04), transparent 70%),
+    linear-gradient(180deg, rgba(250, 250, 248, 0.95) 0%, rgba(248, 247, 244, 0.92) 100%);
   pointer-events: none;
   z-index: 0;
 }
@@ -68,14 +67,14 @@ body::before {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--color-navy);
-  line-height: 1.2;
-  font-weight: 900;
-  letter-spacing: -0.01em;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
-h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+h1 { font-size: clamp(2.75rem, 7vw, 5rem); }
 h2 { font-size: clamp(1.75rem, 4vw, 3rem); }
-h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
 
 p, li {
   line-height: 1.7;
@@ -94,8 +93,8 @@ a {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(10, 25, 47, 0.12) 20%,
-    rgba(10, 25, 47, 0.12) 80%,
+    rgba(10, 15, 26, 0.08) 20%,
+    rgba(10, 15, 26, 0.08) 80%,
     transparent 100%
   );
 }
@@ -104,18 +103,24 @@ a {
 
 .editorial-rule {
   display: block;
-  width: 48px;
-  height: 3px;
+  width: 32px;
+  height: 2px;
   background: var(--color-navy);
 }
 
 .editorial-label {
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
   font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-slate);
+}
+
+/* ── Monospace accent ─────────────────────────────── */
+
+.mono {
+  font-family: var(--font-mono);
 }
 
 /* ── Hover / Interactive ──────────────────────────── */
@@ -141,14 +146,14 @@ a {
 /* ── Card Architectural Style ─────────────────────── */
 
 .card-sharp {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(10, 25, 47, 0.08);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(10, 15, 26, 0.06);
   transition: all 0.5s var(--ease-out-expo);
 }
 .card-sharp:hover {
-  border-color: rgba(10, 25, 47, 0.2);
-  box-shadow: 0 24px 48px -12px rgba(10, 25, 47, 0.08);
+  border-color: rgba(10, 15, 26, 0.18);
+  box-shadow: 0 32px 64px -16px rgba(10, 15, 26, 0.08);
   transform: translateY(-2px);
 }
 
@@ -160,7 +165,7 @@ a {
   inset: 0;
   background-image: url("/images/bg-dust.webp");
   background-size: 200px;
-  opacity: 0.03;
+  opacity: 0.02;
   pointer-events: none;
   mix-blend-mode: multiply;
 }
@@ -169,11 +174,11 @@ a {
 
 .statement-text {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 600;
   font-size: clamp(1.5rem, 3vw, 2.25rem);
-  line-height: 1.35;
+  line-height: 1.3;
   color: var(--color-navy);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 /* ── Form inputs ──────────────────────────────────── */
@@ -181,11 +186,11 @@ a {
 input[type="text"],
 input[type="email"],
 textarea {
-  border: 1px solid rgba(10, 25, 47, 0.15);
-  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(10, 15, 26, 0.12);
+  background: rgba(255, 255, 255, 0.95);
   padding: 0.875rem 1rem;
   font-family: var(--font-body);
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: var(--color-navy);
   transition: border-color 0.3s ease;
   outline: none;
@@ -203,14 +208,14 @@ input::placeholder {
 /* ── Scrollbar ────────────────────────────────────── */
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(10, 25, 47, 0.2);
+  background: rgba(10, 15, 26, 0.15);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(10, 25, 47, 0.4);
+  background: rgba(10, 15, 26, 0.3);
 }

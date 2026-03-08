@@ -24,7 +24,7 @@ export default function Services() {
               viewport={{ once: true, margin: "-50px" }}
               className="editorial-label"
             >
-              What I Do
+              Services
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -33,7 +33,7 @@ export default function Services() {
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="mt-4"
             >
-              Services
+              What I build
             </motion.h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 flex items-end">
@@ -42,7 +42,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-navy/50 text-[1.0625rem] leading-relaxed"
+              className="text-navy/45 text-[0.9375rem] leading-relaxed"
             >
               Engagements available directly or via Syntax Solution. Every
               project starts with understanding your business — then applying
@@ -51,8 +51,8 @@ export default function Services() {
           </div>
         </div>
 
-        {/* Service Grid — 2x2 with editorial numbering */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-navy/[0.06]">
+        {/* Service Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-navy/[0.04]">
           {servicesData.map((service, i) => {
             const Icon = iconMap[service.icon];
             return (
@@ -66,25 +66,25 @@ export default function Services() {
                   delay: i * 0.1,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="group bg-white hover:bg-warm-gray/50 transition-colors duration-500 p-8 md:p-10 lg:p-12 relative"
+                className="group bg-white hover:bg-warm-gray/30 transition-colors duration-500 p-8 md:p-10 lg:p-12 relative"
               >
                 {/* Number */}
-                <span className="font-[family-name:var(--font-heading)] text-[3.5rem] font-black text-navy/[0.05] absolute top-6 right-8 leading-none select-none">
+                <span className="mono text-[0.625rem] text-navy/15 absolute top-6 right-8 tracking-[0.1em] font-medium">
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
                 <div className="flex items-start gap-4 mb-5">
                   {Icon && (
-                    <div className="w-10 h-10 flex items-center justify-center text-navy/70 group-hover:text-navy transition-colors duration-300 shrink-0 mt-0.5">
-                      <Icon size={24} strokeWidth={1.5} />
+                    <div className="w-9 h-9 flex items-center justify-center text-navy/50 group-hover:text-navy transition-colors duration-300 shrink-0 mt-0.5">
+                      <Icon size={22} strokeWidth={1.5} />
                     </div>
                   )}
-                  <h3 className="text-[1.25rem] font-bold leading-snug">
+                  <h3 className="text-[1.125rem] font-semibold leading-snug">
                     {service.title}
                   </h3>
                 </div>
 
-                <p className="text-navy/50 text-[0.9375rem] leading-relaxed mb-6">
+                <p className="text-navy/45 text-[0.875rem] leading-relaxed mb-6">
                   {service.description}
                 </p>
 
@@ -92,16 +92,16 @@ export default function Services() {
                   {service.features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-start gap-3 text-[0.875rem] text-navy/60"
+                      className="flex items-start gap-3 text-[0.8125rem] text-navy/50"
                     >
-                      <span className="w-1 h-1 bg-navy/30 mt-[0.55rem] shrink-0" />
+                      <span className="w-1 h-1 bg-navy/20 mt-[0.55rem] shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-8 pt-6 border-t border-navy/[0.06]">
-                  <p className="text-[0.8125rem] text-navy/40 italic font-[family-name:var(--font-heading)]">
+                <div className="mt-8 pt-5 border-t border-navy/[0.04]">
+                  <p className="mono text-[0.6875rem] text-navy/30 tracking-wide">
                     {service.outcome}
                   </p>
                 </div>
