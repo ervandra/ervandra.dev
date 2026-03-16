@@ -39,10 +39,10 @@ export default function BlogPreview({ posts }: { posts: BlogPost[] }) {
           >
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 mono text-[0.6875rem] tracking-[0.08em] uppercase text-navy/40 hover:text-navy font-medium transition-colors duration-300"
+              className="group inline-flex items-center gap-2 mono text-[0.6875rem] tracking-[0.08em] uppercase text-accent-dark/60 hover:text-accent-dark font-medium transition-colors duration-300"
             >
               View all posts
-              <ArrowRight size={12} />
+              <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </motion.div>
         </div>
@@ -54,15 +54,19 @@ export default function BlogPreview({ posts }: { posts: BlogPost[] }) {
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <Link
                 href={`/blog/${post.slug}`}
-                className="group block border-b border-navy/[0.08] py-8 md:py-10"
+                className="group block border-b border-navy/[0.08] py-8 md:py-10 hover:bg-white/50 transition-all duration-500 relative"
               >
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 items-start">
-                  <div className="md:col-span-2">
-                    <span className="mono text-[0.6875rem] text-navy/20 font-medium">
+                {/* Accent left border on hover */}
+                <div className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-[3px] bg-accent transition-all duration-500" />
+
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 items-start pl-0 group-hover:pl-4 transition-all duration-500">
+                  <div className="md:col-span-2 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 bg-accent/30 shrink-0" />
+                    <span className="mono text-[0.6875rem] text-navy/25 font-medium">
                       {new Date(post.frontmatter.date).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
@@ -70,11 +74,11 @@ export default function BlogPreview({ posts }: { posts: BlogPost[] }) {
                     </span>
                   </div>
                   <div className="md:col-span-5">
-                    <h3 className="font-[family-name:var(--font-heading)] text-navy text-[1.125rem] font-semibold leading-tight group-hover:translate-x-1 transition-transform duration-500">
+                    <h3 className="font-[family-name:var(--font-heading)] text-navy text-[1.125rem] font-semibold leading-tight transition-all duration-500">
                       {post.frontmatter.title}
                       <ArrowRight
                         size={12}
-                        className="inline-block ml-2 opacity-0 group-hover:opacity-30 transition-opacity duration-500"
+                        className="inline-block ml-2 opacity-0 group-hover:opacity-60 text-accent transition-all duration-500"
                       />
                     </h3>
                   </div>

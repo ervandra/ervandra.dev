@@ -18,7 +18,9 @@ export default function About() {
             className="lg:col-span-4 relative"
           >
             <div className="relative max-w-[320px] mx-auto lg:mx-0">
-              <div className="absolute -top-3 -left-3 w-full h-full border border-navy/[0.08]" />
+              {/* Accent frame */}
+              <div className="absolute -top-3 -left-3 w-full h-full border border-accent/20" />
+              <div className="absolute -top-1.5 -left-1.5 w-2 h-2 bg-accent" />
               <div className="relative overflow-hidden bg-warm-gray">
                 <Image
                   src="/images/ervan.png"
@@ -77,7 +79,7 @@ export default function About() {
                   href="https://syntax.id"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-navy font-semibold link-underline"
+                  className="text-accent-dark font-semibold link-underline"
                 >
                   Syntax Solution
                 </a>{" "}
@@ -86,7 +88,7 @@ export default function About() {
                   href="https://magnificat.id"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-navy font-semibold link-underline"
+                  className="text-accent-dark font-semibold link-underline"
                 >
                   Magnificat Consulthink
                 </a>{" "}
@@ -110,11 +112,11 @@ export default function About() {
                     initial={{ opacity: 0, x: -8 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.35 + i * 0.03 }}
-                    className="flex items-center gap-3 py-2.5 border-b border-navy/[0.04]"
+                    transition={{ duration: 0.4, delay: 0.35 + i * 0.04 }}
+                    className="group flex items-center gap-3 py-2.5 border-b border-navy/[0.04] hover:border-accent/15 transition-all duration-300"
                   >
-                    <span className="w-1 h-1 bg-navy/20 shrink-0" />
-                    <span className="text-[0.875rem] text-navy/60 font-medium">
+                    <span className="w-1.5 h-1.5 bg-accent/30 group-hover:bg-accent shrink-0 transition-colors duration-300" />
+                    <span className="text-[0.875rem] text-navy/60 group-hover:text-navy font-medium transition-colors duration-300">
                       {skill}
                     </span>
                   </motion.div>

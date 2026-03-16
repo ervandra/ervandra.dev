@@ -63,19 +63,22 @@ export default function Services() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{
                   duration: 0.6,
-                  delay: i * 0.1,
+                  delay: i * 0.15,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="group bg-white hover:bg-warm-gray/30 transition-colors duration-500 p-8 md:p-10 lg:p-12 relative"
+                className="group bg-white hover:bg-warm-gray/30 transition-all duration-500 p-8 md:p-10 lg:p-12 relative hover:shadow-[var(--shadow-md)] hover:-translate-y-1"
               >
+                {/* Accent left border on hover */}
+                <div className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-[3px] bg-accent transition-all duration-500" />
+
                 {/* Number */}
-                <span className="mono text-[0.625rem] text-navy/15 absolute top-6 right-8 tracking-[0.1em] font-medium">
+                <span className="mono text-[0.625rem] text-navy/15 group-hover:text-accent/60 absolute top-6 right-8 tracking-[0.1em] font-medium transition-colors duration-500">
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
                 <div className="flex items-start gap-4 mb-5">
                   {Icon && (
-                    <div className="w-9 h-9 flex items-center justify-center text-navy/50 group-hover:text-navy transition-colors duration-300 shrink-0 mt-0.5">
+                    <div className="w-9 h-9 flex items-center justify-center text-navy/40 group-hover:text-accent-dark group-hover:bg-accent-muted transition-all duration-300 shrink-0 mt-0.5">
                       <Icon size={22} strokeWidth={1.5} />
                     </div>
                   )}
@@ -94,14 +97,14 @@ export default function Services() {
                       key={feature}
                       className="flex items-start gap-3 text-[0.8125rem] text-navy/50"
                     >
-                      <span className="w-1 h-1 bg-navy/20 mt-[0.55rem] shrink-0" />
+                      <span className="w-1 h-1 bg-accent/40 mt-[0.55rem] shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-8 pt-5 border-t border-navy/[0.04]">
-                  <p className="mono text-[0.6875rem] text-navy/30 tracking-wide">
+                <div className="mt-8 pt-5 border-t border-navy/[0.04] group-hover:border-accent/10 transition-colors duration-500">
+                  <p className="mono text-[0.6875rem] text-navy/30 group-hover:text-accent-dark/60 tracking-wide transition-colors duration-500">
                     {service.outcome}
                   </p>
                 </div>

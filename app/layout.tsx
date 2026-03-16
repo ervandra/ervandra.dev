@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { GTMHead, GTMBody } from "@/components/layout/analytics";
 import JsonLd from "@/components/layout/json-ld";
+import ScrollProgress from "@/components/ui/scroll-progress";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -83,6 +84,7 @@ export default function RootLayout({
       </head>
       <body className="relative z-[1]">
         <GTMBody />
+        <ScrollProgress />
         {children}
       </body>
     </html>

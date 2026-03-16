@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Button from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Button from "@/components/ui/button";
 
 export default function CTA() {
   return (
@@ -10,9 +10,14 @@ export default function CTA() {
       id="contact"
       className="relative py-24 md:py-36 overflow-hidden"
     >
+      {/* Accent radial glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-accent/[0.04] blur-[100px]" />
+      </div>
+
       {/* Architectural lines */}
-      <div className="absolute top-[20%] left-0 w-[40%] h-px bg-gradient-to-r from-navy/[0.03] to-transparent hidden lg:block" />
-      <div className="absolute bottom-[30%] right-0 w-[30%] h-px bg-gradient-to-l from-navy/[0.03] to-transparent hidden lg:block" />
+      <div className="absolute top-[20%] left-0 w-[40%] h-px bg-gradient-to-r from-accent/[0.08] to-transparent hidden lg:block" />
+      <div className="absolute bottom-[30%] right-0 w-[30%] h-px bg-gradient-to-l from-accent/[0.08] to-transparent hidden lg:block" />
 
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="max-w-[640px] mx-auto text-center">
@@ -55,9 +60,13 @@ export default function CTA() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button variant="primary" href="https://calendly.com/ervandra/free-strategy">
+            <Button
+              variant="accent"
+              size="lg"
+              href="https://calendly.com/ervandra/free-strategy"
+              icon={<ArrowRight size={14} />}
+            >
               Book Free Consultation
-              <ArrowRight size={14} className="ml-2" />
             </Button>
             <Button variant="secondary" href="mailto:hi@ervandra.com">
               Email me directly

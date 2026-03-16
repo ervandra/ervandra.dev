@@ -38,24 +38,25 @@ export default function ServicesContent() {
                     <div className="lg:col-span-5">
                       <span className="editorial-label">{String(i + 1).padStart(2, "0")}</span>
                       <div className="flex items-start gap-4 mt-4 mb-6">
-                        {Icon && <div className="w-10 h-10 flex items-center justify-center text-navy/50 shrink-0 mt-1"><Icon size={28} strokeWidth={1.5} /></div>}
+                        {Icon && <div className="w-10 h-10 flex items-center justify-center text-accent shrink-0 mt-1 bg-accent-muted"><Icon size={28} strokeWidth={1.5} /></div>}
                         <h2 className="text-[1.75rem] md:text-[2rem]">{service.title}</h2>
                       </div>
                       <p className="text-[1.0625rem] text-navy/50 leading-relaxed mb-8">{service.description}</p>
-                      <Button variant="secondary" href="#contact">Discuss This Service<ArrowRight size={14} className="ml-2" /></Button>
+                      <Button variant="secondary" href="#contact" icon={<ArrowRight size={14} />}>Discuss This Service</Button>
                     </div>
                     <div className="lg:col-span-6 lg:col-start-7">
                       <div className="space-y-0">
                         <p className="editorial-label mb-6">What&apos;s included</p>
                         {service.features.map((feature, j) => (
-                          <div key={feature} className="flex items-start gap-4 py-4 border-b border-navy/[0.05]">
-                            <span className="text-[0.75rem] text-navy/20 font-medium mt-0.5 shrink-0">{String(j + 1).padStart(2, "0")}</span>
+                          <div key={feature} className="flex items-start gap-4 py-4 border-b border-navy/[0.05] group hover:border-accent/15 transition-all duration-300">
+                            <span className="text-[0.75rem] text-accent/50 group-hover:text-accent font-medium mt-0.5 shrink-0 transition-colors duration-300">{String(j + 1).padStart(2, "0")}</span>
                             <span className="text-[1rem] text-navy/70 font-medium">{feature}</span>
                           </div>
                         ))}
                       </div>
-                      <div className="mt-10 p-6 bg-navy/[0.02] border border-navy/[0.06]">
-                        <p className="text-[0.8125rem] text-navy/30 uppercase tracking-[0.1em] font-semibold mb-2">Expected Outcome</p>
+                      <div className="mt-10 p-6 bg-navy/[0.02] border border-navy/[0.06] relative overflow-hidden">
+                        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+                        <p className="text-[0.8125rem] text-accent-dark/60 uppercase tracking-[0.1em] font-semibold mb-2">Expected Outcome</p>
                         <p className="font-[family-name:var(--font-heading)] text-navy font-bold text-[1.0625rem] leading-snug">{service.outcome}</p>
                       </div>
                     </div>
@@ -84,10 +85,10 @@ export default function ServicesContent() {
                 { q: "What's the typical project timeline?", a: "It depends on scope. Strategy engagements can be 2-4 weeks. Development projects range from 4-12 weeks. Fractional CPTO engagements are ongoing." },
                 { q: "Can you work through Syntax Solution?", a: "Absolutely. For larger projects or when a team is needed, engagements run through Syntax Solution with full project management support." },
               ].map((faq, i) => (
-                <div key={i} className="py-6 border-b border-navy/[0.06]">
-                  <h4 className="font-[family-name:var(--font-heading)] text-navy font-bold text-[1.0625rem] mb-3">{faq.q}</h4>
+                <motion.div key={i} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.08 }} className="group py-6 border-b border-navy/[0.06] hover:border-accent/15 transition-all duration-300">
+                  <h4 className="font-[family-name:var(--font-heading)] text-navy font-bold text-[1.0625rem] mb-3 group-hover:text-accent-dark transition-colors duration-300">{faq.q}</h4>
                   <p className="text-[0.9375rem] text-navy/50 leading-relaxed">{faq.a}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -96,12 +97,15 @@ export default function ServicesContent() {
 
       <div className="section-divider" />
 
-      <section id="contact" className="py-20 md:py-28 text-center">
-        <div className="max-w-[560px] mx-auto px-6">
+      <section id="contact" className="py-20 md:py-28 text-center relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-accent/[0.04] blur-[100px]" />
+        </div>
+        <div className="max-w-[560px] mx-auto px-6 relative">
           <h2 className="mb-6">Ready to start?</h2>
           <p className="text-navy/50 text-[1.0625rem] mb-10">Book a free strategy session and let&apos;s discuss how technology can accelerate your business.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" href="https://calendly.com/ervandra/free-strategy">Book Free Consultation</Button>
+            <Button variant="accent" href="https://calendly.com/ervandra/free-strategy" icon={<ArrowRight size={14} />}>Book Free Consultation</Button>
             <Button variant="secondary" href="mailto:hi@ervandra.com">Email me directly</Button>
           </div>
         </div>

@@ -56,16 +56,20 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
                     duration: 0.6,
-                    delay: 0.1 + i * 0.06,
+                    delay: 0.1 + i * 0.08,
                     ease: [0.16, 1, 0.3, 1],
                   }}
                 >
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="group block border-b border-navy/[0.1] py-10 md:py-12"
+                    className="group block border-b border-navy/[0.1] py-10 md:py-12 relative hover:bg-white/50 transition-all duration-500"
                   >
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
-                      <div className="md:col-span-2">
+                    {/* Accent left border on hover */}
+                    <div className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-[3px] bg-accent transition-all duration-500" />
+
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start pl-0 group-hover:pl-4 transition-all duration-500">
+                      <div className="md:col-span-2 flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-accent/30 shrink-0" />
                         <span className="text-[0.8125rem] text-navy/30 font-medium">
                           {new Date(post.frontmatter.date).toLocaleDateString("en-US", {
                             month: "short",
@@ -76,11 +80,11 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
                       </div>
 
                       <div className="md:col-span-6">
-                        <h2 className="font-[family-name:var(--font-heading)] text-navy text-[1.375rem] md:text-[1.5rem] font-bold leading-tight group-hover:translate-x-1 transition-transform duration-500">
+                        <h2 className="font-[family-name:var(--font-heading)] text-navy text-[1.375rem] md:text-[1.5rem] font-bold leading-tight transition-all duration-500">
                           {post.frontmatter.title}
                           <ArrowRight
                             size={16}
-                            className="inline-block ml-2 opacity-0 group-hover:opacity-40 transition-opacity duration-500"
+                            className="inline-block ml-2 opacity-0 group-hover:opacity-60 text-accent transition-all duration-500"
                           />
                         </h2>
                       </div>
@@ -92,11 +96,11 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 mt-4 md:ml-[calc(16.666%+2rem)]">
+                    <div className="flex flex-wrap gap-2 mt-4 md:ml-[calc(16.666%+2rem)] pl-0 group-hover:pl-4 transition-all duration-500">
                       {post.frontmatter.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[0.6875rem] tracking-[0.08em] uppercase text-navy/25 font-medium"
+                          className="text-[0.6875rem] tracking-[0.08em] uppercase text-navy/25 group-hover:text-accent-dark/40 font-medium transition-colors duration-500"
                         >
                           {tag}
                         </span>

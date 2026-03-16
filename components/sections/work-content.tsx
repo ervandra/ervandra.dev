@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import Button from "@/components/ui/button";
 import projectsData from "@/config/projects";
 
@@ -26,15 +26,18 @@ export default function WorkContent() {
         <div className="max-w-[1280px] mx-auto px-6 md:px-10">
           <div className="border-t border-navy/[0.1]">
             {projectsData.map((project, i) => (
-              <motion.div key={project.id} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-30px" }} transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }} className="group border-b border-navy/[0.1] py-10 md:py-12">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
+              <motion.div key={project.id} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-30px" }} transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }} className="group border-b border-navy/[0.1] py-10 md:py-12 relative hover:bg-white/50 transition-all duration-500">
+                {/* Accent left border on hover */}
+                <div className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-[3px] bg-accent transition-all duration-500" />
+
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start pl-0 group-hover:pl-4 transition-all duration-500">
                   <div className="md:col-span-1">
-                    <span className="text-[0.6875rem] tracking-[0.15em] uppercase text-navy/25 font-medium">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="text-[0.6875rem] tracking-[0.15em] uppercase text-accent/40 font-medium">{String(i + 1).padStart(2, "0")}</span>
                   </div>
                   <div className="md:col-span-3">
-                    <h3 className="text-[1.5rem] font-bold leading-tight group-hover:translate-x-1 transition-transform duration-500">
+                    <h3 className="text-[1.5rem] font-bold leading-tight transition-all duration-500">
                       {project.title}
-                      <ArrowUpRight size={16} className="inline-block ml-2 opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
+                      <ArrowUpRight size={16} className="inline-block ml-2 opacity-0 group-hover:opacity-60 text-accent transition-all duration-500" />
                     </h3>
                     <p className="text-[0.875rem] text-navy/40 mt-1 font-medium">{project.client}</p>
                   </div>
@@ -43,7 +46,7 @@ export default function WorkContent() {
                   </div>
                   <div className="md:col-span-3 flex flex-wrap gap-2 md:justify-end">
                     {project.tags.map((tag) => (
-                      <span key={tag} className="text-[0.6875rem] tracking-[0.08em] uppercase text-navy/30 border border-navy/[0.08] px-3 py-1 font-medium">{tag}</span>
+                      <span key={tag} className="text-[0.6875rem] tracking-[0.08em] uppercase text-navy/30 border border-navy/[0.08] px-3 py-1 font-medium group-hover:border-accent/20 group-hover:text-accent-dark/50 transition-all duration-500">{tag}</span>
                     ))}
                   </div>
                 </div>
@@ -55,11 +58,14 @@ export default function WorkContent() {
 
       <div className="section-divider mt-16" />
 
-      <section className="py-20 md:py-28 text-center">
-        <div className="max-w-[560px] mx-auto px-6">
+      <section className="py-20 md:py-28 text-center relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-accent/[0.03] blur-[80px]" />
+        </div>
+        <div className="max-w-[560px] mx-auto px-6 relative">
           <h2 className="mb-6">Want similar results?</h2>
           <p className="text-navy/50 text-[1.0625rem] mb-10">Let&apos;s discuss your project and explore how I can help.</p>
-          <Button variant="primary" href="https://calendly.com/ervandra/free-strategy">Book Free Consultation</Button>
+          <Button variant="accent" href="https://calendly.com/ervandra/free-strategy" icon={<ArrowRight size={14} />}>Book Free Consultation</Button>
         </div>
       </section>
     </>

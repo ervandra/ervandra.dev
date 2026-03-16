@@ -16,7 +16,17 @@ export default function Testimonials() {
       ref={ref}
       className="relative py-24 md:py-32 bg-navy noise-overlay overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(255,255,255,0.02),transparent_70%)] pointer-events-none" />
+      {/* Gradient orbs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute top-[-20%] right-[10%] w-[40%] h-[40%] opacity-[0.06]"
+          style={{
+            background: "radial-gradient(ellipse at center, var(--color-accent), transparent 70%)",
+            animation: "mesh-shift 18s ease-in-out infinite",
+          }}
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(255,255,255,0.03),transparent_70%)]" />
+      </div>
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-10">
         {/* Header */}
@@ -25,7 +35,7 @@ export default function Testimonials() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6 }}
-            className="editorial-label !text-white/25"
+            className="editorial-label !text-accent/50"
           >
             Testimonials
           </motion.span>
@@ -48,17 +58,20 @@ export default function Testimonials() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{
                 duration: 0.6,
-                delay: 0.2 + i * 0.08,
+                delay: 0.2 + i * 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className={`bg-white/[0.03] border border-white/[0.04] p-8 md:p-10 hover:bg-white/[0.06] transition-colors duration-500 ${
+              className={`group bg-white/[0.03] border border-white/[0.04] p-8 md:p-10 hover:bg-white/[0.07] transition-all duration-500 relative ${
                 i === 0 ? "md:row-span-2 flex flex-col justify-between" : ""
               }`}
             >
+              {/* Accent top border on hover */}
+              <div className="absolute top-0 left-0 right-0 h-0 group-hover:h-[2px] bg-accent/40 transition-all duration-500" />
+
               <div>
                 <Quote
                   size={18}
-                  className="text-white/8 mb-4"
+                  className="text-accent/20 mb-4"
                   strokeWidth={1}
                 />
                 <p
@@ -73,7 +86,7 @@ export default function Testimonials() {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 overflow-hidden shrink-0 grayscale">
+                <div className="w-10 h-10 overflow-hidden shrink-0 grayscale group-hover:grayscale-0 transition-all duration-500 ring-1 ring-white/10 group-hover:ring-accent/30">
                   <Image
                     src={t.photo}
                     alt={t.name}
@@ -83,7 +96,7 @@ export default function Testimonials() {
                   />
                 </div>
                 <div>
-                  <p className="text-white/80 text-[0.8125rem] font-semibold">
+                  <p className="text-white/80 text-[0.8125rem] font-semibold group-hover:text-accent-light transition-colors duration-300">
                     {t.name}
                   </p>
                   <p className="mono text-white/30 text-[0.625rem] tracking-wider">
@@ -96,7 +109,7 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
     </section>
   );
 }

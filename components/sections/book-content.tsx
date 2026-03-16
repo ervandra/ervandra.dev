@@ -23,25 +23,26 @@ export default function BookContent() {
                 { icon: Shield, text: "100% free, no obligation" },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-3">
-                  <Icon size={16} strokeWidth={1.5} className="text-navy/30 shrink-0" />
+                  <Icon size={16} strokeWidth={1.5} className="text-accent shrink-0" />
                   <span className="text-[0.9375rem] text-navy/60">{text}</span>
                 </div>
               ))}
             </motion.div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-12 p-6 bg-warm-gray/50 border border-navy/[0.06]">
-              <p className="text-[0.8125rem] text-navy/30 uppercase tracking-[0.1em] font-semibold mb-3">What we&apos;ll cover</p>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-12 p-6 bg-warm-gray/50 border border-navy/[0.06] relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+              <p className="text-[0.8125rem] text-accent-dark/60 uppercase tracking-[0.1em] font-semibold mb-3">What we&apos;ll cover</p>
               <ul className="space-y-2">
                 {["Your current business & technology landscape", "Quick-win opportunities for improvement", "Recommended next steps and approach", "Whether we're a good fit to work together"].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-[0.9375rem] text-navy/50">
-                    <span className="w-1 h-1 bg-navy/20 mt-[0.55rem] shrink-0" />{item}
+                    <span className="w-1.5 h-1.5 bg-accent/30 mt-[0.45rem] shrink-0" />{item}
                   </li>
                 ))}
               </ul>
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} className="lg:col-span-6 lg:col-start-7">
-            <div className="bg-white border border-navy/[0.08] min-h-[600px] flex items-center justify-center">
-              <iframe src="https://calendly.com/ervandra/free-strategy?hide_gdpr_banner=1&background_color=ffffff&text_color=0a192f&primary_color=0a192f" width="100%" height="700" frameBorder="0" title="Schedule a consultation" className="w-full" />
+            <div className="bg-white border border-navy/[0.08] min-h-[600px] flex items-center justify-center shadow-[var(--shadow-md)]">
+              <iframe src="https://calendly.com/ervandra/free-strategy?hide_gdpr_banner=1&background_color=ffffff&text_color=0a192f&primary_color=e8a427" width="100%" height="700" frameBorder="0" title="Schedule a consultation" className="w-full" />
             </div>
           </motion.div>
         </div>

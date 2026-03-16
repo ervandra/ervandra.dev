@@ -26,31 +26,30 @@ export default function LogoBar() {
           Previously & currently building at
         </motion.p>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 md:gap-x-14">
-          {companies.map((company, i) => (
-            <motion.div
-              key={company.name}
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.06,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="group relative"
-            >
-              <span
-                className={`font-[family-name:var(--font-heading)] text-[1.125rem] md:text-[1.25rem] tracking-tight transition-colors duration-300 ${
-                  company.highlight
-                    ? "text-navy font-semibold"
-                    : "text-navy/25 font-semibold group-hover:text-navy/50"
-                }`}
-              >
-                {company.name}
-              </span>
-            </motion.div>
-          ))}
+        {/* Marquee container */}
+        <div className="relative">
+          {/* Gradient fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-[#fafaf8] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-[#fafaf8] to-transparent z-10 pointer-events-none" />
+
+          <div className="overflow-hidden">
+            <div className="marquee-track flex items-center gap-12 md:gap-16 w-max">
+              {/* Double the items for seamless loop */}
+              {[...companies, ...companies].map((company, i) => (
+                <div key={`${company.name}-${i}`} className="group relative shrink-0">
+                  <span
+                    className={`font-[family-name:var(--font-heading)] text-[1.125rem] md:text-[1.25rem] tracking-tight transition-all duration-500 ${
+                      company.highlight
+                        ? "text-navy font-semibold group-hover:text-accent-dark"
+                        : "text-navy/20 font-semibold group-hover:text-navy/60"
+                    }`}
+                  >
+                    {company.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
